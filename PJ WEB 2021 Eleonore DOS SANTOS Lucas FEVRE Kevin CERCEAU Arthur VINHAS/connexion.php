@@ -108,9 +108,8 @@ else
     }
     else
     {
-        echo "Connexion etablit ".$NameTable."!!<br>";
+        echo "Connexion etablie <span style='color:red;'>".$NameTable."</span>!!<br>";
     }
-
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
