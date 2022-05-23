@@ -4,6 +4,14 @@ body {
     font-size: 30px;
 }
 
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+}
+
 h1 {
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -12,4 +20,53 @@ h1 {
 
 .champ {
     font-size: 30px;
+}
+
+.case {
+    height: 100px;
+    background-color: lightblue;
+    border-style: solid;
+}
+
+.leftbar {
+    float: left;
+    height: 100%;
+    width: 20%;
+    margin-left: -15px;
+}
+
+#chatbox {
+    position: sticky;
+    float: left;
+    height: 100%;
+    width: 81%;
+    padding-left: 15px;
+}
+
+#messageinfo {
+    position: sticky;
+}
+
+#messagezone {
+    position: sticky;
+    margin-bottom: 60%;
+    height: 80%;
+    width: 100%;
+}
+
+#messagebar {
+    position: sticky;
+    float: left;
+    height: 20%;
+    width: 100%;
+    margin-bottom: 0%;
+}
+
+.message {
+    position: relative;
+    top: 670px;
+    left: 420px;
+    height: 50px;
+    width: 60%;
+    background-color: blueviolet;
 }
