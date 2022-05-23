@@ -4,65 +4,74 @@
     <Title>OMNES</Title>
     <meta charset="uft-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
     <h1>Inscription</h1>
-    <form action="connexion.php" method="post">
+    <br>
+    <form action="inscription.php" id="SignInForm" method="post">
         <table>
             <tr>
-                <td>Nom : </td>
-                <td><input type="text" name="nom" style="font-size:30px" required></td>
+                <td class="TextTitle">Nom : </td>
+                <td><input  class="TextArea" type="text" name="nom" required></td>
             </tr>
             <tr>
-                <td>Prenom : </td>
-                <td><input type="text" name="prenom" style="font-size:30px" required></td>
+                <td class="TextTitle">Prenom : </td>
+                <td><input class="TextArea" type="text" name="prenom" required></td>
             </tr>
             <tr>
-                <td>Adresse : </td>
-                <td><input type="text" name="adresse1" style="font-size:30px" required></td>
+                <td class="TextTitle">Adresse : </td>
+                <td><input class="TextArea" type="text" name="adresse1" required></td>
             </tr>
             <tr>
-                <td>Complement d'adresse : </td>
-                <td><input type="text" name="adresse2" style="font-size:30px" required></td>
+                <td class="TextTitle">Complement d'adresse : </td>
+                <td><input class="TextArea" type="text" name="adresse2" required></td>
             </tr>
             <tr>
-                <td>Ville : </td>
-                <td><input type="text" name="ville" style="font-size:30px" required></td>
+                <td class="TextTitle">Ville : </td>
+                <td><input class="TextArea" type="text" name="ville" required></td>
             </tr>
             <tr>
-                <td>Code postal : </td>
-                <td><input type="text" name="code" style="font-size:30px" required></td>
+                <td class="TextTitle">Code postal : </td>
+                <td><input class="TextArea" type="text" name="code" required></td>
             </tr>
             <tr>
-                <td>Pays : </td>
-                <td><input type="text" name="pays" style="font-size:30px" required></td>
+                <td class="TextTitle">Pays : </td>
+                <td><input class="TextArea" type="text" name="pays" required></td>
             </tr>
             <tr>
-                <td>Numero de Telephone : </td>
-                <td><input type="text" name="tel" style="font-size:30px" required></td>
+                <td class="TextTitle">Numero de Telephone : </td>
+                <td><input class="TextArea" type="text" name="tel" required></td>
             </tr>
             <tr>
-                <td>Numero de Carte Vitale : </td>
-                <td><input type="text" name="vitale" style="font-size:30px" required></td>
+                <td class="TextTitle">Numero de Carte Vitale : </td>
+                <td><input class="TextArea" type="text" name="vitale" required></td>
             </tr>
             <tr>
-                <td><br>Identifiant : </td>
-                <td><br><input type="text" name="id" id="id" style="font-size:30px" required></td>
+                <td class="TextTitle"><br>Adresse mail : </td>
+                <td><br><input class="TextArea" type="text" name="id" id="id" required></td>
             </tr>
             <tr>
-                <td>Mot de Passe : </td>
-                <td><input type="password" name="mdp" id="mdp" style="font-size:30px" required></td>
+                <td class="TextTitle">Mot de Passe : </td>
+                <td><input class="TextArea" type="password" name="mdp" id="mdp" required></td>
             </tr>
+
+            <tr>
+                <td class="TextTitle">Confirmation Mot de Passe : </td>
+                <td><input class="TextArea" type="password" name="mdp2" id="mdp2"  required></td>
+            </tr>
+
         </table>
+        <br>
         <input type="submit" id="btnco" value="S'inscrire">
     </form>
+
     <a href="connexion.html">Vous avez deja un compte?</a>
 </body>

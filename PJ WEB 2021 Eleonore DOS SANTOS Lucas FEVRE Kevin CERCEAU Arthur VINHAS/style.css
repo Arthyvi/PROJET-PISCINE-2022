@@ -13,3 +13,23 @@ h1 {
 .champ {
     font-size: 30px;
 }
+
+#btnco{
+    width: 16%;
+    margin-left: 42%;
+    color: red;
+}
+
+#SignInForm{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.TextArea{
+    font-size:30px;
+}
+
+.TextTitle{
+    font-size:20px;
+    margin-right: 10%;
+}
