@@ -61,19 +61,23 @@ else
     //Definission si l'IDpersonne trouvé est : un adminisrateur (AD), un client (CL) ou un medecin (MD)
 
     $NameTable ="";
+    $NameNextFile = "";
 
     switch(substr($BufferIDperssone,0,2))
     {
         case "AD": // Si c'est un administrateur...
             $NameTable ="administrateur";
+            $NameNextFile = "Administrateur.html";
             break;
 
         case "CL" : // Si c'est un client...
             $NameTable ="client";
+            $NameNextFile = "home.html";
             break;
 
         case "MD" : // Si c'est un Medecin...
             $NameTable ="medecin";
+            $NameNextFile = "Medecin_Personnel.html";
             break;
     }
 
@@ -108,7 +112,9 @@ else
     }
     else
     {
-        echo "Connexion etablie <span style='color:red;'>".$NameTable."</span>!!<br>";
+
+        // Connexion à la bonne page en fonction de si c'est un compte administrateur, medecin ou client (initialisé dans le switch plus haut)
+        header("Location: ".$NameNextFile);
     }
 
     // Fermeture de notre variable "$mysqli"
