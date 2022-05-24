@@ -77,7 +77,6 @@ else
     $sql = "INSERT INTO identifiant VALUES ('$mail','$IDchosen'); ";
     $result = $mysqli->query($sql);
 
-
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
 }
