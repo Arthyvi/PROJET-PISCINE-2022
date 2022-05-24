@@ -49,3 +49,10 @@ $(document).ready(function () {
     
 });
 
+function envoyer() {
+    document.getElementById('messagesent').innerText=document.getElementById('messagewritten').value;
+    document.getElementById('messagewritten').value="";
+}
+
+
+
