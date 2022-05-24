@@ -45,24 +45,23 @@ h1 {
 
 #messageinfo {
     position: sticky;
+    top:0;
+    height: 10%;
 }
 
 #messagezone {
-    position: sticky;
-    margin-bottom: 60%;
-    height: 80%;
-    width: 100%;
+    position: relative;
+    top: 20%;
+    height: 70%;
 }
 
 #messagebar {
     position: sticky;
-    float: left;
-    height: 20%;
-    width: 100%;
-    margin-bottom: 0%;
+    bottom:0;
+    height: 10%;
 }
 
-.message {
+.messagesent {
     position: relative;
     top: 670px;
     left: 420px;
