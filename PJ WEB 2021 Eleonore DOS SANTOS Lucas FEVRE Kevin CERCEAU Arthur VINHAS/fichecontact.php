@@ -38,9 +38,13 @@
                 echo "<tr><td><h2>" . $mail['Identifiant(mail)'];
                 echo "</h2></td></tr></table>";
             }
+
+            echo "<span class='boutton'>Prendre RDV</span>";
+            echo "<a href='chat.php?idclient=CL-00001&idmedecin=" . $_GET['name'] . "&connected=MD'><span class='boutton'>Communiquer</button></span></a>";
+            echo "<span class='boutton'>Voir le CV</span>";
         }
     ?>
-    <span class="boutton">Prendre RDV</span>
-    <a href="chatroom.html"><span class="boutton">Communiquer</button></span></a>
-    <span class="boutton">Voir le CV</span>
+    
+    
+    
 </body>
