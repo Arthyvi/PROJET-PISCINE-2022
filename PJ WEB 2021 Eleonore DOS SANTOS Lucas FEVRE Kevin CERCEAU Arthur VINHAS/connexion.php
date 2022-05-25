@@ -1,5 +1,9 @@
 <?php
 
+// Initialisation en debut de fichier pour avoir accès à la variable global "$_SESSION", qui nous permet de stocker
+// de manière global des données, peut importe la page
+session_start();
+
 // Declaration des variables
 $id= isset($_POST["id"]) ? $_POST["id"] : "";
 $mdp= isset($_POST["mdp"]) ? $_POST["mdp"] : "";
@@ -77,10 +81,10 @@ else
 
         case "MD" : // Si c'est un Medecin...
             $NameTable ="medecin";
-            $NameNextFile = "Medecin_Personnel.html";
+            //$NameNextFile = "Medecin_Personnel.html";
+            $NameNextFile = "Modifier_Profil_Docteur.php";
             break;
     }
-
 
     //// Verification si Mot de passe bon
 
@@ -112,6 +116,8 @@ else
     }
     else
     {
+        $_SESSION["IDconnected"] = $BufferIDperssone;
+        $_SESSION["NameTable"] = $NameTable;
 
         // Connexion à la bonne page en fonction de si c'est un compte administrateur, medecin ou client (initialisé dans le switch plus haut)
         header("Location: ".$NameNextFile);

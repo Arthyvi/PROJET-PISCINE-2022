@@ -71,16 +71,12 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   
-    <script src="script.js"></script>
-
-    <link rel="stylesheet" href="Modifier_Profil_Docteur.css">
-    <link rel="stylesheet" href="Error.css">
+    <link rel="stylesheet" href="Profil_Medecin.css">
     
 </head>
 <body>
     <div id="header">
-        <h1 id="Title">Modification compte du Medecin</h1>
+        <h1>Compte du Medecin</h1>
     </div><br>
     <div id="nav">
         <ul>
@@ -92,34 +88,25 @@ else
    
     <div id="description">
         <br>
-        <form action="Modifier_Profil_Doc_Activate.php">
-            <fieldset>
+             <fieldset>
                 <br>
                 <legend>INFOS MEDECIN :</legend>
+                <label for="nom">Nom:</label><br><br>
+                <span class="InfoStyle"><?php echo $nom ?></span><br><br><br>
 
-                <label for="nom">Nom:</label><br>
-                <input type="text" id="nom" name="nom" value="<?php echo $nom ?>" required><br><br>
+                <label for="prenom">Prenom:</label><br><br>
+                <span class="InfoStyle"><?php echo $prenom ?></span><br><br><br>
 
-                <label for="prenom">Prenom:</label><br>
-                <input type="text" id="prenom" name="prenom" value="<?php echo $prenom ?>" required><br><br>
+                <label for="spe">Specialite:</label><br><br>
+                <span class="InfoStyle"><?php echo $Specialisation ?></span><br><br><br>
+                
+                <label for="email">Email:</label><br><br>
+                <span class="InfoStyle"><?php echo $mail ?></span><br><br><br>
+            
+                <label for="mdp">Mot de passe:</label><br><br>
+                <span class="InfoStyle"><?php echo $Password ?></span><br><br>
 
-                <label for="spe">Specialite:</label><br>
-                <input type="text" id="spe" name="spe" value="<?php echo $Specialisation ?>" required><br><br>
-
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" value="<?php echo $mail ?>" required>
-                <span class="messageError" id="messageErrorEmail"> &nbsp;&nbsp;&nbsp;</span><br><br>
-
-                <label>Mot de passe:</label><br>
-                <input type="text" id="mdp" name="mdp" value="<?php echo $Password ?>" required><br><br>
-
-                <label>Confirmer le mot de passe:</label><br>
-                <input type="text" id="mdp2" name="mdp2" required>
-                <span class="messageError" id="messageErrorPassword"> &nbsp;&nbsp;&nbsp; Different passwords!</span><br><br><br><br>
-
-                <input  id="btnco" type="submit" value="Modifier les informations" disabled>
             </fieldset>
-         </form>
     </div>
 
     <div id="footer">

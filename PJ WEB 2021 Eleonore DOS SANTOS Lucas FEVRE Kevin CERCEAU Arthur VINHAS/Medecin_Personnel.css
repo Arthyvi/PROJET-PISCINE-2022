@@ -5,6 +5,13 @@
     padding: 0%;
   }
 
+  div {
+          
+        
+    padding-top: 3%;
+    padding-left: 85%;
+  }
+
   
   #description {
     background-color: rgb(114, 147, 168);
