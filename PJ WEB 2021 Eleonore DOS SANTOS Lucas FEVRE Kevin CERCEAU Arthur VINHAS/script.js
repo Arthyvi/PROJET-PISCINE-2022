@@ -42,7 +42,7 @@ $(document).ready(function () {
         }
 
          // Verifie dans la base de donné si l'email existe deja
-         $.get($file,{TheMail:  $("#email").val(),Indication: $indication} ,function(data) {
+         $.get("VerifParamBDD.php",{TheMail:  $("#email").val(),Indication: $indication} ,function(data) {
 
             if( data != 0)
             {

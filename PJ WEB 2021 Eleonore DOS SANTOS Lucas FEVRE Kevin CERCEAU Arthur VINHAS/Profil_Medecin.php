@@ -91,19 +91,22 @@ else
              <fieldset>
                 <br>
                 <legend>INFOS MEDECIN :</legend>
-                <label for="nom">Nom:</label><br><br>
+                <label for="nom">Nom:</label><br>
                 <span class="InfoStyle"><?php echo $nom ?></span><br><br><br>
 
-                <label for="prenom">Prenom:</label><br><br>
+                <label for="prenom">Prenom:</label><br>
                 <span class="InfoStyle"><?php echo $prenom ?></span><br><br><br>
 
-                <label for="spe">Specialite:</label><br><br>
+                <label for="spe">Specialite:</label><br>
                 <span class="InfoStyle"><?php echo $Specialisation ?></span><br><br><br>
                 
-                <label for="email">Email:</label><br><br>
+                <label for="email">Email:</label><br>
                 <span class="InfoStyle"><?php echo $mail ?></span><br><br><br>
+
+                <label>tel:</label><br>
+                <span class="InfoStyle"><?php echo $phone ?></span><br><br><br>
             
-                <label for="mdp">Mot de passe:</label><br><br>
+                <label for="mdp">Mot de passe:</label><br>
                 <span class="InfoStyle"><?php echo $Password ?></span><br><br>
 
             </fieldset>

@@ -87,12 +87,18 @@ else
             <h2>Photo de profil: </h2>
 
             <img src="<?php echo "Photos Doc/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
+
+            <form action="changeImage.php">
+                <label for="thePicture">Select a new picture :</label> 
+                <input type="file" id="thePicture" accept="image/*">
+            </form>
+           
+        
         </ul>
     </div>
-   
     <div id="description">
         <br>
-        <form action="Modifier_Profil_Doc_Activate.php">
+        <form action="Modifier_Profil_Doc_Activate.php" method="post">
             <fieldset>
                 <br>
                 <legend>INFOS MEDECIN :</legend>
@@ -106,6 +112,9 @@ else
                 <label for="spe">Specialite:</label><br>
                 <input type="text" id="spe" name="spe" value="<?php echo $Specialisation ?>" required><br><br>
 
+                <label for="phone">Tel:</label><br>
+                <input type="text" id="tel" name="tel" value="<?php echo $phone ?>" required><br><br>
+
                 <label for="email">Email:</label><br>
                 <input type="email" id="email" name="email" value="<?php echo $mail ?>" required>
                 <span class="messageError" id="messageErrorEmail"> &nbsp;&nbsp;&nbsp;</span><br><br>
@@ -115,7 +124,7 @@ else
 
                 <label>Confirmer le mot de passe:</label><br>
                 <input type="text" id="mdp2" name="mdp2" required>
-                <span class="messageError" id="messageErrorPassword"> &nbsp;&nbsp;&nbsp; Different passwords!</span><br><br><br><br>
+                <span class="messageError" id="messageErrorPassword"> &nbsp;&nbsp;&nbsp; Different passwords!</span><br><br>
 
                 <input  id="btnco" type="submit" value="Modifier les informations" disabled>
             </fieldset>

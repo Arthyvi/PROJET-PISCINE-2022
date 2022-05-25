@@ -26,79 +26,59 @@ if($mysqli -> connect_errno)
 else
 {
 
-    // Partie pour verifier si le mail n'est pas deja utiliser dans la table
-    $sql = "SELECT * FROM identifiant WHERE Identifiant = '$mail'";   
-    $AlreadyHere = false;
+
+        /// Creer un ID cohérent avec les ID deja présent au sein
+    //Recupérer l'ID client ayant le numéro le plus élevé
+
+    $sql = "SELECT IDpersonne FROM client WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM client)";   
+    
+    $BuffID = "";
+    
     if($result = $mysqli->query($sql))
     {
         
-        if($result->num_rows > 0)
+        if($result->num_rows >0)
         {
-            $AlreadyHere = true;
+            $row = $result->fetch_row();
+
+            $BuffID = $row[0];
         }
 
         $result->free_result();
     }
-    
 
-    if($AlreadyHere == true)
+    $IDchosen = "";
+
+    if($BuffID == "")
     {
-        echo "<span style='color:red;'> <- Mail already used, please fill another one</span><br>";
+        $IDchosen = "CL-00001"; // Premier ID
     }
     else
     {
-            /// Creer un ID cohérent avec les ID deja présent au sein
-        //Recupérer l'ID client ayant le numéro le plus élevé
+        //Prendre les nombres à la fin et  les transformé en int
+        $NumRecupInt = intval(substr($BuffID,7)); 
 
-        $sql = "SELECT IDpersonne FROM client WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM client)";   
-        
-        $BuffID = "";
-        
-        if($result = $mysqli->query($sql))
-        {
-            
-            if($result->num_rows >0)
-            {
-                $row = $result->fetch_row();
+        // Ajouter 1 au nombre pour incrementer
+        $NumRecupInt = $NumRecupInt + 1;
 
-                $BuffID = $row[0];
-            }
-
-            $result->free_result();
-        }
-
-        $IDchosen = "";
-
-        if($BuffID == "")
-        {
-            $IDchosen = "CL-00001"; // Premier ID
-        }
-        else
-        {
-            //Prendre les nombres à la fin et  les transformé en int
-            $NumRecupInt = intval(substr($BuffID,7)); 
-
-            // Ajouter 1 au nombre pour incrementer
-            $NumRecupInt = $NumRecupInt + 1;
-
-            // ID chosen for the new client
-            $IDchosen = "CL-0000".$NumRecupInt; 
-        }
-        
-        // Transformation en INT des valeurs devant etre en int dans la BDD
-        $codeP2 =  intval($codeP);
-        $phone2 =  intval($phone);
-        $CarteVitale2 = intval($CarteVitale);
-
-        // On rajoute le client dans la table client
-        $sql = "INSERT INTO client VALUES ('$IDchosen','$nom','$prenom', '$adresse1','$adresse2','$ville',$codeP2,'$pays',$phone2,$CarteVitale2,'$Password'); ";
-        $result = $mysqli->query($sql);
-
-        //On rajoute l'identifiant du client dans la table identifiant
-        $sql = "INSERT INTO identifiant VALUES ('$mail','$IDchosen'); ";
-        $result = $mysqli->query($sql);
-        
+        // ID chosen for the new client
+        $IDchosen = "CL-0000".$NumRecupInt; 
     }
+    
+    // Transformation en INT des valeurs devant etre en int dans la BDD
+    $codeP2 =  intval($codeP);
+    $phone2 =  intval($phone);
+    $CarteVitale2 = intval($CarteVitale);
+
+    // On rajoute le client dans la table client
+    $sql = "INSERT INTO client VALUES ('$IDchosen','$nom','$prenom', '$adresse1','$adresse2','$ville',$codeP2,'$pays',$phone2,$CarteVitale2,'$Password'); ";
+    $result = $mysqli->query($sql);
+
+    //On rajoute l'identifiant du client dans la table identifiant
+    $sql = "INSERT INTO identifiant VALUES ('$mail','$IDchosen'); ";
+    $result = $mysqli->query($sql);
+    
+
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();

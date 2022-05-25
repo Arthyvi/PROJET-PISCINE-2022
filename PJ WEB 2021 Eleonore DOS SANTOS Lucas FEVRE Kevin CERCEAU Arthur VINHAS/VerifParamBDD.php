@@ -1,5 +1,9 @@
 <?php
 
+// Initialisation en debut de fichier pour avoir accès à la variable global "$_SESSION", qui nous permet de stocker
+// de manière global des données, peut importe la page
+session_start();
+
 // Connexion au serveur
 $mysqli = new mysqli("localhost","root","","projet piscine 2022");
 
@@ -19,9 +23,9 @@ else
     {
         case "2" :
             $buffID = $_SESSION["IDconnected"];
-            $sql =  $sql + "AND IDpersonne !='$buffID'";
+            $sql =  $sql."AND IDpersonne !='$buffID'";
 
-            break;
+        break;
     }
 
     $AlreadyHere = 0;
@@ -37,7 +41,7 @@ else
         $result->free_result();
     }
 
-   // echo $AlreadyHere;
+    echo $AlreadyHere;
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
