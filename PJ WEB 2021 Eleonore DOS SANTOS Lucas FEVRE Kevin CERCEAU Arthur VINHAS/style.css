@@ -45,7 +45,7 @@ h1 {
 
 #messageinfo {
     position: sticky;
-    top:0;
+    top: 0;
     height: 10%;
 }
 
@@ -57,7 +57,7 @@ h1 {
 
 #messagebar {
     position: sticky;
-    bottom:0;
+    bottom: 0;
     height: 10%;
 }
 
@@ -68,4 +68,44 @@ h1 {
     height: 50px;
     width: 60%;
     background-color: blueviolet;
+}
+
+.boutton {
+    padding: 15px 100px;
+    margin: 10px 4px;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid;
+}
+
+.boutton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+    transition: all 0.4s;
+}
+
+.boutton:hover {
+    color: blue;
+}
+
+.boutton:hover::before {
+    opacity: 1;
+    background-color: lightblue;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    transition: -webkit-transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
+    transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity;
 }
