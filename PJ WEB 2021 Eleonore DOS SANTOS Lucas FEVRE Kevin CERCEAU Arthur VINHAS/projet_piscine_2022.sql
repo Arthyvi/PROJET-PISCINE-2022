@@ -2,9 +2,9 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : mar. 24 mai 2022 à 09:08
--- Version du serveur :  5.7.31
+-- Hôte : 127.0.0.1:3309
+-- Généré le : mer. 25 mai 2022 à 09:18
+-- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -114,7 +114,14 @@ INSERT INTO `identifiant` (`Identifiant(mail)`, `IDpersonne`) VALUES
 ('19', 'MD-00001'),
 ('00', 'MD-00002'),
 ('01', 'CL-00003'),
-('AAA', 'CL-00004');
+('AAA', 'CL-00004'),
+('eleo@edu.ece.fr', 'MD-00009'),
+('lucas.fevre@edu.ece.fr', 'MD-00008'),
+('kevin.cerceau@edu.ece.fr', 'MD-00007'),
+('mister.v@yahoo.fr', 'MD-00006'),
+('jeff.tuche@hotmail.fr', 'MD-00005'),
+('docteur.maboul@free.fr', 'MD-00004'),
+('docteur.juiphe@gmail.com', 'MD-00003');
 
 -- --------------------------------------------------------
 
@@ -154,8 +161,15 @@ CREATE TABLE IF NOT EXISTS `medecin` (
 --
 
 INSERT INTO `medecin` (`IDpersonne`, `Nom`, `Prenom`, `Password`, `NumTelephone`, `Specialisation`) VALUES
-('MD-00001', 'Johnny', 'Sins', '23', 687872189, 'Gynecologue'),
-('MD-00002', 'Arthur', 'VINHAS OAKJNDOLZQKJ', '12345', 68928912, 'Specialiste I.S.T');
+('MD-00001', 'Sins', 'Jonhhy', '23', 687872189, 'Gynecologue'),
+('MD-00002', 'Vinhas', 'Arthur', '12345', 68928912, 'Generaliste'),
+('MD-00004', 'Maboul', 'Didier', '0000', 1234567890, 'Cardiologue'),
+('MD-00005', 'Tuche', 'Jeff', '1111', 611223344, 'Gastro-Hepatho-Enterologue'),
+('MD-00003', 'Juiphe', 'Pierre', '1234', 612345678, 'Addictologue'),
+('MD-00006', 'V', 'Yvick', '9999', 999999999, 'Andrologue'),
+('MD-00007', 'Cerceau', 'Kevin', '5678', 666666666, 'Generaliste'),
+('MD-00008', 'Fevre', 'Lucas', '9012', 777777777, 'Generaliste'),
+('MD-00009', 'DOS SANTOS RIBALONGA BASSIRI', 'Eleonore', '2345', 111111111, 'Generaliste');
 
 -- --------------------------------------------------------
 
