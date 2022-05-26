@@ -1,8 +1,8 @@
 <?php
-session_start();
+    session_start();
 
-$_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
-// Connexion au serveur
+    $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
+    // Connexion au serveur
     $mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
     // Check connection
@@ -85,7 +85,7 @@ $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
     $("#submitmsg").click(function () {
         var clientmsg = $("#usermsg").val();
         console.log(clientmsg);
-        $.post("post.php?idclient=" + $idclient + "&idmedecin=" + $idmedecin, { text: clienmsg }); //
+        $.post("post.php", { text: clienmsg, idclient: $idclient, idmedecin: $idmedecin }); //
         $("#usermsg").val("");
         return false;
     });
