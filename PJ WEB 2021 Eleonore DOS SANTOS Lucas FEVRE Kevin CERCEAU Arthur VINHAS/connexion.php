@@ -82,7 +82,7 @@ else
         case "MD" : // Si c'est un Medecin...
             $NameTable ="medecin";
             //$NameNextFile = "Medecin_Personnel.html";
-            $NameNextFile = "Ajouter_Medecin.php";
+            $NameNextFile = "Modifier_Profil_Docteur.php";
             break;
     }
 

@@ -110,7 +110,8 @@ else
                 <input type="text" id="prenom" name="prenom" value="<?php echo $prenom ?>" required><br><br>
 
                 <label for="spe">Specialite:</label><br>
-                <select name="spe" id="spe" value="<?php echo $Specialisation ?>"  required>
+                <select name="spe" id="spe"  required>
+                    <option value="none" selected disabled hidden><?php echo $Specialisation ?></option>
                     <option value="Addictologue">Addictologue</option>
                     <option value="Andrologue">Andrologue</option>
                     <option value="Cardiologue">Cardiologue</option>
