@@ -86,6 +86,30 @@ $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
         $text = $("#usermsg").val();
         //$.post("post.php?connected=" . $connected . "&idclient=" . $idclient . "&idmedecin=" . $idmedecin, { text: clientmsg });
         <?php
+            $sql = "SELECT IDmessage FROM chat-clientmedecin WHERE IDmessage = (SELECT MAX(IDmessage) FROM chat-clientmedecin)";   
+
+            $BuffID = "";
+            if($result = $mysqli->query($sql))
+            {
+                if($result->num_rows >0)
+                {
+                    $row = $result->fetch_row();
+                    $BuffID = $row[0];
+                }
+                $result->free_result();
+            }
+
+            if($BuffID == "")
+            {
+                $IDmessage = $connected . "-00001"; // Premier ID
+            }
+            else
+            {
+                $NumRecupInt = intval(substr($BuffID,7))++; 
+
+                // ID chosen for the new client
+                $IDmessage = $connected."-0000".$NumRecupInt; 
+            }
             $sql = "INSERT INTO chat-clientmedecin VALUES ('$IDmessage','$idmedecin','$text','$idclient')";
             $result = $mysqli->query($sql);
             echo "test";
