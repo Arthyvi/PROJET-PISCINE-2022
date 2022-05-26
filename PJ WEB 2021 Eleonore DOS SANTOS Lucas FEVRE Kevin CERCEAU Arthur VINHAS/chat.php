@@ -39,9 +39,10 @@ $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
         <div id="chatbox">
 
  <?php
+ 
     $data="chat-clientmedecin";
     //$result = mysqli_query($mysqli, "SELECT * FROM chat-clientmedecin WHERE IDclient='" . $idclient . "'" . " AND IDmedecin='" . $idmedecin . "'");
-    $sql="SELECT * FROM chat-clientmedecin WHERE IDclient='" . $idclient . "'" . " AND IDmedecin='" . $idmedecin . "'";
+    $sql="SELECT * FROM `chat-clientmedecin`  WHERE IDclient='" . $idclient . "'" . " AND IDmedecin='" . $idmedecin . "'";
     $nomclient = mysqli_query($mysqli, "SELECT Prenom FROM client WHERE IDpersonne='" . $idclient . "'");
     $nomclient = mysqli_fetch_assoc($nomclient);
     /*while ($data = mysqli_fetch_assoc($result)) {
@@ -52,18 +53,17 @@ $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
     }*/
     if($result = $mysqli->query($sql))
     {
-        
         if($result->num_rows >0)
         {
             while($row = $result->fetch_row())
             {
+                $data = $result->fetch_row();
                 echo "<div class='msgln'>";
-                if($data['IDmessage'].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . "</b>" . $data['message'] . "<br>";
-                else echo "<b class='username'>" . $_SESSION['name'] . "</b>" . $data['message'] . "<br>";
+                if($data[0].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . "</b>" . $data[2] . "<br>";
+                else echo "<b class='username'>" . $_SESSION['name'] . "</b>" . $data[2] . "<br>";
                 echo "</div>";
             }
         }
-
         $result->free_result();
     }
  ?>
@@ -83,40 +83,24 @@ $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
  // jQuery Document
  $(document).ready(function () {
     $("#submitmsg").click(function () {
-        $text = $("#usermsg").val();
-        //$.post("post.php?connected=" . $connected . "&idclient=" . $idclient . "&idmedecin=" . $idmedecin, { text: clientmsg });
-        <?php
-            $sql = "SELECT IDmessage FROM chat-clientmedecin WHERE IDmessage = (SELECT MAX(IDmessage) FROM chat-clientmedecin)";   
-
-            $BuffID = "";
-            if($result = $mysqli->query($sql))
-            {
-                if($result->num_rows >0)
-                {
-                    $row = $result->fetch_row();
-                    $BuffID = $row[0];
-                }
-                $result->free_result();
-            }
-
-            if($BuffID == "")
-            {
-                $IDmessage = $connected . "-00001"; // Premier ID
-            }
-            else
-            {
-                $NumRecupInt = intval(substr($BuffID,7))++; 
-
-                // ID chosen for the new client
-                $IDmessage = $connected."-0000".$NumRecupInt; 
-            }
-            $sql = "INSERT INTO chat-clientmedecin VALUES ('$IDmessage','$idmedecin','$text','$idclient')";
-            $result = $mysqli->query($sql);
-            echo "test";
-        ?>
+        var clientmsg = $("#usermsg").val();
+        console.log(clientmsg);
+        $.post("post.php?idclient=" + $idclient + "&idmedecin=" + $idmedecin, { text: clienmsg }); //
         $("#usermsg").val("");
         return false;
     });
+
+    /*function loadLog() {
+        var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Hauteur de défilement avant la requête
+        $.ajax({
+            $("#chatbox").html(html); //Insérez le log de chat dans la #chatbox div
+            //Auto-scroll 
+            var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Hauteur de défilement apres la requête
+            if(newscrollHeight > oldscrollHeight) $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Défilement automatique 
+        });
+    }
+    setInterval (loadLog, 2500);*/
+
  });
  </script>
 

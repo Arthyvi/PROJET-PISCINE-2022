@@ -35,7 +35,7 @@
                 echo "<tr><td rowspan='3'><img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' height='360' width='300'> </a>";
                 echo "<td><h1>Dr. " . $data['Prenom'] . " " . $data['Nom'] . "</h1></td></tr>";
                 echo "<tr><td><h2>+33" . $data['NumTelephone'] . "<h2></td></tr>";
-                echo "<tr><td><h2>" . $mail['Identifiant(mail)'];
+                echo "<tr><td><h2>" . $mail['Identifiant'];
                 echo "</h2></td></tr></table>";
             }
 
