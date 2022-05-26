@@ -86,19 +86,19 @@ else
         <ul>
             <h2>Photo de profil: </h2>
 
-            <img src="<?php echo "Photos Doc/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
+            <img id="TheImage" src="<?php echo "Photos Doc/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
 
-            <form action="changeImage.php">
-                <label for="image_uploads" style="color:blue;">  Select a new picture : </label> 
-                <input type="file" id="image_uploads" name="image_uploads" accept="image/*">
-            </form>
+           <!-- <form action="changeImage.php"> -->
+                <label for="image_uploads" style="color:blue;" >  Select a new picture : </label> 
+                
+            <!-- </form> -->
            
         
         </ul>
     </div>
     <div id="description">
         <br>
-        <form action="Modifier_Profil_Doc_Activate.php" method="post">
+        <form action="Modifier_Profil_Doc_Activate.php" method="post" enctype="multipart/form-data">
             <fieldset>
                 <br>
                 <legend>INFOS MEDECIN :</legend>
@@ -126,6 +126,10 @@ else
                 <input type="text" id="mdp2" name="mdp2" required>
                 <span class="messageError" id="messageErrorPassword"> &nbsp;&nbsp;&nbsp; Different passwords!</span><br><br>
 
+                <!--Le input pour l'image, qui est rendu invisible dans le script en bas, mais qui est quand meme
+                dans le forme pour pouvoir s'activer et prendre les valeurs lorsque l'on appuie sur le bouton 'modifier' -->
+                <input type="file" id="image_uploads" name="image_uploads" accept="image/*">
+
                 <input  id="btnco" type="submit" value="Modifier les informations" disabled>
             </fieldset>
          </form>
@@ -137,11 +141,13 @@ else
 
 
    <!-- Script inspiré d'un code trouvé sur internet pour la gestion et l'affichage automatique des images
-   selectionné, lien : https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input/file#accept --> 
+   selectionné, lien : https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input/file#accept
+    Permet de  d'associer un eventlistener au changement d'image --> 
     <script>
-    const input = document.querySelector('input');
+    const input = document.getElementById('image_uploads');
 
     input.style.opacity = 0;
+
   
     input.addEventListener('change', updateImageDisplay);
 
@@ -149,30 +155,29 @@ else
 
       const curFiles = input.files;
       if(curFiles.length === 0) {
-        const para = document.createElement('p');
-        para.textContent = 'No files currently selected for upload';
-        preview.appendChild(para);
+        
+        alert('No file selected for upload');
+
       } else {
-        const list = document.createElement('ol');
-        preview.appendChild(list);
-
+     
         for(const file of curFiles) {
-          const listItem = document.createElement('li');
-          const para = document.createElement('p');
+      
+          if(validFileType(file)) 
+          {
+            temporaryUrl =  URL.createObjectURL(file);
+            //alert(temporaryUrl);
 
-          if(validFileType(file)) {
-            para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
-            const image = document.createElement('img');
-            image.src = URL.createObjectURL(file);
-
-            listItem.appendChild(image);
-            listItem.appendChild(para);
-          } else {
-            para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+            document.getElementById("TheImage").src = temporaryUrl;
+           
+          } 
+          else 
+          {
+            alert('Not a valid file type. Select another one.');
             listItem.appendChild(para);
           }
 
-          list.appendChild(listItem);
+          break;
+
         }
       }
     }
@@ -195,16 +200,7 @@ else
       return fileTypes.includes(file.type);
     }
 
-    function returnFileSize(number) {
-      if(number < 1024) {
-        return number + 'bytes';
-      } else if(number > 1024 && number < 1048576) {
-        return (number/1024).toFixed(1) + 'KB';
-      } else if(number > 1048576) {
-        return (number/1048576).toFixed(1) + 'MB';
-      }
-    }
-    */
+
   </script>
 </body>
 
