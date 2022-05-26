@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    let ImageOk = false;
 
     $("#mdp").keyup(function(){
 
@@ -19,6 +20,15 @@ $(document).ready(function () {
 
         // Active verification de l'email et des mots de passe
         verifButton();
+
+    });
+
+    // S'active lorsque l'on choisit une image
+    $("#TheImage2").on('load',function(){
+        ImageOk = true;
+
+        // Active verification de l'email, des mots de passe et de si il y a une image
+         verifButton();
 
     });
 
@@ -55,7 +65,6 @@ $(document).ready(function () {
                 numberGood = numberGood + 1;
             }
 
-        
          //// Partie verifiant si le mot de passe et la confirmation de mot de passe sont les même à chaque fois
 
     
@@ -78,9 +87,14 @@ $(document).ready(function () {
              document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Different passwords!";
          }
 
+         // Partie pour verifier si l'image est bien la
+         if( ImageOk == true)
+         {
+            numberGood = numberGood + 1;
+         }
 
         // Activation ou desactivation du bouton final
-        if(numberGood == 2)
+        if(numberGood == 3)
         {
             // Active le bouton "s'incrire"
             $("#btnco").prop("disabled", false);

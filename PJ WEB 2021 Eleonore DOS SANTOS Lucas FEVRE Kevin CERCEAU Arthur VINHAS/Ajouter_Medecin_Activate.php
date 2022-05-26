@@ -1,20 +1,19 @@
 <?php
 
+// Initialisation en debut de fichier pour avoir accès à la variable global "$_SESSION", qui nous permet de stocker
+// de manière global des données, peut importe la page
+session_start();
+
 // Declaration des variables
 $nom= isset($_POST["nom"]) ? $_POST["nom"] : "";
 $prenom= isset($_POST["prenom"]) ? $_POST["prenom"] : "";
-$adresse1= isset($_POST["adresse1"]) ? $_POST["adresse1"] : "";
-$adresse2= isset($_POST["adresse2"]) ? $_POST["adresse2"] : "";
-$ville= isset($_POST["ville"]) ? $_POST["ville"] : "";
-$codeP= isset($_POST["code"]) ? $_POST["code"] : "";
-$pays= isset($_POST["pays"]) ? $_POST["pays"] : "";
 $phone= isset($_POST["tel"]) ? $_POST["tel"] : "";
-$CarteVitale= isset($_POST["vitale"]) ? $_POST["vitale"] : "";
+$specialisation = isset($_POST["spe"]) ? $_POST["spe"] : "";
 $mail= isset($_POST["email"]) ? $_POST["email"] : "";
 $Password= isset($_POST["mdp"]) ? $_POST["mdp"] : "";
-$ConfirmedPassword= isset($_POST["mdp2"]) ? $_POST["mdp2"] : "";
 
-// Connexion au serveur
+/// Partie sur la base de donnée
+ // Connexion au serveur
 $mysqli = new mysqli("localhost","root","","projet piscine 2022");
 
 // Check connection
@@ -25,12 +24,10 @@ if($mysqli -> connect_errno)
 }
 else
 {
-
-
         /// Creer un ID cohérent avec les ID deja présent au sein de la BDD
     //Recupérer l'ID client ayant le numéro le plus élevé
 
-    $sql = "SELECT IDpersonne FROM client WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM client)";   
+    $sql = "SELECT IDpersonne FROM medecin WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM medecin)";   
     
     $BuffID = "";
     
@@ -51,7 +48,7 @@ else
 
     if($BuffID == "")
     {
-        $IDchosen = "CL-00001"; // Premier ID
+        $IDchosen = "MD-00001"; // Premier ID
     }
     else
     {
@@ -62,16 +59,14 @@ else
         $NumRecupInt = $NumRecupInt + 1;
 
         // ID chosen for the new client
-        $IDchosen = "CL-0000".$NumRecupInt; 
+        $IDchosen = "MD-0000".$NumRecupInt; 
     }
     
     // Transformation en INT des valeurs devant etre en int dans la BDD
-    $codeP2 =  intval($codeP);
     $phone2 =  intval($phone);
-    $CarteVitale2 = intval($CarteVitale);
 
     // On rajoute le client dans la table client
-    $sql = "INSERT INTO client VALUES ('$IDchosen','$nom','$prenom', '$adresse1','$adresse2','$ville',$codeP2,'$pays',$phone2,$CarteVitale2,'$Password'); ";
+    $sql = "INSERT INTO medecin VALUES ('$IDchosen','$nom','$prenom','$Password',$phone2,'$specialisation'); ";
     $result = $mysqli->query($sql);
 
     //On rajoute l'identifiant du client dans la table identifiant
@@ -79,11 +74,22 @@ else
     $result = $mysqli->query($sql);
     
 
+        /// Partie permettant de changer l'image selectionner dans le repertoire de la base de donnée !!!!!
+    $part = explode(".",$_FILES["image_uploads"]["name"]);
+
+    $destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/Photos Doc/".$IDchosen.".".$part[1];
+
+    /*
+    echo "<pre>";
+    print_r($_FILES);
+    echo "</pre>";
+    */
+
+    // Copie le fichier temporaire de l'image selectionner présent sur le serveur, directement dans le repertoire du serveur
+    copy($_FILES["image_uploads"]["tmp_name"],$destination);
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
 }
-
-
 
 ?>
