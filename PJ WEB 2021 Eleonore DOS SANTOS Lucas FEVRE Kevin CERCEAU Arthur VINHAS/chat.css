@@ -148,3 +148,7 @@ a#exit {
 .msgln b.user-name-left {
     background: orangered;
 }
+
+.hidden {
+    display: none;
+}
