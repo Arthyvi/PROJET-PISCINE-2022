@@ -12,43 +12,33 @@ if(isset($_SESSION['name'])){
     }
     else
     {
-        $text = $_POST['text'];
-        $idmedecin = $_POST['idmedecin'];
-        $idclient = $_POST['idclient'];
-        echo $_SESSION['name'];
+        $text = $_GET['usermsg'];
+        $idmedecin = $_GET['idmedecin'];
+        $idclient = $_GET['idclient'];
+        $connected = $_GET['connected'];
         if($text!="") {
-            $sql = "SELECT IDmessage FROM `chat-clientmedecin` WHERE IDmessage = (SELECT MAX(IDmessage) FROM `chat-clientmedecin`)";
-            $BuffID="";
+            $sql = "SELECT * FROM `chat-clientmedecin`";
+            $cpt=0;
             if($result = $mysqli->query($sql))
             {
-                if($result->num_rows >0)
+                while($row = $result->fetch_row())
                 {
-                    $row = $result->fetch_row();
-                    $BuffID = $row[0];
+                    $cpt++;
                 }
                 $result->free_result();
             }
 
-            
-
-            if($BuffID == "")
-            {
-                $IDmessage = $connected . "-00001"; // Premier ID
-            }
-            else
-            {
-                //Prendre les nombres à la fin et  les transformé en int
-                $NumRecupInt = intval(substr($BuffID,7)); 
-
-                // Ajouter 1 au nombre pour incrementer
-                $NumRecupInt = $NumRecupInt + 1;
-
-                // ID chosen for the new client
-                $IDmessage = $connected."-0000".$NumRecupInt; 
-            }
+            $IDmessage = $connected . $cpt;
             $sql = "INSERT INTO `chat-clientmedecin` VALUES ('$IDmessage','$idmedecin','$text','$idclient')";
             $result = $mysqli->query($sql);
+            header("Location: chat.php?name=" . $_SESSION['name'] . "&idclient=". $idclient . "&idmedecin=" . $idmedecin . "&connected=".$connected);
         }
     }
 }
 ?>
+
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript">     
+ //$(document).ready(function () {
+    //});
+ </script>

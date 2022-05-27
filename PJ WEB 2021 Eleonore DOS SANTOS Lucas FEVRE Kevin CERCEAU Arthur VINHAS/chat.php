@@ -45,6 +45,8 @@
     $sql="SELECT * FROM `chat-clientmedecin`  WHERE IDclient='" . $idclient . "'" . " AND IDmedecin='" . $idmedecin . "'";
     $nomclient = mysqli_query($mysqli, "SELECT Prenom FROM client WHERE IDpersonne='" . $idclient . "'");
     $nomclient = mysqli_fetch_assoc($nomclient);
+    $nommedecin = mysqli_query($mysqli, "SELECT Prenom FROM medecin WHERE IDpersonne='" . $idmedecin . "'");
+    $nommedecin = mysqli_fetch_assoc($nommedecin);
     /*while ($data = mysqli_fetch_assoc($result)) {
         echo "<div class='msgln'>";
         if($data['IDmessage'].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . "</b>" . $data['message'] . "<br>";
@@ -55,12 +57,11 @@
     {
         if($result->num_rows >0)
         {
-            while($row = $result->fetch_row())
+            while($data = $result->fetch_row())
             {
-                $data = $result->fetch_row();
                 echo "<div class='msgln'>";
-                if($data[0].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . "</b>" . $data[2] . "<br>";
-                else echo "<b class='username'>" . $_SESSION['name'] . "</b>" . $data[2] . "<br>";
+                if($data[0].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . " </b>" . $data[2] . "<br>";
+                else echo "<b class='username'>" . $_SESSION['name'] . " </b>" . $data[2] . "<br>";
                 echo "</div>";
             }
         }
@@ -68,7 +69,7 @@
     }
  ?>
  </div>
-    <form name="message" action="chat.php?">
+    <form name="message" action="post.php"> <!--chat.php?-->
         <input name="usermsg" type="text" id="usermsg" />
         <input name="submitmsg" type="submit" id="submitmsg" value="Envoyer"/>
         <input name="connected" type="hidden" id="connected" value="<?php echo $connected;?>"/>
@@ -81,14 +82,15 @@
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script type="text/javascript">     
  // jQuery Document
- $(document).ready(function () {
+ /*$(document).ready(function () {
     $("#submitmsg").click(function () {
-        var clientmsg = $("#usermsg").val();
-        console.log(clientmsg);
-        $.post("post.php", { text: clienmsg, idclient: $idclient, idmedecin: $idmedecin }); //
+        /*var clientmsg = $("#usermsg").val();
+        var idclient = $("#idclient").val();
+        var idmedecin = $("#idmedecin").val();
+        $.post("post.php", { text: clienmsg, idclient: idclient, idmedecin: idmedecin }); //
         $("#usermsg").val("");
-        return false;
-    });
+        return false;*/
+    //});
 
     /*function loadLog() {
         var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Hauteur de défilement avant la requête
@@ -101,7 +103,7 @@
     }
     setInterval (loadLog, 2500);*/
 
- });
+ //});*/
  </script>
 
  </body>
