@@ -22,7 +22,7 @@ else
     switch($_GET["Indication"])
     {
         case "2" :
-            $buffID = $_SESSION["IDconnected"];
+            $buffID = $_SESSION["SelectedDoc"];
             $sql =  $sql."AND IDpersonne !='$buffID'";
 
         break;

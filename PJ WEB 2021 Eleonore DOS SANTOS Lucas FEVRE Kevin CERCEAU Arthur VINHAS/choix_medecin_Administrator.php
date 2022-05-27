@@ -49,9 +49,9 @@ $_SESSION["doc"] = "";
         //afficher le resultat
         echo "<table class='table table-hover' >";
         while ($data = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td> <a href='fichecontact.php?name=" . $data['IDpersonne'] . "'> <img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' height='120' width='100' id='doc'> </a>   </td>";
-            echo "<td>Dr " . $data['Nom'] . "  </td>";
+            echo "<tr onclick=\"window.location='fichecontact_Administrator.php?name=" . $data['IDpersonne'] . "'\">";
+            echo "<td>  <img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' height='120' width='100' id='doc'>   </td>";
+            echo "<td>Dr " . $data['Nom'] . "</td>";
             echo "<td>" . $data['Specialisation'] . "</td>";
             echo "</tr>";
         }

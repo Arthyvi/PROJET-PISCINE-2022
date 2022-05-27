@@ -55,4 +55,40 @@ else
     $mysqli->close();
 }
 
+// Manipulation du document XML pour modifier un CV
+$dom = new DOMDocument();
+  $dom->formatOutput = true;
+
+  $dom->load('Mes CV/CVmedecin.xml', LIBXML_NOBLANKS);
+
+  $root = $dom->documentElement;
+  $newresult = $root->appendChild( $dom->createElement('DocteurCV') );
+  $newresult->setAttribute('id', $IDchosen);
+
+  $newresult->appendChild( $dom->createElement('Nom',$nom) );
+  $newresult->appendChild( $dom->createElement('Prenom',$prenom) );
+  $newresult->appendChild( $dom->createElement('Telephone',$phone) );
+  $newresult->appendChild( $dom->createElement('Mail',$mail) );
+  $newresult->appendChild( $dom->createElement('Specialisation',$specialisation) );
+
+  $newresult->appendChild( $dom->createElement('presentation',$Presentation) );
+  $newresult->appendChild( $dom->createElement('formation',$formation) );
+  $newresult->appendChild( $dom->createElement('Langue1',$Langue1) );
+
+  if($Langue2 != "")
+  {
+    $newresult->appendChild( $dom->createElement('Langue2',$Langue2) );
+  }
+
+  if($Langue3 != "")
+  {
+    $newresult->appendChild( $dom->createElement('Langue3',$Langue3) );
+  }
+
+  $newresult->appendChild( $dom->createElement('experience',$experience) );
+
+  echo ''. $dom->saveXML() .'';
+  $dom->save('Mes CV/CVmedecin.xml') or die('XML Manipulate Error');
+
+
 ?>

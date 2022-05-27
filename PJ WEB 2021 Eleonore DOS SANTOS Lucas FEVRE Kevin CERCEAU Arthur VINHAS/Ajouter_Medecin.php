@@ -74,7 +74,7 @@ session_start();
 
                   <label  for="email">Email:</label><br>
                   <input  type="email" id="email" name="email"  required>
-                  <span  class="messageError" id="messageErrorEmail"> &nbsp;&nbsp;&nbsp;</span><br><br>
+                  <span  class="messageError" id="messageErrorEmail"> <br> &nbsp;&nbsp;&nbsp;</span><br><br>
 
                   <label  >Mot de passe:</label><br>
                   <input  type="text" id="mdp" name="mdp"  required><br><br>

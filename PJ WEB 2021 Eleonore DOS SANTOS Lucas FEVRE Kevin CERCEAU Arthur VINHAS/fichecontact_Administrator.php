@@ -1,6 +1,7 @@
 <?php
     // Start the session
     session_start();
+    $_SESSION["SelectedDoc"] =  $_GET['name'];
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +40,8 @@
                 echo "</h2></td></tr></table>";
             }
 
-            echo "<span class='boutton'>Prendre RDV</span>";
-            echo "<a href='chat.php?name=" . $data['Prenom'] . "&idclient=CL-00001&idmedecin=" . $_GET['name'] . "&connected=MD'><span class='boutton'>Communiquer</button></span></a>";
-            echo "<span class='boutton'>Voir le CV</span>";
+            echo "<a href='Modifier_Profil_Docteur.php'><span class='boutton'>Modifier info</span></a>";
+            echo "<span class='boutton2'>Supprimer</span>";
         }
     ?>
     

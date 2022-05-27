@@ -20,9 +20,9 @@ if($mysqli -> connect_errno)
 }
 else
 {
-    // Recupère toutes les information de la personne
-    $BuffNameTable = $_SESSION["NameTable"];
-    $BuffID = $_SESSION["IDconnected"];
+    // Recupère toutes les information du docteur selecionner
+    $BuffNameTable = "medecin";
+    $BuffID = $_SESSION["SelectedDoc"];
     $sql = "SELECT * FROM  $BuffNameTable WHERE IDpersonne = '$BuffID'";   
     
     if($result = $mysqli->query($sql))
@@ -61,6 +61,50 @@ else
     $mysqli->close();
 }
 
+    //// Recupération des données du CV depuis le fichier XML des CV medecin
+    // Variable forcé d'etre présente
+    $Langue2 = "";
+    $Langue3 = "";
+    // Traitement
+    $dom = new DOMDocument();
+
+    $dom->validateOnParse = true;
+    $dom->load('Mes CV/CVmedecin.xml');
+  
+    $root = $dom->documentElement;
+
+    $results = $root->getElementsByTagName( 'DocteurCV' );
+    foreach( $results  as $result){
+      if($result->getAttribute('id') == $BuffID)
+      {
+        foreach( $result->getElementsByTagName('presentation') as $Biff ){
+            $presentation = $Biff->nodeValue;
+        }
+
+        foreach( $result->getElementsByTagName('formation') as $Biff ){
+            $formation = $Biff->nodeValue;
+        }
+
+        foreach( $result->getElementsByTagName('Langue1') as $Biff ){
+            $Langue1 = $Biff->nodeValue;
+        }
+
+        foreach( $result->getElementsByTagName('Langue2') as $Biff ){
+            $Langue2 = $Biff->nodeValue;
+        }
+
+        foreach( $result->getElementsByTagName('Langue3') as $Biff ){
+            $Langue3 = $Biff->nodeValue;
+        }
+
+        foreach( $result->getElementsByTagName('experience') as $Biff ){
+            $experience = $Biff->nodeValue;
+        }
+
+      }
+    }
+
+  
  ?>
 
 <!DOCTYPE html>
@@ -86,13 +130,9 @@ else
         <ul>
             <h2>Photo de profil: </h2>
 
-            <img id="TheImage" src="<?php echo "images/medecin/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
+            <img id="TheImage" src="<?php echo "images/medecin/".$BuffID.".jpg?m=" . filemtime('images/medecin/'.$BuffID.'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
 
-           <!-- <form action="changeImage.php"> -->
-                <label for="image_uploads" style="color:blue;" >  Select a new picture : </label> 
-                
-            <!-- </form> -->
-           
+            <label for="image_uploads" style="color:blue;" >  Select a new picture : </label> 
         
         </ul>
     </div>
@@ -100,7 +140,8 @@ else
         <br>
         <form action="Modifier_Profil_Doc_Activate.php" method="post" enctype="multipart/form-data">
             <fieldset>
-                <br>
+                <div id="DocInfo" style="float:left;width:60%;">
+                
                 <legend>INFOS MEDECIN :</legend>
 
                 <label for="nom">Nom:</label><br>
@@ -130,20 +171,43 @@ else
 
                 <label for="email">Email:</label><br>
                 <input type="email" id="email" name="email" value="<?php echo $mail ?>" required>
-                <span class="messageError" id="messageErrorEmail"> &nbsp;&nbsp;&nbsp;</span><br><br>
+                <span class="messageError" id="messageErrorEmail"><br> &nbsp;&nbsp;&nbsp;</span><br><br>
 
                 <label>Mot de passe:</label><br>
                 <input type="text" id="mdp" name="mdp" value="<?php echo $Password ?>" required><br><br>
 
                 <label>Confirmer le mot de passe:</label><br>
                 <input type="text" id="mdp2" name="mdp2" required>
-                <span class="messageError" id="messageErrorPassword"> &nbsp;&nbsp;&nbsp; Different passwords!</span><br><br>
+                <span class="messageError" id="messageErrorPassword"><br> &nbsp;&nbsp;&nbsp; Different passwords!</span><br><br>
 
                 <!--Le input pour l'image, qui est rendu invisible dans le script en bas, mais qui est quand meme
                 dans le forme pour pouvoir s'activer et prendre les valeurs lorsque l'on appuie sur le bouton 'modifier' -->
                 <input type="file" id="image_uploads" name="image_uploads" accept="image/*">
 
-                <input  id="btnco" type="submit" value="Modifier les informations" disabled>
+                </div>
+
+                <div id="CVinfo">
+                  <legend>CV Informations :</legend>
+                  <br>
+
+                  <label for="presentation">Presentation:</label><br>
+                  <textarea id="presentation" name="presentation" rows="3" cols="35" name="text" placeholder="Enter text"  required><?php echo $presentation ?></textarea><br><br>
+
+                  <label for="formation">Formation:</label><br>
+                  <textarea id="formation" name="formation" rows="5" cols="35" name="text" placeholder="Enter text" required><?php echo $formation ?></textarea><br><br>
+
+                  <label>Langues parlees:</label><br>
+
+                  <input type="text" id="Langue1" name="Langue1" value="<?php echo $Langue1 ?>" required><br><br>
+                  <input type="text" id="Langue2" name="Langue2"  value="<?php echo $Langue2 ?>"><br><br>
+                  <input type="text" id="Langue3" name="Langue3"  value="<?php echo $Langue3 ?>"><br><br>
+
+                  <label for="experience">Experience:</label><br>
+                  <textarea id="experience" name="experience" rows="3" cols="35" name="text" placeholder="Enter text" required><?php echo $experience ?></textarea><br><br>
+
+                  </div>
+                
+                  <input style="margin-left:40%;"  id="btnco" type="submit" value="Modifier les informations" disabled>
             </fieldset>
          </form>
     </div>
