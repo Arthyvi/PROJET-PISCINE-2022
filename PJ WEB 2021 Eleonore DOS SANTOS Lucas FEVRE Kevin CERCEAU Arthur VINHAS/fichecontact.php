@@ -31,16 +31,20 @@
             $mail = mysqli_fetch_assoc($resultmail);
             //afficher le resultat
             echo "<table>";
-            while ($data = mysqli_fetch_assoc($result)) {
+            if ($data = mysqli_fetch_assoc($result)) {
                 echo "<tr><td rowspan='3'><img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' height='360' width='300'> </a>";
                 echo "<td><h1>Dr. " . $data['Prenom'] . " " . $data['Nom'] . "</h1></td></tr>";
                 echo "<tr><td><h2>+33" . $data['NumTelephone'] . "<h2></td></tr>";
-                echo "<tr><td><h2>" . $mail['Identifiant(mail)'];
+                echo "<tr><td><h2>" . $mail['Identifiant'];
                 echo "</h2></td></tr></table>";
             }
+
+            echo "<span class='boutton'>Prendre RDV</span>";
+            echo "<a href='chat.php?name=" . $data['Prenom'] . "&idclient=CL-00001&idmedecin=" . $_GET['name'] . "&connected=MD'><span class='boutton'>Communiquer</button></span></a>";
+            echo "<span class='boutton'>Voir le CV</span>";
         }
     ?>
-    <span class="boutton">Prendre RDV</span>
-    <a href="chatroom.html"><span class="boutton">Communiquer</button></span></a>
-    <span class="boutton">Voir le CV</span>
+    
+    
+    
 </body>
