@@ -37,6 +37,7 @@ a:hover {
 
 #wrapper,
 #loginform {
+    position: sticky center;
     margin: 0 auto;
     padding-bottom: 25px;
     background: #eee;
@@ -50,7 +51,6 @@ a:hover {
 #loginform {
     padding-top: 18px;
     text-align: center;
-
 }
 
 #loginform p {
@@ -149,6 +149,11 @@ a#exit {
     background: orangered;
 }
 
-.hidden {
-    display: none;
+.leftbar {
+    position: relative;
+    margin-top: -20px;
+    float: left;
+    height: 100%;
+    width: 20%;
+    /*margin-left: -15px;*/
 }

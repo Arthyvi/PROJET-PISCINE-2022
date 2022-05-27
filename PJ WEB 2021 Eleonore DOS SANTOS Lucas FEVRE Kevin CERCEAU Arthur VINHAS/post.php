@@ -25,7 +25,7 @@ if(isset($_SESSION['name'])){
                 {
                     $cpt++;
                 }
-                $result->free_result();
+                $result->free_result();                  
             }
 
             $IDmessage = $connected . $cpt;

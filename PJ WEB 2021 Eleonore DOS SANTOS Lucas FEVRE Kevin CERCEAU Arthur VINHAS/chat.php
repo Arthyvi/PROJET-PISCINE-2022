@@ -16,10 +16,10 @@
         $idclient=$_GET['idclient'];
         $idmedecin=$_GET['idmedecin'];
         $connected=$_GET['connected'];
-        if (isset($_GET['logout'])){ 
-            session_destroy();
-            sleep(1);
-            header("Location: chat.php"); //Rediriger l'utilisateur
+        if($connected=='MD') {
+            echo "<div class='leftbar'>";
+            echo "<iframe src='chats_deroulants.php?idclient=".$idclient."&idmedecin=".$idmedecin."' height='795px' style='border:none'></iframe>";
+            echo "</div>";
         }
 
 ?>
