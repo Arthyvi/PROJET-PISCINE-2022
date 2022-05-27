@@ -42,51 +42,80 @@ session_start();
     </div>
     <div id="description">
         <br>
-        <form action="Ajouter_Medecin_Activate.php" method="post" enctype="multipart/form-data">
+        <form  action="Ajouter_Medecin_Activate.php" method="post" enctype="multipart/form-data">
             <fieldset>
-                <br>
-                <legend>INFOS MEDECIN :</legend>
 
-                <label for="nom">Nom:</label><br>
-                <input type="text" id="nom" name="nom"  required><br><br>
+                <div id="DocInfo" style="float:left;width:60%;">
+                  <legend >INFOS MEDECIN :</legend>
+                  <br>
 
-                <label for="prenom">Prenom:</label><br>
-                <input type="text" id="prenom" name="prenom"  required><br><br>
+                  <label   for="nom">Nom:</label><br>
+                  <input  type="text" id="nom" name="nom"  required><br><br>
 
-                <label for="spe">Specialite:</label><br>
-                <select name="spe" id="spe" required>
-                    <option value="Addictologue">Addictologue</option>
-                    <option value="Andrologue">Andrologue</option>
-                    <option value="Cardiologue">Cardiologue</option>
-                    <option value="Dermatologue">Dermatologue</option>
-                    <option value="Gastro-Hépato-Entérologue">Gastro-Hepato-Enterologue</option>
-                    <option value="Gynécologue">Gynecologue</option>
-                    <option value="Specialiste I.S.T">Specialiste I.S.T</option>
-                    <option value="Ostéopathe">Osteopathe</option>
-                </select> <br><br>
-               <!-- <input type="text" id="spe" name="spe" required><br><br> -->
+                  <label  for="prenom">Prenom:</label><br>
+                  <input  type="text" id="prenom" name="prenom"  required><br><br>
 
-                <label for="phone">Tel:</label><br>
-                <input type="text" id="tel" name="tel"  required><br><br>
+                  <label  for="spe">Specialite:</label><br>
+                  <select  name="spe" id="spe" required>
+                      <option value="generaliste">Generaliste</option>
+                      <option value="Addictologue">Addictologue</option>
+                      <option value="Andrologue">Andrologue</option>
+                      <option value="Cardiologue">Cardiologue</option>
+                      <option value="Dermatologue">Dermatologue</option>
+                      <option value="Gastro-Hépato-Entérologue">Gastro-Hepato-Enterologue</option>
+                      <option value="Gynécologue">Gynecologue</option>
+                      <option value="Specialiste I.S.T">Specialiste I.S.T</option>
+                      <option value="Ostéopathe">Osteopathe</option>
+                  </select> <br><br>
+                  <!-- <input type="text" id="spe" name="spe" required><br><br> -->
 
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email"  required>
-                <span class="messageError" id="messageErrorEmail"> &nbsp;&nbsp;&nbsp;</span><br><br>
+                  <label  for="phone">Tel:</label><br>
+                  <input  type="text" id="tel" name="tel"  required><br><br>
 
-                <label>Mot de passe:</label><br>
-                <input type="text" id="mdp" name="mdp"  required><br><br>
+                  <label  for="email">Email:</label><br>
+                  <input  type="email" id="email" name="email"  required>
+                  <span  class="messageError" id="messageErrorEmail"> &nbsp;&nbsp;&nbsp;</span><br><br>
 
-                <label>Confirmer le mot de passe:</label><br>
-                <input type="text" id="mdp2" name="mdp2" required>
-                <span class="messageError" id="messageErrorPassword"> &nbsp;&nbsp;&nbsp;  Passwords both empty!</span><br><br>
+                  <label  >Mot de passe:</label><br>
+                  <input  type="text" id="mdp" name="mdp"  required><br><br>
 
-                <!--Le input pour l'image, qui est rendu invisible dans le script en bas, mais qui est quand meme
-                dans le forme pour pouvoir s'activer et prendre les valeurs lorsque l'on appuie sur le bouton 'modifier' -->
-                <input type="file" id="image_uploads" name="image_uploads" accept="image/*">
+                  <label >Confirmer le mot de passe:</label><br>
+                  <input  type="text" id="mdp2" name="mdp2" required>
+                  <span  class="messageError" id="messageErrorPassword"><br> &nbsp;&nbsp;&nbsp;  Passwords both empty!</span><br><br>
 
-                <input  id="btnco" type="submit" value="Creer" disabled>
+                  <!--Le input pour l'image, qui est rendu invisible dans le script en bas, mais qui est quand meme
+                  dans le forme pour pouvoir s'activer et prendre les valeurs lorsque l'on appuie sur le bouton 'modifier' -->
+                  <input  type="file" id="image_uploads" name="image_uploads" accept="image/*">
+
+
+                </div>
+
+                <div id="CVinfo">
+                  <legend>CV Informations :</legend>
+                  <br>
+
+                  <label for="presentation">Presentation:</label><br>
+                  <textarea id="presentation" name="presentation" rows="3" cols="35" name="text" placeholder="Enter text" required></textarea><br><br>
+
+                  <label for="formation">Formation:</label><br>
+                  <textarea id="formation" name="formation" rows="5" cols="35" name="text" placeholder="Enter text" required></textarea><br><br>
+
+                  <label>Langues parlees:</label><br>
+
+                  <input type="text" id="Langue1" name="Langue1"  required><br><br>
+                  <input type="text" id="Langue2" name="Langue2"><br><br>
+                  <input type="text" id="Langue3" name="Langue3"><br><br>
+
+                  <label for="experience">Experience:</label><br>
+                  <textarea id="experience" name="experience" rows="3" cols="35" name="text" placeholder="Enter text" required></textarea><br><br>
+
+                  </div>
+
+                <input style="margin-left:45%;"  id="btnco" type="submit" value="Creer" disabled>
+                
             </fieldset>
          </form>
+
     </div>
 
     <div id="footer">
