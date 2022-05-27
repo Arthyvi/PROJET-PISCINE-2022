@@ -16,7 +16,7 @@
 
 <?php
 // Set session variables (variables globales)
-$_SESSION["doc"] = "";
+$_SESSION["lab"] = "";
 ?>
 
 <body>
@@ -30,15 +30,14 @@ $_SESSION["doc"] = "";
     </div>
 
     <div style="background-color:white;height:35px;">
-        <span style="padding-left:44%;font-size:large;">Tout les medecins :</span>
+        <span style="padding-left:44%;font-size:large;">Tout les labos :</span>
     </div>
 
     <div style="background-color:rgb(196, 190, 190);height:45px;">
-        <button onclick="window.location='Ajouter_Medecin.php'" type="button" class="btn btn-secondary btn-sm" style=" margin-left:1%;">+ Ajouter Medecin</button>
+        <button onclick="window.location='Ajouter_Medecin.php'" type="button" class="btn btn-secondary btn-sm" style=" margin-left:1%;">+ Ajouter Labo</button>
     </div>
 
     
-
 <?php
     // Connexion au serveur
     $mysqli = new mysqli("localhost","root","","projet piscine 2022");
@@ -51,15 +50,16 @@ $_SESSION["doc"] = "";
     }
     else
     {
-        $data="medecin";
+        $data="laboratoire";
         $result = mysqli_query($mysqli, "SELECT * FROM " . $data);
         //afficher le resultat
         echo "<table class='table table-hover' >";
         while ($data = mysqli_fetch_assoc($result)) {
-            echo "<tr onclick=\"window.location='fichecontact_Administrator.php?name=" . $data['IDpersonne'] . "'\">";
-            echo "<td>  <img src='./images/medecin/" . $data['IDpersonne'] . ".jpg?m=" . filemtime('./images/medecin/' . $data['IDpersonne'] . '.jpg')."' height='120' width='100' id='doc'>   </td>";
-            echo "<td>Dr " . $data['Nom'] . "</td>";
-            echo "<td>" . $data['Specialisation'] . "</td>";
+            echo "<tr onclick=\"window.location='fichecontact_Lab_Administrator.php?name=" . $data['IDlabo'] . "'\">";
+            echo "<td>  <img src='./images/Labo/" . $data['IDlabo'] . ".jpg?m=" . filemtime('./images/Labo/' . $data['IDlabo'] . '.jpg')."' height='120' width='100' id='doc'>   </td>";
+            echo "<td>Laboratoire " . $data['NomLab'] . "</td>";
+            echo "<td>Salle : " . $data['Salle'] . "</td>";
+            echo "<td>" . $data['Mail'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
