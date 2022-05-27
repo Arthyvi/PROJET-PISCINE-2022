@@ -57,15 +57,15 @@ session_start();
 
                   <label  for="spe">Specialite:</label><br>
                   <select  name="spe" id="spe" required>
-                      <option value="Generaliste">Generaliste</option>
+                      <option value="Generaliste" selected>Generaliste</option>
                       <option value="Addictologue">Addictologue</option>
                       <option value="Andrologue">Andrologue</option>
                       <option value="Cardiologue">Cardiologue</option>
                       <option value="Dermatologue">Dermatologue</option>
-                      <option value="Gastro-Hépato-Entérologue">Gastro-Hepato-Enterologue</option>
-                      <option value="Gynécologue">Gynecologue</option>
+                      <option value="Gastro-Hepato-Enterologue">Gastro-Hepato-Enterologue</option>
+                      <option value="Gynecologue">Gynecologue</option>
                       <option value="Specialiste I.S.T">Specialiste I.S.T</option>
-                      <option value="Ostéopathe">Osteopathe</option>
+                      <option value="Osteopathe">Osteopathe</option>
                   </select> <br><br>
                   <!-- <input type="text" id="spe" name="spe" required><br><br> -->
 

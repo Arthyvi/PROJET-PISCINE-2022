@@ -12,20 +12,29 @@ $specialisation = isset($_POST["spe"]) ? $_POST["spe"] : "";
 $mail= isset($_POST["email"]) ? $_POST["email"] : "";
 $Password= isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 
+//Corrige erreur de specialisation
+if($specialisation == "")
+{
+    $specialisation = $_SESSION["SpeDoc"];
+}
+
 /// Partie permettant de changer l'image selectionner dans le repertoire de la base de donnée !!!!!
-$part = explode(".",$_FILES["image_uploads"]["name"]);
+if($_FILES["image_uploads"]["name"] != "")
+{
+    $part = explode(".",$_FILES["image_uploads"]["name"]);
 
-$destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/images/medecin/".$_SESSION["IDconnected"].".".$part[1];
+    $destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/images/medecin/".$_SESSION["SelectedDoc"].".".$part[1];
 
-/*
-echo "<pre>";
-   print_r($_FILES);
-   echo "</pre>";
-*/
+    /*
+    echo "<pre>";
+    print_r($_FILES);
+    echo "</pre>";
+    */
 
-// Copie le fichier temporaire de l'image selectionner présent sur le serveur, directement dans le repertoire du serveur
-copy($_FILES["image_uploads"]["tmp_name"],$destination);
+    // Copie le fichier temporaire de l'image selectionner présent sur le serveur, directement dans le repertoire du serveur
+    copy($_FILES["image_uploads"]["tmp_name"],$destination);
 
+}
 
 /// Partie sur la base de donnée
  // Connexion au serveur
@@ -40,55 +49,83 @@ if($mysqli -> connect_errno)
 else
 {
      // On update les infos du medecin dans la table medecin
-     $BuffID = $_SESSION["IDconnected"];
+     $BuffID = $_SESSION["SelectedDoc"];
      $phone2 = intval($phone);
 
-     $sql = "UPDATE medecin SET Nom ='$nom', Prenom = '$prenom', Password1 = '$Password', NumTelephone= $phone2, Specialisation ='$specialisation' WHERE IDpersonne ='$BuffID';";
+     $sql = "UPDATE medecin SET Nom ='$nom', Prenom = '$prenom', Password1 = '$Password', NumTelephone= ".$phone2." , Specialisation ='$specialisation' WHERE IDpersonne ='$BuffID';";
      $result = $mysqli->query($sql);
 
      $sql = "UPDATE identifiant SET Identifiant ='$mail' WHERE IDpersonne ='$BuffID';";
      $result = $mysqli->query($sql);
 
 
-
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
 }
 
-// Manipulation du document XML pour modifier un CV
+/// Manipulation du document XML pour modifier un CV
+// Recupération des données du CV
+$Presentation= isset($_POST["presentation"]) ? $_POST["presentation"] : "";
+$formation= isset($_POST["formation"]) ? $_POST["formation"] : "";
+$Langue1= isset($_POST["Langue1"]) ? $_POST["Langue1"] : "";
+$Langue2 = isset($_POST["Langue2"]) ? $_POST["Langue2"] : "";
+$Langue3= isset($_POST["Langue3"]) ? $_POST["Langue3"] : "";
+$experience= isset($_POST["experience"]) ? $_POST["experience"] : "";
+
+//Modification document
 $dom = new DOMDocument();
   $dom->formatOutput = true;
 
   $dom->load('Mes CV/CVmedecin.xml', LIBXML_NOBLANKS);
 
   $root = $dom->documentElement;
-  $newresult = $root->appendChild( $dom->createElement('DocteurCV') );
-  $newresult->setAttribute('id', $IDchosen);
+  
+  // effacement de l'ancien
+  $results = $root->getElementsByTagName( 'DocteurCV' );
+    foreach( $results  as $result){
+      if($result->getAttribute('id') == $BuffID)
+      {
+        $result->parentNode->removeChild($result); 
+       break;
 
-  $newresult->appendChild( $dom->createElement('Nom',$nom) );
-  $newresult->appendChild( $dom->createElement('Prenom',$prenom) );
-  $newresult->appendChild( $dom->createElement('Telephone',$phone) );
-  $newresult->appendChild( $dom->createElement('Mail',$mail) );
-  $newresult->appendChild( $dom->createElement('Specialisation',$specialisation) );
+      }
+    }
 
-  $newresult->appendChild( $dom->createElement('presentation',$Presentation) );
-  $newresult->appendChild( $dom->createElement('formation',$formation) );
-  $newresult->appendChild( $dom->createElement('Langue1',$Langue1) );
+
+    // ajout du nouveau
+    $results = $root->appendChild( $dom->createElement('DocteurCV') );
+    $results->setAttribute('id', $BuffID);
+
+    $results->appendChild( $dom->createElement('Nom',$nom) );
+    $results->appendChild( $dom->createElement('Prenom',$prenom) );
+    $results->appendChild( $dom->createElement('Telephone',$phone) );
+    $results->appendChild( $dom->createElement('Mail',$mail) );
+    $results->appendChild( $dom->createElement('Specialisation',$specialisation) );
+
+    $results->appendChild( $dom->createElement('presentation',$Presentation) );
+    $results->appendChild( $dom->createElement('formation',$formation) );
+    $results->appendChild( $dom->createElement('Langue1',$Langue1) );
 
   if($Langue2 != "")
   {
-    $newresult->appendChild( $dom->createElement('Langue2',$Langue2) );
+    $results->appendChild( $dom->createElement('Langue2',$Langue2) );
   }
 
   if($Langue3 != "")
   {
-    $newresult->appendChild( $dom->createElement('Langue3',$Langue3) );
+    $results->appendChild( $dom->createElement('Langue3',$Langue3) );
   }
 
-  $newresult->appendChild( $dom->createElement('experience',$experience) );
+  $results->appendChild( $dom->createElement('experience',$experience) );
 
-  echo ''. $dom->saveXML() .'';
+
+  //echo ''. $dom->saveXML() .'';
   $dom->save('Mes CV/CVmedecin.xml') or die('XML Manipulate Error');
 
+
+  // Renvoi à la page d'information correspondante du medecin
+
+  $url = "fichecontact_Administrator.php?name=".$_SESSION['SelectedDoc'];
+  header("Location: ".$url);
 
 ?>

@@ -104,6 +104,9 @@ else
       }
     }
 
+    // Buffer pour la specialité du medecin pour pas recharger
+    $_SESSION["SpeDoc"] = $Specialisation;
+
   
  ?>
 
@@ -158,15 +161,15 @@ else
                     <option value="Andrologue">Andrologue</option>
                     <option value="Cardiologue">Cardiologue</option>
                     <option value="Dermatologue">Dermatologue</option>
-                    <option value="Gastro-Hépato-Entérologue">Gastro-Hepato-Enterologue</option>
-                    <option value="Gynécologue">Gynecologue</option>
+                    <option value="Gastro-Hepato-Enterologue">Gastro-Hepato-Enterologue</option>
+                    <option value="Gynecologue">Gynecologue</option>
                     <option value="Specialiste I.S.T">Specialiste I.S.T</option>
-                    <option value="Ostéopathe">Osteopathe</option>
+                    <option value="Osteopathe">Osteopathe</option>
                 </select> <br><br>
 
                <!-- <input type="text" id="spe" name="spe" value="<?php //echo $Specialisation ?>" required><br><br> -->
 
-                <label for="phone">Tel:</label><br>
+                <label for="tel">Tel:</label><br>
                 <input type="text" id="tel" name="tel" value="<?php echo $phone ?>" required><br><br>
 
                 <label for="email">Email:</label><br>

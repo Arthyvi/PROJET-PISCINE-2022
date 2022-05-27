@@ -67,11 +67,11 @@ else
 
     // On rajoute le client dans la table client
     $sql = "INSERT INTO medecin VALUES ('$IDchosen','$nom','$prenom','$Password',$phone2,'$specialisation'); ";
-   // $result = $mysqli->query($sql);
+    $result = $mysqli->query($sql);
 
     //On rajoute l'identifiant du client dans la table identifiant
     $sql = "INSERT INTO identifiant VALUES ('$mail','$IDchosen'); ";
-  //  $result = $mysqli->query($sql);
+    $result = $mysqli->query($sql);
     
 
         /// Partie permettant de changer l'image selectionner dans le repertoire de la base de donnée !!!!!
@@ -86,7 +86,7 @@ else
     */
 
     // Copie le fichier temporaire de l'image selectionner présent sur le serveur, directement dans le repertoire du serveur
-    //copy($_FILES["image_uploads"]["tmp_name"],$destination);
+    copy($_FILES["image_uploads"]["tmp_name"],$destination);
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();

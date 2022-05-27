@@ -13,6 +13,9 @@
 </head>
 
 <body>
+
+<button onclick="window.location='choix_medecin_Administrator.php'" style="margin-top: 2%;"><- Retour</button><br><br>
+
     <?php
         // Connexion au serveur
         $mysqli = new mysqli("localhost","root","","projet piscine 2022");

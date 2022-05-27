@@ -24,13 +24,20 @@ $_SESSION["doc"] = "";
 
     <div id="barre" style="height:70px">
         <h2 style="float:left;margin-left:42%;  ">  <b> Administrator </b></h2>
-        <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.3%; margin-left: 20%; margin-right: 3%;">Mon compte</button>
+        <button onclick="window.location='Administrateur.html'" type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.3%; margin-left: 12.05%; margin-right: 3%;">Home</button>
+        <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.3%; margin-right: 3%;">Mon compte</button>
         <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.3%;">Deconnexion</button>
     </div>
 
     <div style="background-color:white;height:35px;">
         <span style="padding-left:44%;font-size:large;">Tout les medecins :</span>
     </div>
+
+    <div style="background-color:rgb(196, 190, 190);height:45px;">
+        <button onclick="window.location='Ajouter_Medecin.php'" type="button" class="btn btn-secondary btn-sm" style=" margin-left:1%;">+ Ajouter Medecin</button>
+    </div>
+
+    
 
 <?php
     // Connexion au serveur

@@ -63,6 +63,20 @@ else
 
         // ID chosen for the new client
         $IDchosen = "CL-0000".$NumRecupInt; 
+
+        /*
+        $cpt=0;
+            if($result = $mysqli->query($sql))
+            {
+                while($row = $result->fetch_row())
+                {
+                    $cpt++;
+                }
+                $result->free_result();
+            }
+
+            $IDmessage = $connected . $cpt;
+        */
     }
     
     // Transformation en INT des valeurs devant etre en int dans la BDD
