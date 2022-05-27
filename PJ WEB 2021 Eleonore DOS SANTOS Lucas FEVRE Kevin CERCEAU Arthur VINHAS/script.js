@@ -10,6 +10,10 @@
     document.location.href = url;
 }*/
 
+function newclient($name, $client, $medecin) {
+    parent.location.href = "chat.php?name=" + $name + "&idclient=" + $client + "&idmedecin=" + $medecin + "&connected=MD";
+}
+
 $(document).ready(function () {
 
 
