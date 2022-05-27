@@ -1,0 +1,18 @@
+<!ELEMENT MedecinDoc (DocteurCV*)>
+<!ELEMENT DocteurCV (Nom,Prenom,Telephone,Mail,Specialisation,presentation,formation,Langue1,(Langue2|Langue3)*,experience)>
+
+<!ATTLIST DocteurCV
+    id CDATA #REQUIRED
+>
+
+<!ELEMENT Nom (#PCDATA)>
+<!ELEMENT Prenom (#PCDATA)>
+<!ELEMENT Telephone (#PCDATA)>
+<!ELEMENT Mail (#PCDATA)>
+<!ELEMENT Specialisation (#PCDATA)>
+<!ELEMENT presentation (#PCDATA)>
+<!ELEMENT formation (#PCDATA)>
+<!ELEMENT Langue1 (#PCDATA)>
+<!ELEMENT Langue2 (#PCDATA)>
+<!ELEMENT Langue3 (#PCDATA)>
+<!ELEMENT experience (#PCDATA)>

@@ -112,7 +112,7 @@ else
                 <label for="spe">Specialite:</label><br>
                 <select name="spe" id="spe"  required>
                     <option value="none" selected disabled hidden><?php echo $Specialisation ?></option>
-                    <option value="generaliste">Generaliste</option>
+                    <option value="Generaliste">Generaliste</option>
                     <option value="Addictologue">Addictologue</option>
                     <option value="Andrologue">Andrologue</option>
                     <option value="Cardiologue">Cardiologue</option>

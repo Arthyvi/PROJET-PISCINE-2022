@@ -53,10 +53,10 @@ else
     else
     {
         //Prendre les nombres à la fin et  les transformé en int
-        $NumRecupInt = intval(substr($BuffID,7)); 
+        $NumRecupInt1 = intval(substr($BuffID,7)); 
 
         // Ajouter 1 au nombre pour incrementer
-        $NumRecupInt = $NumRecupInt + 1;
+        $NumRecupInt = $NumRecupInt1 + 1;
 
         // ID chosen for the new client
         $IDchosen = "MD-0000".$NumRecupInt; 
@@ -67,11 +67,11 @@ else
 
     // On rajoute le client dans la table client
     $sql = "INSERT INTO medecin VALUES ('$IDchosen','$nom','$prenom','$Password',$phone2,'$specialisation'); ";
-    $result = $mysqli->query($sql);
+   // $result = $mysqli->query($sql);
 
     //On rajoute l'identifiant du client dans la table identifiant
     $sql = "INSERT INTO identifiant VALUES ('$mail','$IDchosen'); ";
-    $result = $mysqli->query($sql);
+  //  $result = $mysqli->query($sql);
     
 
         /// Partie permettant de changer l'image selectionner dans le repertoire de la base de donnée !!!!!
@@ -86,10 +86,56 @@ else
     */
 
     // Copie le fichier temporaire de l'image selectionner présent sur le serveur, directement dans le repertoire du serveur
-    copy($_FILES["image_uploads"]["tmp_name"],$destination);
+    //copy($_FILES["image_uploads"]["tmp_name"],$destination);
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
 }
+
+
+
+//// Partie pour generer le CV sous forme XML du Docteur !!!!!!
+// Recupération des données du CV
+$Presentation= isset($_POST["presentation"]) ? $_POST["presentation"] : "";
+$formation= isset($_POST["formation"]) ? $_POST["formation"] : "";
+$Langue1= isset($_POST["Langue1"]) ? $_POST["Langue1"] : "";
+$Langue2 = isset($_POST["Langue2"]) ? $_POST["Langue2"] : "";
+$Langue3= isset($_POST["Langue3"]) ? $_POST["Langue3"] : "";
+$experience= isset($_POST["experience"]) ? $_POST["experience"] : "";
+
+// Manipulation du document XML pour rajouter un CV
+$dom = new DOMDocument();
+  $dom->formatOutput = true;
+
+  $dom->load('Mes CV/CVmedecin.xml', LIBXML_NOBLANKS);
+
+  $root = $dom->documentElement;
+  $newresult = $root->appendChild( $dom->createElement('DocteurCV') );
+  $newresult->setAttribute('id', $IDchosen);
+
+  $newresult->appendChild( $dom->createElement('Nom',$nom) );
+  $newresult->appendChild( $dom->createElement('Prenom',$prenom) );
+  $newresult->appendChild( $dom->createElement('Telephone',$phone) );
+  $newresult->appendChild( $dom->createElement('Mail',$mail) );
+  $newresult->appendChild( $dom->createElement('Specialisation',$specialisation) );
+
+  $newresult->appendChild( $dom->createElement('presentation',$Presentation) );
+  $newresult->appendChild( $dom->createElement('formation',$formation) );
+  $newresult->appendChild( $dom->createElement('Langue1',$Langue1) );
+
+  if($Langue2 != "")
+  {
+    $newresult->appendChild( $dom->createElement('Langue2',$Langue2) );
+  }
+
+  if($Langue3 != "")
+  {
+    $newresult->appendChild( $dom->createElement('Langue3',$Langue3) );
+  }
+
+  $newresult->appendChild( $dom->createElement('experience',$experience) );
+
+  echo ''. $dom->saveXML() .'';
+  $dom->save('Mes CV/CVmedecin.xml') or die('XML Manipulate Error');
 
 ?>

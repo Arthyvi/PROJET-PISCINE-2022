@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE MedecinDoc SYSTEM "RulesCV.dtd">
+<MedecinDoc>
+
+
+<DocteurCV id="MD-000010">
+    <Nom>Kevin</Nom>
+    <Prenom>Cerceau</Prenom>
+    <Telephone>09803090</Telephone>
+    <Mail>kzjed@KKDamnn</Mail>
+    <Specialisation>Ostéopathe</Specialisation>
+    
+    <presentation>Salut, je suis kevin, un grand medecin venue d'une contré lointaine pour te soigné, et on va voir ce qu'on peut faire pour toi BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</presentation>
+    <formation>Diplome de medecine de Paris Descarte (2004)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Espagnole</Langue2>
+    
+    <experience>15 ans dans un cabinet à Menthe la Jolie.</experience>
+</DocteurCV>
+
+
+</MedecinDoc>
