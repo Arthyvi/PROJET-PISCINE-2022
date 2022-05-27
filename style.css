@@ -1,0 +1,111 @@
+body {
+    background-color: #d9d9d9;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+}
+
+.champ {
+    font-size: 30px;
+}
+
+.case {
+    height: 100px;
+    background-color: lightblue;
+    border-style: solid;
+}
+
+.leftbar {
+    float: left;
+    height: 100%;
+    width: 20%;
+    margin-left: -15px;
+}
+
+#chatbox {
+    position: sticky;
+    float: left;
+    height: 100%;
+    width: 81%;
+    padding-left: 15px;
+}
+
+#messageinfo {
+    position: sticky;
+    top: 0;
+    height: 10%;
+}
+
+#messagezone {
+    position: relative;
+    top: 20%;
+    height: 70%;
+}
+
+#messagebar {
+    position: sticky;
+    bottom: 0;
+    height: 10%;
+}
+
+.messagesent {
+    position: relative;
+    top: 670px;
+    left: 420px;
+    height: 50px;
+    width: 60%;
+    background-color: blueviolet;
+}
+
+.boutton {
+    padding: 15px 100px;
+    margin: 10px 4px;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid;
+}
+
+.boutton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+    transition: all 0.4s;
+}
+
+.boutton:hover {
+    color: blue;
+}
+
+.boutton:hover::before {
+    opacity: 1;
+    background-color: lightblue;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    transition: -webkit-transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
+    transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity;
+}
