@@ -27,36 +27,40 @@ else
         /// Creer un ID cohérent avec les ID deja présent au sein de la BDD
     //Recupérer l'ID client ayant le numéro le plus élevé
 
-    $sql = "SELECT IDpersonne FROM medecin WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM medecin)";   
-    
-    $BuffID = "";
+    //$sql = "SELECT IDpersonne FROM medecin WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM medecin)";   
+    $sql = "SELECT IDpersonne FROM medecin";   
+
+    $Maximun = -1;
     
     if($result = $mysqli->query($sql))
     {
-        
         if($result->num_rows >0)
         {
-            $row = $result->fetch_row();
-
-            $BuffID = $row[0];
+            while($row = $result->fetch_row())
+            {
+                $BuffBuff = intval(substr($row[0],7));
+                if($BuffBuff > $Maximun)
+                {
+                    $Maximun = $BuffBuff;
+                }   
+            }
+           
         }
-
         $result->free_result();
     }
-
+ 
     $IDchosen = "";
 
-    if($BuffID == "")
+    if($Maximun == -1)
     {
         $IDchosen = "MD-00001"; // Premier ID
     }
     else
     {
-        //Prendre les nombres à la fin et  les transformé en int
-        $NumRecupInt1 = intval(substr($BuffID,7)); 
-
         // Ajouter 1 au nombre pour incrementer
-        $NumRecupInt = $NumRecupInt1 + 1;
+        $NumRecupInt = $Maximun+ 1;
+
+        //echo  $NumRecupInt."AAAA<br>";
 
         // ID chosen for the new client
         $IDchosen = "MD-0000".$NumRecupInt; 
@@ -135,7 +139,10 @@ $dom = new DOMDocument();
 
   $newresult->appendChild( $dom->createElement('experience',$experience) );
 
-  echo ''. $dom->saveXML() .'';
+ // echo ''. $dom->saveXML() .'';
   $dom->save('Mes CV/CVmedecin.xml') or die('XML Manipulate Error');
+
+  // Renvoi à la page de choix du medecin
+  header("Location: choix_medecin_Administrator.php");
 
 ?>

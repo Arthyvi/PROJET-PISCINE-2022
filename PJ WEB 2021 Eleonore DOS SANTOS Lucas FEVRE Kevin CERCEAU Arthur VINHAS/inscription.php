@@ -30,53 +30,42 @@ else
         /// Creer un ID cohérent avec les ID deja présent au sein de la BDD
     //Recupérer l'ID client ayant le numéro le plus élevé
 
-    $sql = "SELECT IDpersonne FROM client WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM client)";   
-    
-    $BuffID = "";
-    
-    if($result = $mysqli->query($sql))
-    {
-        
-        if($result->num_rows >0)
-        {
-            $row = $result->fetch_row();
+   //$sql = "SELECT IDpersonne FROM medecin WHERE IDpersonne = (SELECT MAX(IDpersonne) FROM medecin)";   
+   $sql = "SELECT IDpersonne FROM client";   
 
-            $BuffID = $row[0];
-        }
-
-        $result->free_result();
-    }
+   $Maximun = -1;
+   
+   if($result = $mysqli->query($sql))
+   {
+       if($result->num_rows >0)
+       {
+           while($row = $result->fetch_row())
+           {
+               $BuffBuff = intval(substr($row[0],7));
+               if($BuffBuff > $Maximun)
+               {
+                   $Maximun = $BuffBuff;
+               }   
+           }
+          
+       }
+       $result->free_result();
+   }
 
     $IDchosen = "";
 
-    if($BuffID == "")
+    if($Maximun == "")
     {
         $IDchosen = "CL-00001"; // Premier ID
     }
     else
     {
-        //Prendre les nombres à la fin et  les transformé en int
-        $NumRecupInt = intval(substr($BuffID,7)); 
-
         // Ajouter 1 au nombre pour incrementer
-        $NumRecupInt = $NumRecupInt + 1;
+        $NumRecupInt = $Maximun+ 1;
 
         // ID chosen for the new client
         $IDchosen = "CL-0000".$NumRecupInt; 
 
-        /*
-        $cpt=0;
-            if($result = $mysqli->query($sql))
-            {
-                while($row = $result->fetch_row())
-                {
-                    $cpt++;
-                }
-                $result->free_result();
-            }
-
-            $IDmessage = $connected . $cpt;
-        */
     }
     
     // Transformation en INT des valeurs devant etre en int dans la BDD
@@ -98,6 +87,7 @@ else
     $mysqli->close();
 }
 
-
-
+    // Renvoi à la page de connexion
+    header("Location: connexion.html");
+    
 ?>

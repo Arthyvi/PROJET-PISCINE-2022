@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE MedecinDoc SYSTEM "RulesCV.dtd">
 <MedecinDoc>
-  <DocteurCV id="MD-00001">
-    <Nom>Sins</Nom>
-    <Prenom>Jonhhy</Prenom>
-    <Telephone>687872189</Telephone>
-    <Mail>19</Mail>
-    <Specialisation>Gynecologue</Specialisation>
-    <presentation> Hello, my nam is Johny and i'm here for you... Anytime...</presentation>
-    <formation>Diplome of the University of CuckaBrigde</formation>
-    <Langue1>Anglais</Langue1>
-    <Langue2>Espagnole</Langue2>
-    <Langue3>Allemand</Langue3>
-    <experience>20 years in a clinic in Pasadena.</experience>
-  </DocteurCV>
   <!--
     <DocteurCV id="MD-00002">
         <Nom>Vinhas</Nom>
@@ -115,6 +102,19 @@
     <Langue1>Francais</Langue1>
     <Langue2>Anglais</Langue2>
     <experience>10 ans dans le centre medical des quaies de Grennelle.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00001">
+    <Nom>Sins</Nom>
+    <Prenom>Jonhhy</Prenom>
+    <Telephone>687872189</Telephone>
+    <Mail>19@1</Mail>
+    <Specialisation>Gynecologue</Specialisation>
+    <presentation> Hello, my name is Johny and i'm here for you... Anytime...</presentation>
+    <formation>Diplome of the University of CuckaBrigde</formation>
+    <Langue1>Anglais</Langue1>
+    <Langue2>Espagnole</Langue2>
+    <Langue3>Allemand</Langue3>
+    <experience>20 years in a clinic in Pasadena.</experience>
   </DocteurCV>
   <DocteurCV id="MD-00002">
     <Nom>Vinhas</Nom>
