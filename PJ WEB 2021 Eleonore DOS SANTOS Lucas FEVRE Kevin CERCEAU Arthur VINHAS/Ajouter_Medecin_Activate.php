@@ -77,7 +77,7 @@ else
         /// Partie permettant de changer l'image selectionner dans le repertoire de la base de donnée !!!!!
     $part = explode(".",$_FILES["image_uploads"]["name"]);
 
-    $destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/Photos Doc/".$IDchosen.".".$part[1];
+    $destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/images/medecin/".$IDchosen.".".$part[1];
 
     /*
     echo "<pre>";

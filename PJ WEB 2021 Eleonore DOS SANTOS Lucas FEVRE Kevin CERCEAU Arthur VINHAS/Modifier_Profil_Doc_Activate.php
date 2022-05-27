@@ -15,7 +15,7 @@ $Password= isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 /// Partie permettant de changer l'image selectionner dans le repertoire de la base de donnée !!!!!
 $part = explode(".",$_FILES["image_uploads"]["name"]);
 
-$destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/Photos Doc/".$_SESSION["IDconnected"].".".$part[1];
+$destination = $_SERVER['DOCUMENT_ROOT']."/PROJET-PISCINE-2022/PJ WEB 2021 Eleonore DOS SANTOS Lucas FEVRE Kevin CERCEAU Arthur VINHAS/images/medecin/".$_SESSION["IDconnected"].".".$part[1];
 
 /*
 echo "<pre>";

@@ -86,7 +86,7 @@ else
         <ul>
             <h2>Photo de profil: </h2>
 
-            <img id="TheImage" src="<?php echo "Photos Doc/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
+            <img id="TheImage" src="<?php echo "images/medecin/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
 
            <!-- <form action="changeImage.php"> -->
                 <label for="image_uploads" style="color:blue;" >  Select a new picture : </label> 

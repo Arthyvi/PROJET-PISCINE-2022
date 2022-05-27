@@ -82,7 +82,7 @@ else
         <ul>
             <h2>Photo de profil: </h2>
 
-            <img src="<?php echo "Photos Doc/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
+            <img src="<?php echo "images/medecin/".$_SESSION["IDconnected"].".jpg?m=" . filemtime('Photos Doc/'.$_SESSION["IDconnected"].'.jpg')  ?>" alt="Photo du medecin" width="400" height="300">
         </ul>
     </div>
    
