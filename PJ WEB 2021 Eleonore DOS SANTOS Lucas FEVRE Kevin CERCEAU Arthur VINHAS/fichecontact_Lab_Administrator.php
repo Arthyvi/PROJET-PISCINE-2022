@@ -37,14 +37,14 @@
             if ($data = mysqli_fetch_assoc($result)) {
                 echo "<tr><td rowspan='3'><img src='./images/Labo/" . $data['IDlabo'] . ".jpg?m=" . filemtime('./images/Labo/' . $data['IDlabo'] . '.jpg')."' height='360' width='300'> </a>";
                 echo "<td><h1>Laboratoire : " . $data['NomLab'] . "</h1></td></tr>";
-                echo "<tr><td><h2>" . $data['Salle'] . "<h2></td></tr>";
-                echo "<tr><td><h2>+33" . $data['NumTelephone'] . "<h2></td></tr>";
-                echo "<tr><td><h2>" . $mail['Mail'];
+                echo "<tr><td><h2>" . $data['Salle'] . "<h2></td>";
+                echo "<td><h2>+33" . $data['NumTelephone'] . "<h2></td></tr>";
+                echo "<tr><td><h2>" . $data['Mail'];
                 echo "</h2></td></tr></table>";
             }
 
-            echo "<a href='Modifier_Profil_Docteur.php'><span class='boutton'>Modifier info</span></a>";
-            echo "<a href='SupprimerDoc.php'><span class='boutton2'>Supprimer</span></a>";
+            echo "<a href='Modifier_Profil_Labo.php'><span class='boutton'>Modifier info</span></a>";
+            echo "<a href='SupprimerLab.php'><span class='boutton2'>Supprimer</span></a>";
         }
     ?>
     

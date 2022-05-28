@@ -34,7 +34,7 @@ $_SESSION["lab"] = "";
     </div>
 
     <div style="background-color:rgb(196, 190, 190);height:45px;">
-        <button onclick="window.location='Ajouter_Medecin.php'" type="button" class="btn btn-secondary btn-sm" style=" margin-left:1%;">+ Ajouter Labo</button>
+        <button onclick="window.location='Ajouter_Labo.php'" type="button" class="btn btn-secondary btn-sm" style=" margin-left:1%;">+ Ajouter Labo</button>
     </div>
 
     
