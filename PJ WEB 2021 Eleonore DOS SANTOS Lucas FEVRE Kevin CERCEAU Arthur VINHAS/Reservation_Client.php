@@ -109,12 +109,12 @@ $Cases = [
 
                             if(($j != 1)&&($j != 5))
                             {
-                                echo '<td> <div onclick="Reserver(\''.$j.'-1\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div onclick="Reserver(\''.$j.'-2\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div onclick="Reserver(\''.$j.'-3\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div onclick="Reserver(\''.$j.'-4\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div onclick="Reserver(\''.$j.'-5\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div onclick="Reserver(\''.$j.'-6\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
+                                echo '<td> <div id="'.$j.'-1" onclick="Reserver(\''.$j.'-1\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
+                                echo '<td> <div id="'.$j.'-2" onclick="Reserver(\''.$j.'-2\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
+                                echo '<td> <div id="'.$j.'-3" onclick="Reserver(\''.$j.'-3\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
+                                echo '<td> <div id="'.$j.'-4" onclick="Reserver(\''.$j.'-4\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
+                                echo '<td> <div id="'.$j.'-5" onclick="Reserver(\''.$j.'-5\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
+                                echo '<td> <div id="'.$j.'-6" onclick="Reserver(\''.$j.'-6\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
                                 
                             }
                             else
