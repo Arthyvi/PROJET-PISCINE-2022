@@ -1,0 +1,44 @@
+#header {
+    background-color: rgb(114, 147, 168);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 0%;
+  }
+
+  div {
+          
+        
+    padding-top: 3%;
+    padding-left: 85%;
+  }
+
+  
+  #description {
+    background-color: rgb(114, 147, 168);
+    width: 100%;
+    float: left;
+    padding-left: 0px;
+    text-align: center;
+    height: 750px;
+  }
+  
+  #section2 {
+    background-color: #eeeeee;
+    width: auto;
+    text-align: center;
+    padding: 0px;
+    height: 750px;
+  }
+  
+  #footer {
+    background-color: black;
+    color: white;
+    clear: left;
+    text-align: center;
+    padding:0px;
+  }
+  
+  img {
+    
+    margin-bottom: 0px;
+  }

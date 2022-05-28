@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE MedecinDoc SYSTEM "RulesCV.dtd">
+<MedecinDoc>
+  <!--
+    <DocteurCV id="MD-00002">
+        <Nom>Vinhas</Nom>
+        <Prenom>Arthur</Prenom>
+        <Telephone>68928912</Telephone>
+        <Mail>00</Mail>
+        <Specialisation>Generaliste</Specialisation>
+        
+        <presentation>Hellooo, le meilleur medecin BG a queue de cheval et pecs d'acier. Avec moi, vous resortirez en meilleur santé, croyez moi!</presentation>
+        <formation>Diplome de medecine de l'universite Paris Descarte (818 AV.JC)</formation>
+        <Langue1>Francais</Langue1>
+        <Langue2>Chinois</Langue2>
+        <Langue3>Suedois</Langue3>
+        
+        <experience>25 ans dans un cabinet a Saint-Germain-en-Laye.</experience>
+    </DocteurCV>
+-->
+  <DocteurCV id="MD-00003">
+    <Nom>Juiphe</Nom>
+    <Prenom>Pierre</Prenom>
+    <Telephone>612345678</Telephone>
+    <Mail>docteur.juiphe@gmail.com</Mail>
+    <Specialisation>Addictologue</Specialisation>
+    <presentation>Et vous, vous en pensez quoi? Meditez sur cette question.</presentation>
+    <formation>Diplome de medecine de Wish</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>L'entourloupe</Langue2>
+    <experience>5 ans dans mon cabinet privee.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00004">
+    <Nom>Maboul</Nom>
+    <Prenom>Didier</Prenom>
+    <Telephone>1234567890</Telephone>
+    <Mail>docteur.maboul@free.fr</Mail>
+    <Specialisation>Cardiologue</Specialisation>
+    <presentation>Avec moi, on s'amuse comme des malade!! Fait attention à ne pas toucher!!! (jeu sous les normes 131-978 Europpeen, a tenir hors de porte des enfants)</presentation>
+    <formation>Diplome de medecine de JouetClub (2012)</formation>
+    <Langue1>Francais</Langue1>
+    <experience>10 ans d'eclate en famille.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00005">
+    <Nom>Tuche</Nom>
+    <Prenom>Jeff</Prenom>
+    <Telephone>611223344</Telephone>
+    <Mail>jeff.tuche@hotmail.fr</Mail>
+    <Specialisation>Gastro-Hepatho-Enterologue</Specialisation>
+    <presentation>Il n'y a rien que les frites ne sauraient soigner, pas vrai mon CoinCoin !</presentation>
+    <formation>Diplome de medecine de Bezoul (2015)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Autrichien</Langue2>
+    <experience>2 ans au cabinet de Bezoul.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00006">
+    <Nom>V</Nom>
+    <Prenom>Yvick</Prenom>
+    <Telephone>999999999</Telephone>
+    <Mail>mister.v@yahoo.fr</Mail>
+    <Specialisation>Andrologue</Specialisation>
+    <presentation>L'album est dans les straps mes petits peres, avec moi etre malade n'a jamais ete aussi drole !</presentation>
+    <formation>Diplome de medecine de l'universite de Roubais (2004)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Italien</Langue2>
+    <Langue2>Anglais</Langue2>
+    <experience>15 ans dans un cabinet à Menthe la Jolie.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00007">
+    <Nom>Cerceau</Nom>
+    <Prenom>Kevin</Prenom>
+    <Telephone>666666666</Telephone>
+    <Mail>kevin.cerceau@edu.ece.fr</Mail>
+    <Specialisation>Generaliste</Specialisation>
+    <presentation>Salut, je suis kevin, un grand medecin venue d'une contré lointaine pour te soigné BB.</presentation>
+    <formation>Diplome de medecine de l'universite Paris Descarte (2004)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Espagnole</Langue2>
+    <Langue3>Japonais</Langue3>
+    <experience>15 ans dans un cabinet à Menthe la Jolie.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00008">
+    <Nom>Fevre</Nom>
+    <Prenom>Lucas</Prenom>
+    <Telephone>777777777</Telephone>
+    <Mail>lucas.fevre@edu.ece.fr</Mail>
+    <Specialisation>Generaliste</Specialisation>
+    <presentation>Un BG venue de Nice est arrive pour vous apporter de la chaleur comme jamais.</presentation>
+    <formation>Diplome de medecine de l'universite Paris Descarte (2004)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Espagnole</Langue2>
+    <experience>18 ans dans un cabinet sur Paris Plage</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00009">
+    <Nom>DOS SANTOS RIBALONGA BASSIRI</Nom>
+    <Prenom>Eleonore</Prenom>
+    <Telephone>111111111</Telephone>
+    <Mail>eleo@edu.ece.fr</Mail>
+    <Specialisation>Generaliste</Specialisation>
+    <presentation>Doc eleo est la pour toi! Appelle quand tu veux.</presentation>
+    <formation>Diplome de medecine de L'ECE Paris-Lyon (2020)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Anglais</Langue2>
+    <experience>10 ans dans le centre medical des quaies de Grennelle.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00001">
+    <Nom>Sins</Nom>
+    <Prenom>Jonhhy</Prenom>
+    <Telephone>687872189</Telephone>
+    <Mail>19@1</Mail>
+    <Specialisation>Gynecologue</Specialisation>
+    <presentation> Hello, my name is Johny and i'm here for you... Anytime...</presentation>
+    <formation>Diplome of the University of CuckaBrigde</formation>
+    <Langue1>Anglais</Langue1>
+    <Langue2>Espagnole</Langue2>
+    <Langue3>Allemand</Langue3>
+    <experience>20 years in a clinic in Pasadena.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00002">
+    <Nom>Vinhas</Nom>
+    <Prenom>Arthur</Prenom>
+    <Telephone>4444499</Telephone>
+    <Mail>00@7</Mail>
+    <Specialisation>Generaliste</Specialisation>
+    <presentation>Hellooo, le meilleur medecin BG a queue de cheval et pecs d'acier. Avec moi, vous resortirez en meilleur santé, croyez moi!</presentation>
+    <formation>Diplome de medecine de l'universite Paris Descarte (818 AV.JC)</formation>
+    <Langue1>Francais</Langue1>
+    <Langue2>Chinois</Langue2>
+    <Langue3>Suedois</Langue3>
+    <experience>25 ans dans un cabinet a Saint-Germain-en-Laye. C'est pas rien ça.</experience>
+  </DocteurCV>
+</MedecinDoc>
