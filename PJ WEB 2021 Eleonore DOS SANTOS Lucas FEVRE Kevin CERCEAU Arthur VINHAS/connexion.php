@@ -76,7 +76,7 @@ else
 
         case "CL" : // Si c'est un client...
             $NameTable ="client";
-            $NameNextFile = "home.html";
+            $NameNextFile = "home.php";
             break;
 
         case "MD" : // Si c'est un Medecin...
