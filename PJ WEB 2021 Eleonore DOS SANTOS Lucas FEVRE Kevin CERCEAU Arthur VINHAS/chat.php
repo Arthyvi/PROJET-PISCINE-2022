@@ -44,10 +44,15 @@
     $data="chat-clientmedecin";
     //$result = mysqli_query($mysqli, "SELECT * FROM chat-clientmedecin WHERE IDclient='" . $idclient . "'" . " AND IDmedecin='" . $idmedecin . "'");
     $sql="SELECT * FROM `chat-clientmedecin`  WHERE IDclient='" . $idclient . "'" . " AND IDmedecin='" . $idmedecin . "'";
-    $nomclient = mysqli_query($mysqli, "SELECT Prenom FROM client WHERE IDpersonne='" . $idclient . "'");
-    $nomclient = mysqli_fetch_assoc($nomclient);
-    $nommedecin = mysqli_query($mysqli, "SELECT Prenom FROM medecin WHERE IDpersonne='" . $idmedecin . "'");
-    $nommedecin = mysqli_fetch_assoc($nommedecin);
+    $nomclient = "SELECT * FROM client WHERE IDpersonne='" . $idclient . "'";
+    $nomclient = $mysqli->query($nomclient);
+    $nomclient = $nomclient->fetch_row()[2];
+    //$nomclient = mysqli_fetch_assoc($nomclient);
+    $nommedecin = "SELECT * FROM medecin WHERE IDpersonne='" . $idmedecin . "'";
+    $nommedecin = $mysqli->query($nommedecin);
+    $nommedecin = $nommedecin->fetch_row()[2];
+    //echo $nomclient->fetch_row()[2]." ".$nommedecin->fetch_row()[2];
+    //$nommedecin = mysqli_fetch_assoc($nommedecin);
     /*while ($data = mysqli_fetch_assoc($result)) {
         echo "<div class='msgln'>";
         if($data['IDmessage'].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . "</b>" . $data['message'] . "<br>";
@@ -61,8 +66,8 @@
             while($data = $result->fetch_row())
             {
                 echo "<div class='msgln'>";
-                if($data[0].substr(0,2)=="CL") echo "<b class='username'>" . $nomclient . " </b>" . $data[2] . "<br>";
-                else echo "<b class='username'>" . $_SESSION['name'] . " </b>" . $data[2] . "<br>";
+                if(substr($data[0],0,2)=="CL") echo "<b class='username'>" . $nomclient. " </b>" . $data[2] . "<br>";
+                else echo "<b class='username'>" . $nommedecin . " </b>" . $data[2] . "<br>";
                 echo "</div>";
             }
         }
