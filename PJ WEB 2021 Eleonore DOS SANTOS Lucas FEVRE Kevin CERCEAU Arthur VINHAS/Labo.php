@@ -24,7 +24,7 @@ $_SESSION["doc"] = "";
 
 <?php
 // Connexion au serveur
-$mysqli = new mysqli("localhost:3306", "root", "", "projet");
+$mysqli = new mysqli("localhost:3309", "root", "", "projet piscine 2022");
 
 // Check connection
 if ($mysqli->connect_errno) {
@@ -78,29 +78,11 @@ if ($mysqli->connect_errno) {
     </div> <!-- .navbar-collapse -->
   </nav>
 
-  <div class="container"></div>
-  <div class="row justify-content-center">
-    <div class="dropdown1">
-      <button class="btn btn-primary btn-lg btn-block dropdown-toggle" style="margin-top:15%" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Choisir la spécialité
-      </button>
-      <div class="dropdown1-content" aria-labelledby="dropdownMenuButton">
-      <a href="Medecin_Ad.php">Addictologue</a>
-          <a href="Medecin_An.php">Andrologue</a>
-          <a href="Medecin_C.php">Cardiologue</a>
-          <a href="Medecin_D.php">Dermatologue</a>
-          <a href="Medecin_Ga.php">Gastro-Hépato-Entérologue</a>
-          <a href="Medecin_Gy.php">Gynécologue</a>
-          <a href="Medecin_IST.php">I.S.T</a>
-          <a href="Medecin_O.php">Ostéopathe</a>
-      </div>
-    </div>
-  </div>
-  </div>
+ 
 
   <div class="page-section">
     <div class="container">
-      
+      <h1 class="text-center">Nos Laboratoires</h1><br>
 
 
 
@@ -111,12 +93,9 @@ if ($mysqli->connect_errno) {
 
             <?php
 
-            $sql = "SELECT * from medecin where Specialisation = 'Andrologue'";
+            $sql = "SELECT * from laboratoire";
 
             $result = mysqli_query($mysqli, $sql);
-
-            $connected=substr($_SESSION['IDconnected'],0,2);
-
             //afficher le resultat
 
 
@@ -125,18 +104,22 @@ if ($mysqli->connect_errno) {
               echo "<div class='col-lg-4 py-3 wow zoomIn'>";
               echo "<div class='card-doctor'>";
               echo "<div class='header'>";
-              echo "<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: fit-content' alt=''>";
+              echo "<img src='./images/labo/" . $data['IDlabo'] . ".jpg' style='max-width: fit-content' alt=''>";
               echo "<div class='meta'>";
               echo "<button class='btn-sm btn-primary'>RDV</button>";
-              echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data['IDpersonne']."&connected=".$connected."'>Communiquer</button>";
-              echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc='".$data['IDpersonne']."'>CV</button>";
+              echo"<form action='Infos.php'>";
+              echo "<button class ='btn-sm btn-primary'>Infos</button>";
+              echo"</form>";
               echo "</div>";
               echo "</div>";
 
               echo "<div class='body'>";
-              echo "<p class='text-xl mb-0 text-blue'>Dr. " . $data['Nom'] . "</p>";
-              echo "<span class='text-sm text-grey'>" . $data['Specialisation'] . "</span>";
+              echo "<p class='text-xl mb-0 text-blue'>" . $data['NomLab'] . "</p>";
+              
               echo "<div><span class='fa fa-phone text-sm text-grey'>&nbsp" . $data['NumTelephone'] . "</span></div>";
+              echo "<div><span class='fa fa-envelope text-sm text-grey'>&nbsp" . $data['Mail'] . "</span></div>";
+              echo "<div><span class='fa fa-map-marker text-sm text-grey'>&nbsp" . $data['Salle'] . "</span></div>";
+              echo "<span class='text-sm text-grey'>" . $data['ServicesProposer'] . "</span>";
               echo "</div>";
               echo "</div>";
               echo "</div>";

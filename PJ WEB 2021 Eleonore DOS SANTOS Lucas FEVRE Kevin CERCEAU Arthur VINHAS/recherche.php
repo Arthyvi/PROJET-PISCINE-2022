@@ -1,12 +1,25 @@
 <?php
-// Start the session
-session_start();
+    session_start();
+
+    $recherche=isset($_POST["recherche"]) ? $_POST["recherche"] : "";
+    $connected=substr($_SESSION['IDconnected'],0,2);
+
+    // Connexion au serveur
+$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
+
+// Check connection
+if($mysqli -> connect_errno)
+{
+    echo "Failed to connect to MySQL" . $mysqli -> connect_errno;
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
 
 <head>
-  <Title>OMNES SANTE</Title>
+    <Title>OMNES SANTE</Title>
   <meta charset="uft-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -16,25 +29,8 @@ session_start();
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
-<?php
-// Set session variables (variables globales)
-$_SESSION["doc"] = "";
-?>
-
-
-<?php
-// Connexion au serveur
-$mysqli = new mysqli("localhost:3306", "root", "", "projet");
-
-// Check connection
-if ($mysqli->connect_errno) {
-  echo "Failed to connect to MySQL" . $mysqli->connect_errno;
-  exit();
-}
-?>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <a class="navbar-brand" href="#"><img src="omnes.png" width="150" alt=""></a>
 
@@ -72,82 +68,65 @@ if ($mysqli->connect_errno) {
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-primary" href="connexion.html">Votre Compte</a>
+          <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
         </li>
       </ul>
     </div> <!-- .navbar-collapse -->
-  </nav>
 
-  <div class="container"></div>
-  <div class="row justify-content-center">
-    <div class="dropdown1">
-      <button class="btn btn-primary btn-lg btn-block dropdown-toggle" style="margin-top:15%" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Choisir la spécialité
-      </button>
-      <div class="dropdown1-content" aria-labelledby="dropdownMenuButton">
-      <a href="Medecin_Ad.php">Addictologue</a>
-          <a href="Medecin_An.php">Andrologue</a>
-          <a href="Medecin_C.php">Cardiologue</a>
-          <a href="Medecin_D.php">Dermatologue</a>
-          <a href="Medecin_Ga.php">Gastro-Hépato-Entérologue</a>
-          <a href="Medecin_Gy.php">Gynécologue</a>
-          <a href="Medecin_IST.php">I.S.T</a>
-          <a href="Medecin_O.php">Ostéopathe</a>
-      </div>
-    </div>
-  </div>
-  </div>
+  </nav>
 
   <div class="page-section">
     <div class="container">
       
-
-
-
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-
-          <div class="row">
-
-            <?php
-
-            $sql = "SELECT * from medecin where Specialisation = 'Andrologue'";
-
-            $result = mysqli_query($mysqli, $sql);
-
-            $connected=substr($_SESSION['IDconnected'],0,2);
-
-            //afficher le resultat
-
-
-            while ($data = mysqli_fetch_assoc($result)) {
-
-              echo "<div class='col-lg-4 py-3 wow zoomIn'>";
-              echo "<div class='card-doctor'>";
-              echo "<div class='header'>";
-              echo "<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: fit-content' alt=''>";
-              echo "<div class='meta'>";
-              echo "<button class='btn-sm btn-primary'>RDV</button>";
-              echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data['IDpersonne']."&connected=".$connected."'>Communiquer</button>";
-              echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc='".$data['IDpersonne']."'>CV</button>";
-              echo "</div>";
-              echo "</div>";
-
-              echo "<div class='body'>";
-              echo "<p class='text-xl mb-0 text-blue'>Dr. " . $data['Nom'] . "</p>";
-              echo "<span class='text-sm text-grey'>" . $data['Specialisation'] . "</span>";
-              echo "<div><span class='fa fa-phone text-sm text-grey'>&nbsp" . $data['NumTelephone'] . "</span></div>";
-              echo "</div>";
-              echo "</div>";
-              echo "</div>";
+    <?php
+        $sql="SELECT * FROM medecin WHERE Nom LIKE '%".$recherche."%' OR Prenom LIKE '%".$recherche."%' OR Specialisation LIKE '%".$recherche."%'";
+        if($result = $mysqli->query($sql))
+        {
+            if($result->num_rows >0)
+            {
+                echo "<h1 class='text-center'>Nos Medecins</h1><br>";
+                echo "<table class='table table-hover'>";
+                while($data = $result->fetch_row())
+                {
+                    echo "<tr>";
+                    echo "<td><img src='./images/medecin/" . $data[0] . ".jpg' height='120' width='100' id='doc'>   </td>";
+                    echo "<td>Dr " . $data[2] . " " . $data[1] . "  </td>";
+                    echo "<td>" . $data[5] . "</td>";
+                    echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
+                    echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
+                    echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc=".$data[0]."'>CV</button></td>";
+                    echo "</tr>";
+                }
+                echo "</table><br><br>";
             }
-            ?>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            $result->free_result();
+        }
+        $sql="SELECT * FROM laboratoire WHERE NomLab LIKE '%".$recherche."%' OR ServicesProposer LIKE '%".$recherche."%'";
+        if($result = $mysqli->query($sql))
+        {
+            if($result->num_rows >0)
+            {
+                echo "<h1 class='text-center'>Nos Laboratoires</h1><br>";
+                echo "<table class='table table-hover'>";
+                while($data = $result->fetch_row())
+                {
+                    echo "<tr>";
+                    echo "<td><img src='./images/Labo/" . $data[0] . ".jpg' height='120' width='100' id='lab '>   </td>";
+                    echo "<td>" . $data[1] . "</td>";
+                    echo "<td>" . $data[5] . "</td>";
+                    echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
+                    echo "<form action='Infos.php'><br><br>";
+                    echo "<button class ='btn-sm btn-primary'>Infos</button></td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }
 
+            $result->free_result();
+        }
+    ?>
+    </div>
+    </div>
 </body>
 
 <footer class="page-footer">
@@ -179,6 +158,3 @@ if ($mysqli->connect_errno) {
 
 
 </footer>
-
-
-</html>

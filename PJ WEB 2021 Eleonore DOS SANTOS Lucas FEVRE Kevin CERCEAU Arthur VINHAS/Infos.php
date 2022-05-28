@@ -1,8 +1,3 @@
-<?php
-// Start the session
-session_start();
-?>
-
 <!DOCTYPE html>
 
 <head>
@@ -15,23 +10,6 @@ session_start();
   <link rel="stylesheet" href="boot.css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
-
-<?php
-// Set session variables (variables globales)
-$_SESSION["doc"] = "";
-?>
-
-
-<?php
-// Connexion au serveur
-$mysqli = new mysqli("localhost:3306", "root", "", "projet");
-
-// Check connection
-if ($mysqli->connect_errno) {
-  echo "Failed to connect to MySQL" . $mysqli->connect_errno;
-  exit();
-}
-?>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -78,75 +56,88 @@ if ($mysqli->connect_errno) {
     </div> <!-- .navbar-collapse -->
   </nav>
 
-  <div class="container"></div>
-  <div class="row justify-content-center">
-    <div class="dropdown1">
-      <button class="btn btn-primary btn-lg btn-block dropdown-toggle" style="margin-top:15%" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Choisir la spécialité
-      </button>
-      <div class="dropdown1-content" aria-labelledby="dropdownMenuButton">
-      <a href="Medecin_Ad.php">Addictologue</a>
-          <a href="Medecin_An.php">Andrologue</a>
-          <a href="Medecin_C.php">Cardiologue</a>
-          <a href="Medecin_D.php">Dermatologue</a>
-          <a href="Medecin_Ga.php">Gastro-Hépato-Entérologue</a>
-          <a href="Medecin_Gy.php">Gynécologue</a>
-          <a href="Medecin_IST.php">I.S.T</a>
-          <a href="Medecin_O.php">Ostéopathe</a>
-      </div>
-    </div>
-  </div>
-  </div>
+ 
 
-  <div class="page-section">
+  <div class="page-section pb-0">
     <div class="container">
-      
-
-
-
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-
-          <div class="row">
-
-            <?php
-
-            $sql = "SELECT * from medecin where Specialisation = 'Andrologue'";
-
-            $result = mysqli_query($mysqli, $sql);
-
-            $connected=substr($_SESSION['IDconnected'],0,2);
-
-            //afficher le resultat
-
-
-            while ($data = mysqli_fetch_assoc($result)) {
-
-              echo "<div class='col-lg-4 py-3 wow zoomIn'>";
-              echo "<div class='card-doctor'>";
-              echo "<div class='header'>";
-              echo "<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: fit-content' alt=''>";
-              echo "<div class='meta'>";
-              echo "<button class='btn-sm btn-primary'>RDV</button>";
-              echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data['IDpersonne']."&connected=".$connected."'>Communiquer</button>";
-              echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc='".$data['IDpersonne']."'>CV</button>";
-              echo "</div>";
-              echo "</div>";
-
-              echo "<div class='body'>";
-              echo "<p class='text-xl mb-0 text-blue'>Dr. " . $data['Nom'] . "</p>";
-              echo "<span class='text-sm text-grey'>" . $data['Specialisation'] . "</span>";
-              echo "<div><span class='fa fa-phone text-sm text-grey'>&nbsp" . $data['NumTelephone'] . "</span></div>";
-              echo "</div>";
-              echo "</div>";
-              echo "</div>";
-            }
-            ?>
-          </div>
+      <div class="row">
+        <div class="col">
+        <h2 class="text-center">Depistage Covid-19</h2><br>
+          <p class="text-grey font-weight-bold">Afin de maintenir un accès facilité au dépistage pour les personnes symptomatiques ou contact à risque, continuent à bénéficier d’une prise en charge les personnes :</p>
+          <table>
+            <tr><p class="text-grey">- ayant un schéma vaccinal complet ou une contre-indication à la vaccination</p></tr>
+            <tr><p class="text-grey">- mineures</p></td>
+            <tr><p class="text-grey">- présentant une prescription médicale</p></tr>
+            <tr><p class="text-grey">- ayant un certificat de rétablissement de moins de six mois</p></tr>
+          </table>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="page-section pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <h2 class="text-center">Biologie Preventive</h2><br>
+          <p class="text-grey mb-4">Votre plate-forme en ligne d'e-consultation et de prise de RDV. Vous pouvez consulter les informations
+            de vos spécialistes et communiquer avec eux. Prendre un RDV avec un médecin ou un laboratoire de biologie n'a jamais été aussi facile !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <h2 class="text-center">Biologie de la femme enceinte</h2><br>
+          <p class="text-grey mb-4">Jeûne strict, ne rien absorber pas même un verre d’eau : gastrine, test respiratoire pour la recherche d’Helicobacter pylori (ne pas fumer)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <h2 class="text-center">Biologie  de routine</h2><br>
+          <p class="text-grey mb-4">Jeûne de 12 heures sans absorber ni aliments solides ni liquides (un verre d’eau est toléré) : bilan lipidique, glycémie, bilan ferrique, cryoglobuline, testostérone biodisponible, cross-laps</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <h2 class="text-center">Gynecologie</h2><br>
+          <p class="text-grey mb-4">Spécialité médicale qui s’occupe de la physiologie et des affections du système génital féminin. Le gynécologue conseille également sur les moyens de contraception, la sexualité et la fertilité. Les pathologies souvent traitées sont les mycoses, les infections urinaires, les douleurs et troubles des règles, les problèmes de fécondité, le suivi de grossesse, les polypes…</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <h2 class="text-center">Cancerologie</h2><br>
+          <p class="text-grey mb-4">Le dépistage, lorsqu'il est possible, consiste en la réalisation d’examens alors que le patient se sent en bonne santé et ne ressent aucun symptôme. Il permet de détecter une lésion dite « précancéreuse » et d’agir préventivement pour éviter son évolution vers un cancer. Nous pouvons ainsi détecter des lésions précancéreuses pour le cancer du col de l'utérus, le cancer colorectal, ou certains cancers cutanés</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+      
+
+
+
+    
+
+
 
 </body>
 

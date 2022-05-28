@@ -23,14 +23,14 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <form action="#">
-          <div class="input-group input-navbar">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
-            </div>
-            <input type="text" class="form-control" placeholder="Recherche..">
-          </div>
-        </form>
+        <form action="recherche.php" method="post">
+      <div class="input-group input-navbar">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Recherche.." name="recherche">
+      </div>
+    </form>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportContent" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
