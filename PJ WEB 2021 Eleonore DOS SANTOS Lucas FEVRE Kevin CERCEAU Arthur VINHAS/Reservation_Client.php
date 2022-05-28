@@ -11,7 +11,7 @@ if($_SESSION["IDconnected"] == "")
 }
 
 
-$BuffID = $_GET["md"];
+$BuffID = isset($_GET["md"]) ? $_GET["md"] : "";
 
 // Initialisation tableau pour les couleurs des cases
 $CaseColor = array_fill(1, 10, array_fill(1,6,"green"));
@@ -126,8 +126,6 @@ $Cases = [
         <div class="col">
             <div class="row justify-content-center align-items-center">
 
-            <form>
-                    
                 <table class="table table-primary table-bordered table-hover table-sm" style="margin-top:5%">
 
                 <tr class="font-weight-bold">
@@ -174,10 +172,8 @@ $Cases = [
                 ?>
 
                 </table>   
-                <button onclick="AccepterRDV( $_SESSION['IDconnected'] , $BuffID )" class="btn-sm btn-primary float-right" style="margin-bottom:10%" >Confirmer mon choix de RDV</button>
-             
-                </form>
-
+                <button onclick="AccepterRDV('<?php echo $_SESSION['IDconnected']?>','<?php echo $BuffID ?>')" class="btn-sm btn-primary float-right" style="margin-bottom:10%" >Confirmer mon choix de RDV</button>
+                
             </div>
         </div>
     </div>

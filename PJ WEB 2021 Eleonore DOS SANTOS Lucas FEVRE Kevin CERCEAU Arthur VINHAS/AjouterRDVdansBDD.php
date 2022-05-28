@@ -4,6 +4,8 @@
 // de manière global des données, peut importe la page
 session_start();
 
+$Message ="AAA";
+
 // Connexion au serveur
 $mysqli = new mysqli("localhost","root","","projet piscine 2022");
 
@@ -15,6 +17,7 @@ if($mysqli -> connect_errno)
 }
 else
 {
+    $Message ="BBB";
     $ClientID = $_GET["ClientID"];
     $MedecinID = $_GET["MedecinID"];
     $Jour = $_GET["Jour"];
@@ -63,7 +66,7 @@ else
     $result = $mysqli->query($sql);
 
 
-    echo "Yes";
+    echo $Message;
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
