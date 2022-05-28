@@ -128,7 +128,7 @@ if ($mysqli->connect_errno) {
               echo "<div class='header'>";
               echo "<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: 50%' alt=''>";
               echo "<div class='meta'>";
-              echo "<button onclick='window.location=\"Reservation_Client.php\"' class='btn-sm btn-primary'>RDV</button>";
+              echo "<button onclick='window.location=\"Reservation_Client.php?id=" . $data['IDpersonne'] . "\"' class='btn-sm btn-primary'>RDV</button>";
               echo "<button class='btn-sm btn-primary'>Communiquer</button>";
               echo "<button class='btn-sm btn-primary'>CV</button>";
               echo "</div>";

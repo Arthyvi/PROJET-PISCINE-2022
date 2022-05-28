@@ -2,6 +2,10 @@
 // Start the session
 session_start();
 
+$BuffID = $_GET["id"];
+
+// Initialisation tableau pour les couleurs des cases
+$CaseColor = array_fill(1, 10, array_fill(1,6,"green"));
 
 // Connexion au serveur
 $mysqli = new mysqli("localhost", "root", "", "projet piscine 2022");
@@ -10,6 +14,28 @@ $mysqli = new mysqli("localhost", "root", "", "projet piscine 2022");
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL" . $mysqli->connect_errno;
     exit();
+}
+else
+{
+
+     // Recupère tout les rendez-vous du docteur selectionner pour avoir les créneaux disponible
+     $sql = "SELECT * FROM  `rdvmedecin-client` WHERE IDmedecin = '$BuffID'";   
+     
+     if($result = $mysqli->query($sql))
+     {
+         if($result->num_rows >0)
+         {
+            while($row = $result->fetch_row())
+            {
+                $CaseColor[intval($row[3])][intval($row[2])] = "grey";
+
+            }
+            
+         }
+ 
+         $result->free_result();
+     }
+ 
 }
 
 // Initialisation des tableaux
@@ -86,157 +112,57 @@ $Cases = [
     <div class="container">
         <div class="col">
             <div class="row justify-content-center align-items-center">
-                <form>
-                    <table class="table table-primary table-bordered table-hover table-sm" style="margin-top:5%">
+            <form action="#">
+                    
+                <table class="table table-primary table-bordered table-hover table-sm" style="margin-top:5%">
 
-                    <tr class="font-weight-bold">
-                            <td></td>
-                            <td> Lundi </td>
-                            <td> Mardi </td>
-                            <td> Mercredi </td>
-                            <td> Jeudi </td>
-                            <td> Vendredi </td>
-                            <td> Samedi </td>
-                    </tr>
+                <tr class="font-weight-bold">
+                        <td></td>
+                        <td> Lundi </td>
+                        <td> Mardi </td>
+                        <td> Mercredi </td>
+                        <td> Jeudi </td>
+                        <td> Vendredi </td>
+                        <td> Samedi </td>
+                </tr>
 
-                    <?php
+                <?php
 
-                        for($j = 1; $j<10; $j++) //$j = "Les horaires et titre de période la journée (lignes)"
+                    for($j = 1; $j<10; $j++) //$j = "Les horaires et titre de période la journée (lignes)"
+                    {
+                        
+                        echo '<tr class="'.$Cases[0][$j-1].'">';
+                        echo '<td>'.$Cases[1][$j-1].'</td>';
+
+                        if(($j != 1)&&($j != 5))
                         {
+                            echo '<td> <div id="'.$j.'-1" onclick="Reserver(\''.$j.'-1\')" style="background-color: '.$CaseColor[$j][1].';">&nbsp;&nbsp;&nbsp;</div> </td>';
+                            echo '<td> <div id="'.$j.'-2" onclick="Reserver(\''.$j.'-2\')" style="background-color: '.$CaseColor[$j][2].';">&nbsp;&nbsp;&nbsp;</div> </td>';
+                            echo '<td> <div id="'.$j.'-3" onclick="Reserver(\''.$j.'-3\')" style="background-color: '.$CaseColor[$j][3].';">&nbsp;&nbsp;&nbsp;</div> </td>';
+                            echo '<td> <div id="'.$j.'-4" onclick="Reserver(\''.$j.'-4\')" style="background-color: '.$CaseColor[$j][4].';">&nbsp;&nbsp;&nbsp;</div> </td>';
+                            echo '<td> <div id="'.$j.'-5" onclick="Reserver(\''.$j.'-5\')" style="background-color: '.$CaseColor[$j][5].';">&nbsp;&nbsp;&nbsp;</div> </td>';
+                            echo '<td> <div id="'.$j.'-6" onclick="Reserver(\''.$j.'-6\')" style="background-color: '.$CaseColor[$j][6].';">&nbsp;&nbsp;&nbsp;</div> </td>';
                             
-                            echo '<tr class="'.$Cases[0][$j-1].'">';
-                            echo '<td>'.$Cases[1][$j-1].'</td>';
-
-                            if(($j != 1)&&($j != 5))
-                            {
-                                echo '<td> <div id="'.$j.'-1" onclick="Reserver(\''.$j.'-1\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div id="'.$j.'-2" onclick="Reserver(\''.$j.'-2\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div id="'.$j.'-3" onclick="Reserver(\''.$j.'-3\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div id="'.$j.'-4" onclick="Reserver(\''.$j.'-4\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div id="'.$j.'-5" onclick="Reserver(\''.$j.'-5\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                echo '<td> <div id="'.$j.'-6" onclick="Reserver(\''.$j.'-6\')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>';
-                                
-                            }
-                            else
-                            {
-                                echo '<td></td>';
-                                echo '<td></td>';
-                                echo '<td></td>';
-                                echo '<td></td>';
-                                echo '<td></td>';
-                                echo '<td></td>';
-                            }
-                           
-                            echo  '</tr>';        
-
                         }
-                    ?>
+                        else
+                        {
+                            echo '<td></td>';
+                            echo '<td></td>';
+                            echo '<td></td>';
+                            echo '<td></td>';
+                            echo '<td></td>';
+                            echo '<td></td>';
+                        }
+                        
+                        echo  '</tr>';        
 
-                      <!--
+                    }
+                ?>
 
+                </table>
 
-                        <tr class="table-borderless table-secondary font-weight-bold">
-                            <td>Horaires du matin</td>
-                            <td></td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                        </tr>
-
-                        <tr class="font-weight-bold">
-                            <td>9H-10H</td>
-                            <td> <div onclick="Reserver('1-A')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>
-                            <td>  <div onclick="Reserver('2-A')" style="background-color: red;">&nbsp;&nbsp;&nbsp;</div> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                        </tr>
-
-
-                        <tr class="font-weight-bold">
-                            <td>10H-11H</td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                        </tr>
-
-                        <tr class="font-weight-bold">
-                            <td>11H-12H</td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-
-                        </tr>
-
-
-                        <tr class="table-borderless table-secondary font-weight-bold">
-                            <td>Horaires d'apres-midi</td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                        </tr>
-
-                        <tr class="font-weight-bold">
-                            <td>14H-15H</td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                        </tr>
-
-                        <tr class="font-weight-bold">
-                            <td>15H-16H</td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                        </tr>
-
-                        <tr class="font-weight-bold">
-                            <td>16H-17H</td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                        </tr>
-
-                        <tr class="font-weight-bold">
-                            <td>18H-19H</td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-                            <td> <input type="checkbox" id="reserve" name="reserve"> </td>
-
-                        </tr>
-
-                    -->
-
-
-                    </table>
-
-                    <input type="submit" class="btn-sm btn-primary float-right" style="margin-bottom:10%" value="Confirmer mon choix de RDV">
-
-
+                <button onclick="AccepterRDV( $_SESSION['IDconnected'] , $BuffID )" class="btn-sm btn-primary float-right" style="margin-bottom:10%" >Confirmer mon choix de RDV</button>
+                
                 </form>
             </div>
         </div>
