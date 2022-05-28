@@ -30,17 +30,6 @@
     <Langue2>L'entourloupe</Langue2>
     <experience>5 ans dans mon cabinet privee.</experience>
   </DocteurCV>
-  <DocteurCV id="MD-00004">
-    <Nom>Maboul</Nom>
-    <Prenom>Didier</Prenom>
-    <Telephone>1234567890</Telephone>
-    <Mail>docteur.maboul@free.fr</Mail>
-    <Specialisation>Cardiologue</Specialisation>
-    <presentation>Avec moi, on s'amuse comme des malade!! Fait attention à ne pas toucher!!! (jeu sous les normes 131-978 Europpeen, a tenir hors de porte des enfants)</presentation>
-    <formation>Diplome de medecine de JouetClub (2012)</formation>
-    <Langue1>Francais</Langue1>
-    <experience>10 ans d'eclate en famille.</experience>
-  </DocteurCV>
   <DocteurCV id="MD-00005">
     <Nom>Tuche</Nom>
     <Prenom>Jeff</Prenom>
@@ -128,5 +117,16 @@
     <Langue2>Chinois</Langue2>
     <Langue3>Suedois</Langue3>
     <experience>25 ans dans un cabinet a Saint-Germain-en-Laye. C'est pas rien ça.</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-00004">
+    <Nom>Maboul</Nom>
+    <Prenom>Didier</Prenom>
+    <Telephone>12345678901</Telephone>
+    <Mail>docteur.maboul@free.fr</Mail>
+    <Specialisation>Cardiologue</Specialisation>
+    <presentation>Avec moi, on s'amuse comme des malade!! Fait attention à ne pas toucher!!! (jeu sous les normes 131-978 Europpeen, a tenir hors de porte des enfants)</presentation>
+    <formation>Diplome de medecine de JouetClub (2012)</formation>
+    <Langue1>Francais</Langue1>
+    <experience>10 ans d'eclate en famille.</experience>
   </DocteurCV>
 </MedecinDoc>
