@@ -2,7 +2,16 @@
 // Start the session
 session_start();
 
-$BuffID = $_GET["id"];
+
+if($_SESSION["IDconnected"] == "")
+{
+     // Renvoi à la page de connexion
+     header("Location: connexion1.php");
+     return;
+}
+
+
+$BuffID = $_GET["md"];
 
 // Initialisation tableau pour les couleurs des cases
 $CaseColor = array_fill(1, 10, array_fill(1,6,"green"));
@@ -112,7 +121,7 @@ $Cases = [
     <div class="container">
         <div class="col">
             <div class="row justify-content-center align-items-center">
-            <form action="#">
+            <form>
                     
                 <table class="table table-primary table-bordered table-hover table-sm" style="margin-top:5%">
 
@@ -159,11 +168,11 @@ $Cases = [
                     }
                 ?>
 
-                </table>
-
+                </table>   
                 <button onclick="AccepterRDV( $_SESSION['IDconnected'] , $BuffID )" class="btn-sm btn-primary float-right" style="margin-bottom:10%" >Confirmer mon choix de RDV</button>
-                
+             
                 </form>
+
             </div>
         </div>
     </div>

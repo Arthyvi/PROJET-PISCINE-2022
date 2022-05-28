@@ -21,6 +21,7 @@ function Reserver($coordonee) {
 
 function AccepterRDV($IdClient,$IdDoc)
 {   
+    alert($IdClient+" " +$IdDoc)
     for (let i = 1; i<7; i++) 
     {
         for (let j = 1; j<10; j++) 
