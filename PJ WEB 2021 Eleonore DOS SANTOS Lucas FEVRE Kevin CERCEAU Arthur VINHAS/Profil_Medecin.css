@@ -4,21 +4,26 @@
     text-align: center;
     padding: 0%;
   }
-
-  div {
-          
-        
-    padding-top: 3%;
-    padding-left: 85%;
+  
+  #nav {
+    line-height: 30px;
+    background-color: rgb(114, 147, 168);
+    height: 750px;
+    /* Vous pouvez remplacer la valeur fixed (150px) par une valeur relative (en pourcentage, par exemple) */
+    width: 30%;
+    /* La prpriété float rend tout le bloc flottant à gauche, créant une colonne */
+    float: left;
+    padding: 0px;
   }
+  
 
   
   #description {
     background-color: rgb(114, 147, 168);
-    width: 100%;
+    width: 65%;
     float: left;
-    padding-left: 0px;
-    text-align: center;
+    padding-left: 5%;
+    text-align: left;
     height: 750px;
   }
   
@@ -41,4 +46,8 @@
   img {
     
     margin-bottom: 0px;
+  }
+
+  .InfoStyle{
+    color: white;
   }

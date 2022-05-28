@@ -29,10 +29,11 @@
         <meta charset="utf-8" />
         <title>Chatroom</title>
         <link rel="stylesheet" href="chat.css">
+        <script src="script.js"></script>
     </head>
  
     <body>
-        <div id="wrapper">
+        <div id="wrapper" style="float:left;margin-left:10%;margin-top:3%;">
             <div id="menu">
                 <p class="welcome">Bienvenue, <b><?php echo $_SESSION['name']; ?></b></p>
             </div>
@@ -79,32 +80,11 @@
     </form>
  </div>
 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script type="text/javascript">     
- // jQuery Document
- /*$(document).ready(function () {
-    $("#submitmsg").click(function () {
-        /*var clientmsg = $("#usermsg").val();
-        var idclient = $("#idclient").val();
-        var idmedecin = $("#idmedecin").val();
-        $.post("post.php", { text: clienmsg, idclient: idclient, idmedecin: idmedecin }); //
-        $("#usermsg").val("");
-        return false;*/
-    //});
-
-    /*function loadLog() {
-        var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Hauteur de défilement avant la requête
-        $.ajax({
-            $("#chatbox").html(html); //Insérez le log de chat dans la #chatbox div
-            //Auto-scroll 
-            var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Hauteur de défilement apres la requête
-            if(newscrollHeight > oldscrollHeight) $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Défilement automatique 
-        });
-    }
-    setInterval (loadLog, 2500);*/
-
- //});*/
- </script>
+ <?php
+    if($connected=='CL') echo "<button onclick=window.location='home.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
+    else echo "<button onclick=window.location='Medecin_Personnel.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
+?>
+ 
 
  </body>
 </html>

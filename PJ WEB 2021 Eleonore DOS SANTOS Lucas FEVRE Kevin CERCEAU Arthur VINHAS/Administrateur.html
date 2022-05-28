@@ -3,47 +3,36 @@
 
 <head>
     
+    <Title>OMNES (ADMINISTRATEUR PART)</Title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="Administrateur.css">
-    <style>
-        div {
-          
-        
-          padding-top: 3%;
-          padding-left: 85%;
-        }
-        </style>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-
 <body>
+    <div class="container">
 
-    <div><input class="favorite styled" type="button" value="Mon compte"></div>
-    <div id="header">
-        <h1>Administrateur</h1>
-    
-        
+        <div id="barre" style="height:70px">
+            <h2 style="float:left;margin-left:42%;  ">  <b> Administrator </b></h2>
+            <button onclick="window.location='CompteAdmin.php'" type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.3%; margin-left: 20%; margin-right: 3%;">Mon compte</button>
+            <button onclick="window.location='Deconnexion.php'" type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.3%;">Deconnexion</button>
+        </div>
+
+    <div style="background-color:white;height:35px;">
+       
     </div>
-
-   
-    <div id="description">
-        <form action="Administrateur.php">
-            
-              <br><br><br><br>
-              
-              <h2>Rechercher</h2>
-              
-              <input type="text" id="mdp" name="mdp" value="..."><br><br><br><br><br>
-
-
-              <input class="modifier" type="button"value="Voir medecins"><br><br><br>
-              <input class="modifier" type="button"value="Voir labboratoires">
-           
-           
-          </form>
     
-    </div>
+        <div id="description">
+                
+            <button onclick="window.location='choix_medecin_Administrator.php'" style="margin-top: 2%;">Voir medecins</button><br><br><br>
+            <button onclick="window.location='choix_Labo_Administrator.php'">Voir labboratoires</button>
 
-    <div id="footer">
-        Branlette Corporation
+        </div>
+
+        <div id="footer">
+            Branlette Corporation
+        </div>
+
     </div>
 </body>
 

@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    let ImageOk = false;
 
     $("#mdp").keyup(function(){
 
@@ -22,10 +23,15 @@ $(document).ready(function () {
 
     });
 
-    function retour($connected) {
-        if ($connected == 'MD') window.location = 'Medecin_Personnel.php';
-        else window.location = 'home.php';
-    }
+    // S'active lorsque l'on choisit une image
+    $("#TheImage2").on('load',function(){
+        ImageOk = true;
+
+        // Active verification de l'email, des mots de passe et de si il y a une image
+         verifButton();
+
+    });
+
 
     function verifButton()
     {
@@ -51,15 +57,14 @@ $(document).ready(function () {
 
             if( data != 0)
             {
-                document.getElementById("messageErrorEmail").innerHTML = "&nbsp;&nbsp;&nbsp; Mail already used!!";
+                document.getElementById("messageErrorEmail").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Mail already used!!";
             }
             else
             {
-                document.getElementById("messageErrorEmail").innerHTML = "&nbsp;&nbsp;&nbsp;";
+                document.getElementById("messageErrorEmail").innerHTML = "<br> &nbsp;&nbsp;&nbsp;";
                 numberGood = numberGood + 1;
             }
 
-        
          //// Partie verifiant si le mot de passe et la confirmation de mot de passe sont les même à chaque fois
 
     
@@ -68,23 +73,28 @@ $(document).ready(function () {
              if($("#mdp").val()  != "")
              {
              
-                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp;";
+                document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp;";
                 numberGood = numberGood + 1;
              }
              else
              {
-                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Passwords both empty!";
+                document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Passwords both empty!";
             }
              
          }
          else
          {
-             document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Different passwords!";
+             document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Different passwords!";
          }
 
+         // Partie pour verifier si l'image est bien la
+         if( ImageOk == true)
+         {
+            numberGood = numberGood + 1;
+         }
 
         // Activation ou desactivation du bouton final
-        if(numberGood == 2)
+        if(numberGood == 3)
         {
             // Active le bouton "s'incrire"
             $("#btnco").prop("disabled", false);

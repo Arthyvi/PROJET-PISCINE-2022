@@ -11,11 +11,12 @@
     <script src="script.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Error.css">
 
     
 </head>
 <body>
-    <h1>Inscription</h1>
+    <h1 id="Title">Inscription</h1>
     <br>
     <form  id="SignInForm" action="inscription.php" method="post">
         <table>
@@ -57,7 +58,8 @@
             </tr>
             <tr>
                 <td class="TextTitle"><br>Adresse mail : </td>
-                <td><br><input class="TextArea" type="text" name="id" id="id" required></td>
+                <td><br><input class="TextArea" type="email" name="email" id="email" required></td>
+                <td><span class="messageError" id="messageErrorEmail"><br> &nbsp;&nbsp;&nbsp; </span></td>
             </tr>
             <tr>
                 <td class="TextTitle">Mot de Passe : </td>
@@ -65,14 +67,17 @@
             </tr>
 
             <tr>
-                <td class="TextTitle">Confirmation Mot de Passe : </td>
-                <td><input class="TextArea" type="password" name="mdp2" id="mdp2"  required></td>
+                <td class="TextTitle"><br> Confirmation Mot de Passe : </td>
+                <td><br><input class="TextArea" type="password" name="mdp2" id="mdp2"  required></td>
+                <td><span class="messageError" id="messageErrorPassword"><br> &nbsp;&nbsp;&nbsp; Passwords both empty!</span></td>
+
             </tr>
 
         </table>
         <br>
         <input type="submit" id="btnco" value="S'inscrire" disabled>
     </form>
+
 
     <a href="connexion.html">Vous avez deja un compte?</a>
 </body>
