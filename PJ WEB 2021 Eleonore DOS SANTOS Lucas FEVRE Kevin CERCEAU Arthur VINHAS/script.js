@@ -22,6 +22,10 @@ $(document).ready(function () {
 
     });
 
+    function retour($connected) {
+        if ($connected == 'MD') window.location = 'Medecin_Personnel.php';
+        else window.location = 'home.php';
+    }
 
     function verifButton()
     {
