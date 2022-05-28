@@ -74,7 +74,7 @@ else
         <div id="description">
                 
             <button onclick="window.location='choix_medecin_Administrator.php'" style="margin-top: 5%;">Dossier Medical</button><br><br><br>
-            <button onclick="window.location='choix_Labo_Administrator.php'">Chat</button>
+            <button onclick="window.location='chat.php?name=<?php echo $prenom ?>&idclient=CL-00001&idmedecin=<?php echo $BuffID ?>&connected=MD'">Chat</button>
 
         </div>
 

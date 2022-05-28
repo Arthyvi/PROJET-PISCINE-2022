@@ -1,3 +1,19 @@
+/*function envoyer() {
+    document.getElementById('messagesent').innerText = document.getElementById('messagewritten').value;
+    document.getElementById('messagewritten').value = "";
+}*/
+
+/*function transfert() {
+    var b = document.getElementById('doc').value;
+    var url = 'fichecontact.php?name='.b;
+    console.log(url);
+    document.location.href = url;
+}*/
+
+function newclient($name, $client, $medecin) {
+    parent.location.href = "chat.php?name=" + $name + "&idclient=" + $client + "&idmedecin=" + $medecin + "&connected=MD";
+}
+
 $(document).ready(function () {
 
 
@@ -98,10 +114,7 @@ $(document).ready(function () {
     
 });
 
-function envoyer() {
-    document.getElementById('messagesent').innerText=document.getElementById('messagewritten').value;
-    document.getElementById('messagewritten').value="";
-}
+
 
 
 
