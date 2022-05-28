@@ -23,7 +23,7 @@ if($mdp == "")
 
 
 // Connexion au serveur
-$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)
@@ -82,7 +82,9 @@ else
         case "MD" : // Si c'est un Medecin...
             $NameTable ="medecin";
             //$NameNextFile = "Medecin_Personnel.html";
-            $NameNextFile = "Ajouter_Medecin.php";
+
+            $NameNextFile = "Medecin_Personnel.php";
+
             break;
     }
 
@@ -118,6 +120,7 @@ else
     {
         $_SESSION["IDconnected"] = $BufferIDperssone;
         $_SESSION["NameTable"] = $NameTable;
+
         $sql="SELECT * FROM ".$_SESSION['NameTable']." WHERE IDpersonne='".$_SESSION['IDconnected']."'"; 
         if($result = $mysqli->query($sql))
         { 
@@ -126,6 +129,7 @@ else
                 $_SESSION['name']=$result->fetch_row()[2];
             }
         }
+
         // Connexion à la bonne page en fonction de si c'est un compte administrateur, medecin ou client (initialisé dans le switch plus haut)
         header("Location: ".$NameNextFile);
     }

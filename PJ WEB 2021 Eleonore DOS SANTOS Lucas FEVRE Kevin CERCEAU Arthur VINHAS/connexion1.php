@@ -25,12 +25,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+
     <form action="recherche.php" method="post">
+
       <div class="input-group input-navbar">
         <div class="input-group-prepend">
           <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
         </div>
+
         <input type="text" class="form-control" placeholder="Recherche.." name="recherche">
+
       </div>
     </form>
 
@@ -56,7 +60,9 @@
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
+
+          <a class="btn btn-primary" href="connexion1.php">Connexion</a>
+
         </li>
       </ul>
     </div> <!-- .navbar-collapse -->

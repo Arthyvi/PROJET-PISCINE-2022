@@ -23,6 +23,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
+
         <form action="recherche.php" method="post">
       <div class="input-group input-navbar">
         <div class="input-group-prepend">
@@ -32,6 +33,7 @@
       </div>
     </form>
 
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportContent" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,7 +41,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="home.html">Accueil</a>
+
+              <a class="nav-link" href="home.php">Accueil</a>
+
             </li>
             <li class="dropdown1">
               <div class="nav-link">Tout Parcourir <i class="fa fa-caret-down"></i></div>
@@ -53,7 +57,9 @@
               <a class="nav-link" href="blog.html">Rendez-vous</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
+
+              <a class="btn btn-primary" href="connexion1.php">Connexion</a>
+
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->

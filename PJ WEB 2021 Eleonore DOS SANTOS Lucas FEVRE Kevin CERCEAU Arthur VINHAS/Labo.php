@@ -24,7 +24,9 @@ $_SESSION["doc"] = "";
 
 <?php
 // Connexion au serveur
-$mysqli = new mysqli("localhost:3309", "root", "", "projet piscine 2022");
+
+$mysqli = new mysqli("localhost", "root", "", "projet piscine 2022");
+
 
 // Check connection
 if ($mysqli->connect_errno) {
@@ -43,6 +45,7 @@ if ($mysqli->connect_errno) {
     </button>
 
     <form action="recherche.php" method="post">
+
       <div class="input-group input-navbar">
         <div class="input-group-prepend">
           <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
@@ -71,9 +74,33 @@ if ($mysqli->connect_errno) {
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="connexion.html">Votre Compte</a>
-        </li>
+
+        <?php
+
+          if( $_SESSION["IDconnected"] == "" )
+          {
+
+           echo '<li class="nav-item">';
+           echo '<a class="btn btn-primary" href="connexion1.php">Connexion</a>';
+
+           echo  '</li>'; 
+
+          }
+          else
+          {
+
+            echo  '<li class="dropdown1">';
+            echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
+                  compte</button>';
+            echo   '<div class="dropdown1-content">';
+            echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Labo.php">Deconnexion</a>';
+            echo   '</div>';
+            echo   '</li>';
+
+          }
+
+        ?>
+
       </ul>
     </div> <!-- .navbar-collapse -->
   </nav>
@@ -104,7 +131,9 @@ if ($mysqli->connect_errno) {
               echo "<div class='col-lg-4 py-3 wow zoomIn'>";
               echo "<div class='card-doctor'>";
               echo "<div class='header'>";
-              echo "<img src='./images/labo/" . $data['IDlabo'] . ".jpg' style='max-width: fit-content' alt=''>";
+
+              echo "<img src='./images/Labo/" . $data['IDlabo'] . ".jpg' style='max-width: fit-content' alt=''>";
+
               echo "<div class='meta'>";
               echo "<button class='btn-sm btn-primary'>RDV</button>";
               echo"<form action='Infos.php'>";

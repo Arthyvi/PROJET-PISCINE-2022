@@ -21,11 +21,14 @@
     </button>
 
     <form action="recherche.php" method="post">
+
       <div class="input-group input-navbar">
         <div class="input-group-prepend">
           <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
         </div>
+
         <input type="text" class="form-control" placeholder="Recherche.." name="recherche">
+
       </div>
     </form>
 
@@ -49,9 +52,33 @@
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="connexion.html">Votre Compte</a>
-        </li>
+
+        <?php
+
+        if( $_SESSION["IDconnected"] == "" )
+        {
+
+        echo '<li class="nav-item">';
+        echo '<a class="btn btn-primary" href="connexion1.php">Connexion</a>';
+
+        echo  '</li>'; 
+
+        }
+        else
+        {
+
+          echo  '<li class="dropdown1">';
+          echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
+                compte</button>';
+          echo   '<div class="dropdown1-content">';
+          echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=infos.php">Deconnexion</a>';
+          echo   '</div>';
+          echo   '</li>';
+
+        }
+
+        ?>
+
       </ul>
     </div> <!-- .navbar-collapse -->
   </nav>

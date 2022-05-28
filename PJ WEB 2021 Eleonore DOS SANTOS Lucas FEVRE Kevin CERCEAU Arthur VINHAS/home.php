@@ -3,6 +3,15 @@
 session_start();
 
 
+$Test = isset($_SESSION["IDconnected"]) ? $_SESSION["IDconnected"] : "nope";
+
+if($Test == "nope")
+{
+  $_SESSION["IDconnected"] = "";
+}
+
+//$_SESSION["IDconnected"] = "";
+
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +21,11 @@ session_start();
   <meta charset="UTF-8">
 
   <title>DOcMNES</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="script.js"></script>
   <link rel="stylesheet" href="boot.css">
   <link rel="stylesheet" href="carousel.css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -21,12 +35,15 @@ session_start();
 <?php
 // Set session variables (variables globales)
 $_SESSION["doc"] = "";
+
 $_SESSION["SelectedDoc"]="";
+
 ?>
 
 <?php
 // Connexion au serveur
-$mysqli = new mysqli("localhost:3309", "root", "", "projet piscine 2022");
+
+$mysqli = new mysqli("localhost", "root", "", "projet piscine 2022");
 
 // Check connection
 if ($mysqli->connect_errno) {
@@ -45,12 +62,14 @@ if ($mysqli->connect_errno) {
       <span class="navbar-toggler-icon"></span>
     </button>
 
+
     <form action="recherche.php" method="post">
       <div class="input-group input-navbar">
         <div class="input-group-prepend">
           <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
         </div>
         <input type="text" class="form-control" placeholder="Recherche.." name="recherche">
+
       </div>
     </form>
 
@@ -66,17 +85,42 @@ if ($mysqli->connect_errno) {
         <li class="dropdown1">
           <div class="nav-link">Tout Parcourir <i class="fa fa-caret-down"></i></div>
           <div class="dropdown1-content">
-            <a href="Medecin_G.php">Médecine générale</a>
-            <a href="Medecin_Spe.php">Médecins spécialistes</a>
-            <a href="Labo.php">Laboratoire de biologie médicale</a>
+
+            <a class ="text-blue" href="Medecin_G.php">Médecine générale</a>
+            <a class ="text-blue" href="Medecin_Spe.php">Médecins spécialistes</a>
+            <a class ="text-blue" href="Labo.php">Laboratoire de biologie médicale</a>
           </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
-        </li>
+        
+        <?php
+
+          if( $_SESSION["IDconnected"] == "" )
+          {
+
+           echo '<li class="nav-item">';
+           echo '<a class="btn btn-primary" href="connexion1.php">Connexion</a>';
+
+           echo  '</li>'; 
+
+          }
+          else
+          {
+
+            echo  '<li class="dropdown1">';
+            echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
+                  compte</button>';
+            echo   '<div class="dropdown1-content">';
+            echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=home.php">Deconnexion</a>';
+            echo   '</div>';
+            echo   '</li>';
+
+          }
+
+        ?>
+
       </ul>
     </div> <!-- .navbar-collapse -->
 
@@ -120,9 +164,10 @@ if ($mysqli->connect_errno) {
        
           echo"<li>";
             echo"<div class='item'>";
-              echo"<div class='card-doctor'>";
+
+              echo"<div class='card-doctor' style='margin:80px'>";
                 echo"<div class='header'>";
-                  echo"<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: fit-content' alt=''>";
+                  echo"<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: 60%' alt=''>";
                 echo"</div>";
                 echo"<div class='body'>";
                   echo"<p class='text-xl text-blue'>Dr. " . $data['Nom'] . "</p>";
@@ -191,9 +236,11 @@ if ($mysqli->connect_errno) {
         <div class="col">
           <h5>Navigation</h5>
           <ul class="footer-menu">
-            <li><a href="index.html">Accueil</a></li><br>
+
+            <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
-            <li><a href="compte.html">Votre Compte</a></li><br>
+            <li><a href="connexion1.php">Votre Compte</a></li><br>
+
           </ul>
         </div>
         <div class="col">

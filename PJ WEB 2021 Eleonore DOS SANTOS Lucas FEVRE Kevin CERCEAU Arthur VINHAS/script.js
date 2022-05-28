@@ -1,3 +1,9 @@
+
+function newclient($name, $client, $medecin) {
+    parent.location.href = "chat.php?name=" + $name + "&idclient=" + $client + "&idmedecin=" + $medecin + "&connected=MD";
+}
+
+
 $(document).ready(function () {
 
 
@@ -8,6 +14,7 @@ $(document).ready(function () {
     });
 
     $("#mdp2").keyup(function(){
+
 
         // Active verification de l'email et des mots de passe
         verifButton();
@@ -20,12 +27,10 @@ $(document).ready(function () {
         // Active verification de l'email et des mots de passe
         verifButton();
 
+
     });
 
-    function retour($connected) {
-        if ($connected == 'MD') window.location = 'Medecin_Personnel.php';
-        else window.location = 'home.php';
-    }
+
 
     function verifButton()
     {
@@ -102,10 +107,6 @@ $(document).ready(function () {
     
 });
 
-function envoyer() {
-    document.getElementById('messagesent').innerText=document.getElementById('messagewritten').value;
-    document.getElementById('messagewritten').value="";
-}
 
 
 
