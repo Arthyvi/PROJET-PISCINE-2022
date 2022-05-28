@@ -106,7 +106,7 @@
 
     <!--Boutton retour -->
         <?php
-    if($connected=='CL') echo "<button onclick=window.location='home.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
+    if($connected=='CL' || $connected='') echo "<button onclick=window.location='home.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
     else echo "<button onclick=window.location='Medecin_Personnel.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
 ?>
         <h1 style="margin-right:7%;">CV Medecin :</h1>

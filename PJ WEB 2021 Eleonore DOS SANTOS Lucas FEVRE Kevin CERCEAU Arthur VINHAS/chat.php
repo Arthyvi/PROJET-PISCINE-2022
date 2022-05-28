@@ -3,7 +3,7 @@
 
     $_SESSION['name'] = stripslashes(htmlspecialchars($_GET['name']));
     // Connexion au serveur
-    $mysqli = new mysqli("localhost:3306","root","","projet piscine 2022");
+    $mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
     // Check connection
     if($mysqli -> connect_errno)
@@ -81,7 +81,7 @@
  </div>
 
  <?php
-    if($connected=='CL') echo "<button onclick=window.location='home.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
+    if($connected=='CL' || $connected='') echo "<button onclick=window.location='home.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
     else echo "<button onclick=window.location='Medecin_Personnel.php' type='button' class='btn btn-secondary btn-sm' style=' margin-top: 1.3%; margin-left:12%; padding:1%; '>Retour</button>";
 ?>
  
