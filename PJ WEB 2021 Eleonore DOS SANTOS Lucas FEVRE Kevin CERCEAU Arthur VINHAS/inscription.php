@@ -14,6 +14,7 @@ $mail= isset($_POST["email"]) ? $_POST["email"] : "";
 $Password= isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 $ConfirmedPassword= isset($_POST["mdp2"]) ? $_POST["mdp2"] : "";
 
+
 // Connexion au serveur
 $mysqli = new mysqli("localhost","root","","projet piscine 2022");
 
@@ -25,7 +26,6 @@ if($mysqli -> connect_errno)
 }
 else
 {
-
 
         /// Creer un ID cohérent avec les ID deja présent au sein de la BDD
     //Recupérer l'ID client ayant le numéro le plus élevé
@@ -74,7 +74,7 @@ else
     $CarteVitale2 = intval($CarteVitale);
 
     // On rajoute le client dans la table client
-    $sql = "INSERT INTO client VALUES ('$IDchosen','$nom','$prenom', '$adresse1','$adresse2','$ville',$codeP2,'$pays',$phone2,$CarteVitale2,'$Password'); ";
+    $sql = "INSERT INTO client VALUES ('$IDchosen','$nom','$prenom', '$adresse1','$adresse2','$ville',".$codeP2.",'$pays',".$phone2.",".$CarteVitale2.",'$Password'); ";
     $result = $mysqli->query($sql);
 
     //On rajoute l'identifiant du client dans la table identifiant
