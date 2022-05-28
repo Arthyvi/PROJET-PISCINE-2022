@@ -73,17 +73,16 @@
               <td>Identifiant : </td>
               <td><input type="text" class="form-control" name="id" required></td>
             </tr>
-            <tr>
-              <td> </td>
-              <td> </td>
-            </tr>
+
+            <tr><td> </td><td> </td></tr>
+
             <tr>
               <td>Mot de Passe : </td>
               <td><input type="password" class="form-control" name="mdp" required></td>
             </tr>
           </table>
           <br>
-          <input style="margin-left:45%;" type="submit" class="btn-sm btn-primary" value="Connexion">
+          <input style="margin-left:38%;" type="submit" class="btn-sm btn-primary" value="Connexion">
         </form>
       </div>
       <br>

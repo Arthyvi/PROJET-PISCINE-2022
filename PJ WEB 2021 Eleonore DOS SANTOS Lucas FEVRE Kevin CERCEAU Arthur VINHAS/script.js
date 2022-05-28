@@ -47,11 +47,11 @@ $(document).ready(function () {
 
             if( data != 0)
             {
-                document.getElementById("messageErrorEmail").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Mail already used!!";
+                document.getElementById("messageErrorEmail").innerHTML = "&nbsp;&nbsp;&nbsp; Mail already used!!";
             }
             else
             {
-                document.getElementById("messageErrorEmail").innerHTML = "<br> &nbsp;&nbsp;&nbsp;";
+                document.getElementById("messageErrorEmail").innerHTML = "&nbsp;&nbsp;&nbsp;";
                 numberGood = numberGood + 1;
             }
 
@@ -64,18 +64,18 @@ $(document).ready(function () {
              if($("#mdp").val()  != "")
              {
              
-                document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp;";
+                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp;";
                 numberGood = numberGood + 1;
              }
              else
              {
-                document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Passwords both empty!";
+                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Passwords both empty!";
             }
              
          }
          else
          {
-             document.getElementById("messageErrorPassword").innerHTML = "<br> &nbsp;&nbsp;&nbsp; Different passwords!";
+             document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Different passwords!";
          }
 
 

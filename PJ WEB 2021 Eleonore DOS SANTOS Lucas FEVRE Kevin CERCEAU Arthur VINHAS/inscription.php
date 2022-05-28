@@ -88,6 +88,6 @@ else
 }
 
     // Renvoi à la page de connexion
-    header("Location: connexion.html");
+    header("Location: connexion1.php");
     
 ?>
