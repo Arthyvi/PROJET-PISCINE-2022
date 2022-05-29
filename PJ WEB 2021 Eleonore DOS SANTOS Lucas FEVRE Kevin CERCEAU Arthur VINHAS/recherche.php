@@ -5,7 +5,7 @@
     $connected=substr($_SESSION['IDconnected'],0,2);
 
     // Connexion au serveur
-$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3306","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)
@@ -116,7 +116,7 @@ else
                     echo "<td><img src='./images/medecin/" . $data[0] . ".jpg' height='120' width='100' id='doc'>   </td>";
                     echo "<td>Dr " . $data[2] . " " . $data[1] . "  </td>";
                     echo "<td>" . $data[5] . "</td>";
-                    
+
                     echo "<td><button onclick='window.location=\"Reservation_Client.php?md=" . $data[0] . "\"' class='btn-sm btn-primary'>RDV</button><br><br>";
                     if($connected!="") echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
                     else echo "<button class='btn-sm btn-primary'>Communiquer</button><br><br>";
@@ -128,6 +128,7 @@ else
             }
             $result->free_result();
         }
+        
         $sql="SELECT * FROM laboratoire WHERE NomLab LIKE '%".$recherche."%' OR ServicesProposer LIKE '%".$recherche."%'";
         if($result = $mysqli->query($sql))
         {

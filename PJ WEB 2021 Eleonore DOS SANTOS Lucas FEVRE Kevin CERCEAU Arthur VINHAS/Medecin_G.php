@@ -22,7 +22,7 @@ session_start();
 $_SESSION["doc"] = "";
 
 // Connexion au serveur
-$mysqli = new mysqli("localhost:3309", "root", "", "projet piscine 2022");
+$mysqli = new mysqli("localhost:3306", "root", "", "projet piscine 2022");
 
 
 // Check connection
@@ -139,7 +139,7 @@ if ($mysqli->connect_errno) {
 
               echo "<button onclick='window.location=\"Reservation_Client.php?md=" . $data['IDpersonne'] . "\"' class='btn-sm btn-primary'>RDV</button>";
               if($connected!="") echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data['IDpersonne']."&connected=".$connected."'>Communiquer</button><br><br>";
-              else echo "<button class='btn-sm btn-primary'>Communiquer</button><br><br>";
+              else echo "<button  onclick=window.location.href='connexion1.php?' class='btn-sm btn-primary'>Communiquer</button><br><br>";
               echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc=".$data['IDpersonne']."'>CV</button>";
 
 
