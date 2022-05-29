@@ -5,7 +5,7 @@
     $connected=substr($_SESSION['IDconnected'],0,2);
 
     // Connexion au serveur
-$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3306","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)
@@ -153,12 +153,12 @@ else
 
                     $services="";
                     if(count($Buffer)>0) {
-                      for($i=0;$i<count($Buffer)-1;$i++) $services =$Buffer[$i].", ";
-
-                      $services =$Buffer[count($Buffer)-1];
+                      for($i=0;$i<count($Buffer)-1;$i++) $services.=$Buffer[$i].", ";
+                    $services.=$Buffer[count($Buffer)-1];
                     }
+                    
                     echo "<td>" . $services . "</td>";
-                    echo "<td><button onclick='window.location=\"Reservation_Client_Labo.php?md=" . $data[0] . "\"' class='btn-sm btn-primary'>RDV</button><br><br>";
+                    echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
                     echo "<form action='Infos.php'><br><br>";
                     echo "<button class ='btn-sm btn-primary'>Infos</button></td>";
                     echo "</tr>";

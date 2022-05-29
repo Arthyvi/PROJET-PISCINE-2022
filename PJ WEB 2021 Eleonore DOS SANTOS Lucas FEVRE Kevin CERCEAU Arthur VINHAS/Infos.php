@@ -59,7 +59,6 @@ session_start();
         </li>
 
         <?php
-
         if( $_SESSION["IDconnected"] == "" )
         {
 

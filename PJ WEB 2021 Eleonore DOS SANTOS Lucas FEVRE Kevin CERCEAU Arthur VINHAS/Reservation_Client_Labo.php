@@ -306,7 +306,7 @@ else
                 ?>
 
                 </table>   
-                <button onclick="AccepterRDVlabo('<?php echo $_SESSION['IDconnected']?>','<?php echo $BuffID ?>')" class="btn-sm btn-primary float-right" style="margin-bottom:10%" >Confirmer mon choix de RDV</button>
+                <a href="Paiement.html"><button onclick="AccepterRDVlabo('<?php echo $_SESSION['IDconnected']?>','<?php echo $BuffID ?>')" class="btn-sm btn-primary float-right" style="margin-bottom:10%" >Confirmer mon choix de RDV</button></a>
                 
             </div>
         </div>
