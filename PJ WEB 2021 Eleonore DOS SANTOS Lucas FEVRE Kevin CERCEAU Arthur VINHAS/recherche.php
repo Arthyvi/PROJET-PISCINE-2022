@@ -5,7 +5,7 @@
     $connected=substr($_SESSION['IDconnected'],0,2);
 
     // Connexion au serveur
-$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3306","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)
@@ -65,7 +65,8 @@ if($mysqli -> connect_errno)
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
+          
+        <a class="nav-link" ></a>
         </li>
         <?php
 
@@ -82,10 +83,11 @@ else
 {
 
   echo  '<li class="dropdown1">';
-  echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
+  echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
         compte</button>';
   echo   '<div class="dropdown1-content">';
-  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_Spe.php">Deconnexion</a>';
+  echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
+  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=recherche.php">Deconnexion</a>';
   echo   '</div>';
   echo   '</li>';
 
@@ -114,16 +116,20 @@ else
                     echo "<td><img src='./images/medecin/" . $data[0] . ".jpg' height='120' width='100' id='doc'>   </td>";
                     echo "<td>Dr " . $data[2] . " " . $data[1] . "  </td>";
                     echo "<td>" . $data[5] . "</td>";
-                    echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
+
+                    echo "<td><button onclick='window.location=\"Reservation_Client.php?md=" . $data[0] . "\"' class='btn-sm btn-primary'>RDV</button><br><br>";
                     if($connected!="") echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
                     else echo "<button class='btn-sm btn-primary'>Communiquer</button><br><br>";
+
                     echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc=".$data[0]."'>CV</button></td>";
                     echo "</tr>";
                 }
                 echo "</table><br><br>";
             }
         }
+
         $sql="SELECT * FROM laboratoire WHERE NomLab LIKE '%".$recherche."%'";
+
         if($result = $mysqli->query($sql))
         {
             if($result->num_rows >0)
