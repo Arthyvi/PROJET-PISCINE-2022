@@ -1,6 +1,9 @@
 <?php
 // Start the session
 session_start();
+
+$BuffID =  $_SESSION["IDconnected"];
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +45,7 @@ session_start();
             <div class="row">
                 <div class="col">
 
-
+                <br><br>
 
                     <?php
                     //`rdvmedecin-client`
@@ -55,13 +58,14 @@ session_start();
                         echo "Failed to connect to MySQL" . $mysqli->connect_errno;
                         exit();
                     } else {
-                        $result = mysqli_query($mysqli, "SELECT * FROM `rdvmedecin-client`");
+                        $result = mysqli_query($mysqli, "SELECT med.Nom , med.Prenom , rdv.Jour, rdv.horaire  FROM `rdvmedecin-client` rdv INNER JOIN `medecin` med ON rdv.IDmedecin = med.IDpersonne WHERE rdv.IDclient = '$BuffID'");
                         //afficher le resultat
                         echo "<table class='table table-hover' >";
                         while ($data = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td>Dr " . $data['Nom'] . "</td>";
-                            echo "<td>" . $data['Specialisation'] . "</td>";
+                            echo "<tr >";
+                            echo "<td>Dr " . $data['Prenom'] . " " . $data['Nom'] . "</td>";
+                            echo "<td> Jour : " . $data['Jour'] . "</td>";
+                            echo "<td> Créneau : " . $data['horaire'] . "</td>";
                             echo "</tr>";
                         }
                         echo "</table>";
