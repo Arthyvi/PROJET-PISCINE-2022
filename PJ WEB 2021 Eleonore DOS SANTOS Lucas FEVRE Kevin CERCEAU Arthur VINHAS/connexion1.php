@@ -105,9 +105,9 @@
       <div class="col">
         <h5>Navigation</h5>
         <ul class="footer-menu">
-          <li><a href="index.html">Accueil</a></li><br>
-          <li><a href="rdv.html">Rendez-vous</a></li><br>
-          <li><a href="compte.html">Votre Compte</a></li><br>
+          <li><a href="home.php">Accueil</a></li><br>
+            <li><a href="rdv.html">Rendez-vous</a></li><br>
+            <li><a href="connexion1.php";>Votre Compte</a></li><br>
         </ul>
       </div>
       <div class="col">

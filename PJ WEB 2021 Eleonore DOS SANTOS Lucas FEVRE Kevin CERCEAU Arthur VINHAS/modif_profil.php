@@ -2,9 +2,7 @@
 // Start the session
 session_start();
 
-$id=$_SESSION['IDconnected']
-
-
+$id=$_SESSION['IDconnected'];
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +15,7 @@ $id=$_SESSION['IDconnected']
   <link rel="stylesheet" href="boot.css">
   <link rel="stylesheet" href="carousel.css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="script.js"></script>
 
 </head>
 
@@ -70,7 +69,6 @@ if ($mysqli->connect_errno) {
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-
         <?php
 
 if( $_SESSION["IDconnected"] == "" )
@@ -101,10 +99,16 @@ else
 
   </nav>
 
-  <br>
-  <h1 style='text-align:center'>Mon Profil Client</h1><br><br>
+<br>
+  <h1 style='text-align:center'>Modifier mon Profil Client</h1><br><br>
+
   <?php
-    //echo "<img src='./images/client/".$id.".jpg' width=200 height=300 style='position:absolute;left:5%' ></img>";
+
+    /*echo "<div style='position:absolute;width:200px;left:5%'>";
+    echo "<img src='./images/client/".$id.".jpg' width=200 height=300 style='width:200px;left:0%'></img>";
+    echo "<label for='image_uploads' style='color:blue;' >  Select a new picture : </label> ";
+    echo "<input style='width:200px' type='file' id='image_uploads' name='image_uploads' accept='image/*' class='btn btn-primary btn-sm'>";
+    echo "</div>";*/
     $sql="SELECT * from client WHERE IDpersonne='".$id."'";
     $mail="SELECT * FROM identifiant WHERE IDpersonne='".$id."'";
     $mail=$mysqli->query($mail)->fetch_row()[0];
@@ -113,28 +117,35 @@ else
         if($result->num_rows>0) 
         {
             $data=$result->fetch_row();
+            echo "<form action='modif_profil_sql.php' method='post'>";
             echo "<table style='margin-left:auto;margin-right:auto'>";
-            echo "<tr><td><h3>".$data[2]." ".$data[1]."</h3></td></tr>";
-            echo "<tr><td>Adresse : </td><td>".$data[3].", ".$data[6].", ".$data[5].", ".$data[7]."<br>          ".$data[4]."</td></tr>";
-            echo "<tr><td>Numero de telephone : </td><td>+33".$data[8]."</td></tr>";
-            echo "<tr><td>Adresse mail : </td><td>".$mail."</td></tr>";
-            echo "<tr><td>Numero de securite sociale : </td><td>".$data[9]."</td></tr>";
-            echo "<tr><td><br><button onclick=window.location.href='modif_profil.php' class='btn btn-primary btn-sm' >Modifier mes informations</button></td></tr>";
-            echo "</table></p><br>";
+            echo "<tr><td>Prenom : </td><td><input type='text' name='prenom' value='".$data[2]."' required></td></tr>";
+            echo "<tr><td>Nom : </td><td> <input type='text' name='nom' value='".$data[1]."' required></td></tr>";
+            echo "<tr><td>Adresse ligne 1 : </td><td><input type='text' name='adresse1' value='".$data[3]."' required></td></tr>";
+            echo "<tr><td>Adresse ligne 2 : </td><td><input type='text' name='adresse2' value='".$data[4]."'></td></tr>";
+            echo "<tr><td>Code Postal : </td><td><input type='number' name='codepostal' value='".$data[6]."' required></td></tr>";
+            echo "<tr><td>Ville : </td><td><input type='text' name='ville' value='".$data[5]."' required></td></tr>";
+            echo "<tr><td>Pays : </td><td><input type='text' name='pays' value='".$data[7]."' required></td></tr>";
+            echo "<tr><td>Numero de telephone : </td><td>+33<input type='number' name='tel' style='width:198px' value='".$data[8]."' required></td></tr>";
+            echo "<tr><td>Adresse mail : </td><td><input type='text' name='mail' value='".$mail."' required></td></tr>";
+            echo "<tr><td>Numero de securite sociale : </td><td><input type='number' name='secu' value='".$data[9]."' required></td></tr>";
+            echo "<tr><td><br><input type='submit' value='Modifier mes informations' class='btn btn-primary btn-sm'></td>";
+            echo "<td><br><button onclick=window.location.href='Mon_Profil.php' class='btn btn-primary btn-sm'>Annuler</button></td></tr></table>";
+            echo "</form>";
+            
         }
     }
 
   ?>
 
   <br><br><br>
-  
+
   <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col">
           <h5>Navigation</h5>
           <ul class="footer-menu">
-
             <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
             <li><a href=
@@ -144,7 +155,7 @@ if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
 else echo  "Mon_Profil.php";
 
 ?>
-
+            >Votre Compte</a></li><br>
           </ul>
         </div>
         <div class="col">

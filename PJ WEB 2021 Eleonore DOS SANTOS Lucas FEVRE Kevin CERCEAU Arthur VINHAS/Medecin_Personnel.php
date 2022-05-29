@@ -9,7 +9,7 @@ session_start();
 
 /// Recupération des données dans la base de donnée en fonction de l'ID enregistré l'ors de la connexion
 // Connexion au serveur
-$mysqli = new mysqli("localhost","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)
@@ -76,10 +76,6 @@ else
             <button onclick="window.location='choix_medecin_Administrator.php'" style="margin-top: 5%;">Dossier Medical</button><br><br><br>
             <button onclick="window.location='chat.php?name=<?php echo $prenom ?>&idclient=CL-00001&idmedecin=<?php echo $BuffID ?>&connected=MD'">Chat</button>
 
-        </div>
-
-        <div id="footer">
-            Branlette Corporation
         </div>
 
     </div>

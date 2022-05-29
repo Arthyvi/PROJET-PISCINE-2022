@@ -43,7 +43,7 @@ a:hover {
     background: #eee;
     width: 600px;
     max-width: 100%;
-    border: 2px solid #212121;
+    border: 2px solid #3f76b4;
     border-radius: 4px;
 
 }
@@ -78,21 +78,21 @@ a:hover {
 #usermsg {
     flex: 1;
     border-radius: 4px;
-    border: 1px solid #ff9800;
+    border: 1px solid #5e9ada;
 
 }
 
 #name {
     border-radius: 4px;
-    border: 1px solid #ff9800;
+    border: 1px solid #5e9ada;
     padding: 2px 8px;
 
 }
 
 #submitmsg,
 #enter {
-    background: #ff9800;
-    border: 2px solid #e65100;
+    background: #007bff;
+    border: 2px solid #5e9ada;
     color: white;
     padding: 4px 10px;
     font-weight: bold;
@@ -150,10 +150,11 @@ a#exit {
 }
 
 .leftbar {
-    position: relative;
-    margin-top: -20px;
+    position: absolute;
+    margin-top: 184px;
     float: left;
     height: 100%;
     width: 20%;
-    /*margin-left: -15px;*/
+    margin-left: -15px;
+        
 }

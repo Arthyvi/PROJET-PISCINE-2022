@@ -25,7 +25,7 @@ $_SESSION["doc"] = "";
 <?php
 // Connexion au serveur
 
-$mysqli = new mysqli("localhost:3306", "root", "", "projet piscine 2022");
+$mysqli = new mysqli("localhost:3309", "root", "", "projet piscine 2022");
 
 // Check connection
 if ($mysqli->connect_errno) {
@@ -91,7 +91,7 @@ else
 {
 
   echo  '<li class="dropdown1">';
-  echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
+  echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
         compte</button>';
   echo   '<div class="dropdown1-content">';
   echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_Spe.php">Deconnexion</a>';
@@ -132,9 +132,16 @@ else
         <div class="col">
           <h5>Navigation</h5>
           <ul class="footer-menu">
-            <li><a href="index.html">Accueil</a></li><br>
+            <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
-            <li><a href="compte.html">Votre Compte</a></li><br>
+            <li><a href=
+            <?php
+
+if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
+else echo  "Mon_Profil.php";
+
+?>
+            >Votre Compte</a></li><br>
           </ul>
         </div>
         <div class="col">

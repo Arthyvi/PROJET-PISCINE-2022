@@ -5,7 +5,7 @@
     $connected=substr($_SESSION['IDconnected'],0,2);
 
     // Connexion au serveur
-$mysqli = new mysqli("localhost:3306","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)
@@ -67,9 +67,31 @@ if($mysqli -> connect_errno)
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
-        </li>
+        <?php
+
+if( $_SESSION["IDconnected"] == "" )
+{
+
+ echo '<li class="nav-item">';
+ echo '<a class="btn btn-primary" href="connexion1.php">Connexion</a>';
+
+ echo  '</li>'; 
+
+}
+else
+{
+
+  echo  '<li class="dropdown1">';
+  echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
+        compte</button>';
+  echo   '<div class="dropdown1-content">';
+  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_Spe.php">Deconnexion</a>';
+  echo   '</div>';
+  echo   '</li>';
+
+}
+
+?>
       </ul>
     </div> <!-- .navbar-collapse -->
 
@@ -93,7 +115,8 @@ if($mysqli -> connect_errno)
                     echo "<td>Dr " . $data[2] . " " . $data[1] . "  </td>";
                     echo "<td>" . $data[5] . "</td>";
                     echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
-                    echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
+                    if($connected!="") echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
+                    else echo "<button class='btn-sm btn-primary'>Communiquer</button><br><br>";
                     echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc=".$data[0]."'>CV</button></td>";
                     echo "</tr>";
                 }
@@ -135,9 +158,16 @@ if($mysqli -> connect_errno)
       <div class="col">
         <h5>Navigation</h5>
         <ul class="footer-menu">
-          <li><a href="index.html">Accueil</a></li><br>
-          <li><a href="rdv.html">Rendez-vous</a></li><br>
-          <li><a href="compte.html">Votre Compte</a></li><br>
+          <li><a href="home.php">Accueil</a></li><br>
+            <li><a href="rdv.html">Rendez-vous</a></li><br>
+            <li><a href=
+            <?php
+
+if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
+else echo  "Mon_Profil.php";
+
+?>
+            >Votre Compte</a></li><br>
         </ul>
       </div>
       <div class="col">

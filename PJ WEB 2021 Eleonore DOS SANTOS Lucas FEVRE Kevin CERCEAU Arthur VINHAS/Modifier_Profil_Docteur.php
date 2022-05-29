@@ -215,10 +215,6 @@ else
          </form>
     </div>
 
-    <div id="footer">
-        Branlette Corporation
-    </div>
-
 
    <!-- Script inspiré d'un code trouvé sur internet pour la gestion et l'affichage automatique des images
    selectionné, lien : https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input/file#accept

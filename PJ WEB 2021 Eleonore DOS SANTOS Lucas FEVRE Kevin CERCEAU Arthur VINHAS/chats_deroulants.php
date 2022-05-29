@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['name'])){
     // Connexion au serveur
-    $mysqli = new mysqli("localhost","root","","projet piscine 2022");
+    $mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
     // Check connection
     if($mysqli -> connect_errno)
@@ -53,7 +53,7 @@ if(isset($_SESSION['name'])){
                         if(!$test) {
                             $clique="onclick=newclient('".$_SESSION['name']."','".$data[3]."','".$idmedecin."')";
                             echo "<tr><td>"; //<a href='chat.php?name=" . $_SESSION['name'] . "&idclient=".$data[3]."&idmedecin=" . $idmedecin . "&connected=MD'>
-                            echo "<div class='col-sm-12' style='cursor: pointer; height:100px; background-color:lightblue; border-style: solid; border-radius:10px' ";
+                            echo "<div class='col-sm-12' style='cursor: pointer; height:100px; background-color:blue; color: white; border-style: solid; border-radius:10px' ";
                             echo $clique.">".$nomclient."</div></td></tr>";//
                             $tab[]=$nomclient;
                         }
