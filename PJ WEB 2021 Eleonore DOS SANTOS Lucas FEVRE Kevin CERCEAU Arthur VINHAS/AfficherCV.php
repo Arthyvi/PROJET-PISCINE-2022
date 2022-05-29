@@ -1,6 +1,6 @@
 <?php 
 
-//// Page pour afficher le profil du medecin connecter !!!! ////
+//// Page pour afficher le profil du medecin connecté ////
 
 // Initialisation en debut de fichier pour avoir accès à la variable global "$_SESSION", qui nous permet de stocker
 // de manière global des données, peut importe la page
