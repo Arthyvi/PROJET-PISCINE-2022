@@ -109,9 +109,9 @@ $Cases = [
                 <li class="dropdown1">
                     <div class="nav-link">Tout Parcourir <i class="fa fa-caret-down"></i></div>
                     <div class="dropdown1-content">
-                        <a href="Medecin_G.php">Médecine générale</a>
-                        <a href="Medecin_Spe.php">Médecins spécialistes</a>
-                        <a href="Labo.php">Laboratoire de biologie médicale</a>
+                        <a class ="text-blue" href="Medecin_G.php">Médecine générale</a>
+                        <a class ="text-blue" href="Medecin_Spe.php">Médecins spécialistes</a>
+                        <a class ="text-blue" href="Labo.php">Laboratoire de biologie médicale</a>
                     </div>
                 </li>
                 <li class="nav-item">
