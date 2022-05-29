@@ -190,7 +190,7 @@
             
             <img style=" margin-left:4%; margin-top:4%;margin-bottom:4%;" id="TheImage" src="<?php echo "images/medecin/".$BuffID.".jpg?m=" . filemtime('images/medecin/'.$BuffID.'.jpg')  ?>" alt="Photo du medecin" width="300" height="200">
 
-            <h1 style="float:right;margin-right:30%; margin-top:4%;">Dr.<?php echo $Prenom?> <?php echo $Nom?> <br> <span style="font-size:large;"><?php echo $Specialisation?></span><br> <span style="font-size:large;">Mail : <?php echo $Mail?></span><br> <span style="font-size:large;">Tel : +33<?php echo $Telephone?></span></h1>
+            <h1 style="float:right;margin-right:10%; margin-top:4%;">Dr.<?php echo $Prenom?> <?php echo $Nom?> <br> <span style="font-size:large;"><?php echo $Specialisation?></span><br> <span style="font-size:large;">Mail : <?php echo $Mail?></span><br> <span style="font-size:large;">Tel : +33<?php echo $Telephone?></span></h1>
   
             <span style="margin-left:4%;font-size:large;text-decoration : underline;">Presentation : </span>
             <p style="margin-left:4%;font-size:medium;"><?php echo $presentation?></p>
