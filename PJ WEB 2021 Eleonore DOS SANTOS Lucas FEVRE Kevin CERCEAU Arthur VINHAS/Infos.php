@@ -54,7 +54,7 @@
         </li>
 
         <?php
-
+        session_start();
         if( $_SESSION["IDconnected"] == "" )
         {
 

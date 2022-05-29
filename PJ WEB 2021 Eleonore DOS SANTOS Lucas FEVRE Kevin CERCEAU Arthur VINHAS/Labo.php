@@ -111,8 +111,6 @@ if ($mysqli->connect_errno) {
     <div class="container">
       <h1 class="text-center">Nos Laboratoires</h1><br>
 
-
-
       <div class="row justify-content-center">
         <div class="col-lg-10">
 
@@ -148,7 +146,22 @@ if ($mysqli->connect_errno) {
               echo "<div><span class='fa fa-phone text-sm text-grey'>&nbsp" . $data['NumTelephone'] . "</span></div>";
               echo "<div><span class='fa fa-envelope text-sm text-grey'>&nbsp" . $data['Mail'] . "</span></div>";
               echo "<div><span class='fa fa-map-marker text-sm text-grey'>&nbsp" . $data['Salle'] . "</span></div>";
-              echo "<span class='text-sm text-grey'>" . $data['ServicesProposer'] . "</span>";
+
+              $bin=decbin($data['ServicesProposer']);
+              $Buffer = array();
+
+              if(substr($bin,5,1) == "1") $Buffer[]="Gynecologie";
+              if(substr($bin,4,1) == "1") $Buffer[]="Cancerologie";
+              if(substr($bin,3,1) == "1") $Buffer[]="Biologie de routine";
+              if(substr($bin,2,1) == "1") $Buffer[]="Biologie de la femme enceinte";
+              if(substr($bin,1,1) == "1") $Buffer[]="Biologie preventive";
+              if(substr($bin,0,1) == "1") $Buffer[]="Depistage Covid-19";
+
+              $services="";
+              for($i=0;$i<count($Buffer)-1;$i++) $services.=$Buffer[$i].", ";
+              $services.=$Buffer[count($Buffer)-1];
+
+              echo "<span class='text-sm text-grey'>" . $services . "</span>";
               echo "</div>";
               echo "</div>";
               echo "</div>";

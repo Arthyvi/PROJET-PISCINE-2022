@@ -95,7 +95,6 @@ else
         $Services = $Services + 8;
     }
 
-    
     if($BiologieP != "")
     {
         $Services = $Services + 16;
