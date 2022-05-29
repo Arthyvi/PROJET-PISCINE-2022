@@ -239,7 +239,14 @@ if ($mysqli->connect_errno) {
 
             <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
-            <li><a href="connexion1.php">Votre Compte</a></li><br>
+            <li><a href=
+            <?php
+
+if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
+else echo  "Mon_Profil.php";
+
+?>
+            >Votre Compte</a></li><br>
 
           </ul>
         </div>

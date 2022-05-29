@@ -99,8 +99,16 @@ else
 
   </nav>
 
+<br>
+  <h1 style='text-align:center'>Modifier mon Profil Client</h1><br><br>
+
   <?php
-    echo "<img src='./images/client/".$id.".jpg' width=200 height=300></img>";
+
+    /*echo "<div style='position:absolute;width:200px;left:5%'>";
+    echo "<img src='./images/client/".$id.".jpg' width=200 height=300 style='width:200px;left:0%'></img>";
+    echo "<label for='image_uploads' style='color:blue;' >  Select a new picture : </label> ";
+    echo "<input style='width:200px' type='file' id='image_uploads' name='image_uploads' accept='image/*' class='btn btn-primary btn-sm'>";
+    echo "</div>";*/
     $sql="SELECT * from client WHERE IDpersonne='".$id."'";
     $mail="SELECT * FROM identifiant WHERE IDpersonne='".$id."'";
     $mail=$mysqli->query($mail)->fetch_row()[0];
@@ -110,7 +118,7 @@ else
         {
             $data=$result->fetch_row();
             echo "<form action='modif_profil_sql.php' method='post'>";
-            echo "<table>";
+            echo "<table style='margin-left:auto;margin-right:auto'>";
             echo "<tr><td>Prenom : </td><td><input type='text' name='prenom' value='".$data[2]."' required></td></tr>";
             echo "<tr><td>Nom : </td><td> <input type='text' name='nom' value='".$data[1]."' required></td></tr>";
             echo "<tr><td>Adresse ligne 1 : </td><td><input type='text' name='adresse1' value='".$data[3]."' required></td></tr>";
@@ -121,14 +129,16 @@ else
             echo "<tr><td>Numero de telephone : </td><td>+33<input type='number' name='tel' style='width:198px' value='".$data[8]."' required></td></tr>";
             echo "<tr><td>Adresse mail : </td><td><input type='text' name='mail' value='".$mail."' required></td></tr>";
             echo "<tr><td>Numero de securite sociale : </td><td><input type='number' name='secu' value='".$data[9]."' required></td></tr>";
-            echo "</table>";
-            echo "<input type='submit' value='Modifier mes informations'></form>";
+            echo "<tr><td><br><input type='submit' value='Modifier mes informations' class='btn btn-primary btn-sm'></td>";
+            echo "<td><br><button onclick=window.location.href='Mon_Profil.php' class='btn btn-primary btn-sm'>Annuler</button></td></tr></table>";
+            echo "</form>";
+            
         }
     }
 
   ?>
 
-  <button onclick="window.location.href='Mon_Profil.php'">Annuler</button>
+  <br><br><br>
 
   <footer class="page-footer">
     <div class="container">
@@ -136,9 +146,16 @@ else
         <div class="col">
           <h5>Navigation</h5>
           <ul class="footer-menu">
-            <li><a href="index.html">Accueil</a></li><br>
+            <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
-            <li><a href="compte.html">Votre Compte</a></li><br>
+            <li><a href=
+            <?php
+
+if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
+else echo  "Mon_Profil.php";
+
+?>
+            >Votre Compte</a></li><br>
           </ul>
         </div>
         <div class="col">

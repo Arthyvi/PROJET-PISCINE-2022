@@ -78,10 +78,6 @@ else
 
         </div>
 
-        <div id="footer">
-            Branlette Corporation
-        </div>
-
     </div>
 </body>
 

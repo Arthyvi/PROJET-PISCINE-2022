@@ -97,9 +97,10 @@ else
     </div> <!-- .navbar-collapse -->
 
   </nav>
-
+  <br>
+  <h1 style='text-align:center'>Mon Profil Client</h1><br><br>
   <?php
-    echo "<img src='./images/client/".$id.".jpg' width=200 height=300></img>";
+    //echo "<img src='./images/client/".$id.".jpg' width=200 height=300 style='position:absolute;left:5%' ></img>";
     $sql="SELECT * from client WHERE IDpersonne='".$id."'";
     $mail="SELECT * FROM identifiant WHERE IDpersonne='".$id."'";
     $mail=$mysqli->query($mail)->fetch_row()[0];
@@ -108,29 +109,37 @@ else
         if($result->num_rows>0) 
         {
             $data=$result->fetch_row();
-            echo "<table>";
-            echo "<tr><td>".$data[2]." ".$data[1]."</td></tr>";
+            echo "<table style='margin-left:auto;margin-right:auto'>";
+            echo "<tr><td><h3>".$data[2]." ".$data[1]."</h3></td></tr>";
             echo "<tr><td>Adresse : </td><td>".$data[3].", ".$data[6].", ".$data[5].", ".$data[7]."<br>          ".$data[4]."</td></tr>";
             echo "<tr><td>Numero de telephone : </td><td>+33".$data[8]."</td></tr>";
             echo "<tr><td>Adresse mail : </td><td>".$mail."</td></tr>";
             echo "<tr><td>Numero de securite sociale : </td><td>".$data[9]."</td></tr>";
-            echo "</table>";
+            echo "<tr><td><br><button onclick=window.location.href='modif_profil.php' class='btn btn-primary btn-sm' >Modifier mes informations</button></td></tr>";
+            echo "</table></p><br>";
         }
     }
 
   ?>
 
-  <button onclick="window.location.href='modif_profil.php'">Modifier mes informations</button><br>
-
+  <br><br><br>
+  
   <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col">
           <h5>Navigation</h5>
           <ul class="footer-menu">
-            <li><a href="index.html">Accueil</a></li><br>
+            <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
-            <li><a href="compte.html">Votre Compte</a></li><br>
+            <li><a href=
+            <?php
+
+if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
+else echo  "Mon_Profil.php";
+
+?>
+            >Votre Compte</a></li><br>
           </ul>
         </div>
         <div class="col">

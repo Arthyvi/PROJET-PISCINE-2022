@@ -195,9 +195,16 @@ else
       <div class="col">
         <h5>Contact</h5>
         <ul class="footer-menu">
-          <li><span class="fa fa-map-marker"></span>&nbsp<a>37 Quai de Grenelle, 75015 Paris</a></li><br>
-          <li><span class="fa fa-phone"></span>&nbsp<a>01 44 39 06 00</a></li><br>
-          <li><span class="fa fa-envelope"></span>&nbsp<a>omnes-sante@gmail.fr</a></li><br>
+          <li><a href="home.php">Accueil</a></li><br>
+            <li><a href="rdv.html">Rendez-vous</a></li><br>
+            <li><a href=
+            <?php
+
+if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
+else echo  "Mon_Profil.php";
+
+?>
+            >Votre Compte</a></li><br>
         </ul>
       </div>
       <div class="col">
