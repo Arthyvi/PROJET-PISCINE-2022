@@ -4,6 +4,11 @@ session_start();
 
 $BuffID =  $_SESSION["IDconnected"];
 
+$CasesJourHoraire = [
+    [1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi"],
+    [2 => "9H-10H", 3 => "10H-11H", 4 => "11H-12H", 6 => "14H-15H", 7 => "15H-16H", 8 => "16H-17H", 9 => "17H-18H"]
+];
+
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +26,12 @@ $BuffID =  $_SESSION["IDconnected"];
 
         <a class="navbar-brand" href="#"><img src="omnes.png" width="150" alt=""></a>
 
-        <h2 class="font-weight-bold" style="margin-left:27%">Administrateur</h2>
+        <h2 class="font-weight-bold" style="margin-left:27%">Mes Rendez-vous</h2>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Administrateur.html">Home</a>
+                    <a class="nav-link" href="home.php">Accueil</a>
                 </li>
                 <li class="dropdown1">
                     <button onclick="window.location='CompteAdmin.php'" type="button" class="btn btn-primary btn-sm">Mon
@@ -40,6 +45,8 @@ $BuffID =  $_SESSION["IDconnected"];
     </nav>
 
 
+    <h3 style="padding-top:3%;text-decoration:underline;" class="text-center">Mes Rendez-vous avec Medecins :</h3>
+
     
         <div class="container">
             <div class="row">
@@ -48,6 +55,7 @@ $BuffID =  $_SESSION["IDconnected"];
                 <br><br>
 
                     <?php
+                    $Compt = 1;
                     //`rdvmedecin-client`
                     //`rdvlabo-client`
                     // Connexion au serveur
@@ -58,15 +66,21 @@ $BuffID =  $_SESSION["IDconnected"];
                         echo "Failed to connect to MySQL" . $mysqli->connect_errno;
                         exit();
                     } else {
-                        $result = mysqli_query($mysqli, "SELECT med.Nom , med.Prenom , rdv.Jour, rdv.horaire  FROM `rdvmedecin-client` rdv INNER JOIN `medecin` med ON rdv.IDmedecin = med.IDpersonne WHERE rdv.IDclient = '$BuffID'");
+                        $result = mysqli_query($mysqli, "SELECT med.Nom , med.Prenom, med.Specialisation , rdv.IDrdv ,rdv.Jour, rdv.horaire  FROM `rdvmedecin-client` rdv INNER JOIN `medecin` med ON rdv.IDmedecin = med.IDpersonne WHERE rdv.IDclient = '$BuffID'");
                         //afficher le resultat
                         echo "<table class='table table-hover' >";
                         while ($data = mysqli_fetch_assoc($result)) {
-                            echo "<tr >";
-                            echo "<td>Dr " . $data['Prenom'] . " " . $data['Nom'] . "</td>";
-                            echo "<td> Jour : " . $data['Jour'] . "</td>";
-                            echo "<td> Créneau : " . $data['horaire'] . "</td>";
+                            echo "<tr>";
+                            echo "<td>".$Compt."</td>";
+                            echo "<td>Avec : &nbsp;&nbsp; Dr " . $data['Prenom'] . " " . $data['Nom'] . " &nbsp;&nbsp;&nbsp; (" . $data['Specialisation'] . ")</td>";
+                            echo "<td>" . $data['Specialisation'] . "</td>";
+                            echo "<td> Jour : " . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
+                            echo "<td> Créneau : " .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
+                            echo "<td> </td>";
+                            echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
                             echo "</tr>";
+
+                            $Compt =  $Compt +1;
                         }
                         echo "</table>";
                     }
