@@ -5,6 +5,7 @@ session_start();
 
 
 $TheID = $_GET["md"];
+$Mode = $_GET["dd"];
 
 ////Suppression du RDV dans la BDD
     // Connexion au serveur
@@ -18,10 +19,22 @@ $TheID = $_GET["md"];
     }
     else
     {
-        // Effacement depuis la table "rdvmedecin-client"
-        $sql = "DELETE FROM `rdvmedecin-client` WHERE IDrdv= '$TheID';";
+        switch($Mode)
+        {
+            case "1":
+                 // Effacement depuis la table "rdvmedecin-client"
+                $sql = "DELETE FROM `rdvmedecin-client` WHERE IDrdv= '$TheID';";
+                break;
+
+            case "2":
+                 // Effacement depuis la table "rdvlabo-client"
+                $sql = "DELETE FROM `rdvlabo-client` WHERE IDrdv= '$TheID';";
+                break;
+
+        }
+
         $result = $mysqli->query($sql);
-        
+
         // Fermeture de notre variable "$mysqli"
         $mysqli->close();
     }

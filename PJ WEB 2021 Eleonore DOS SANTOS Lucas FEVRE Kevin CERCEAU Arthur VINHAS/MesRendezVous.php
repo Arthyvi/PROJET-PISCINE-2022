@@ -77,12 +77,15 @@ $CasesJourHoraire = [
                             echo "<td> Jour : " . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
                             echo "<td> Créneau : " .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
                             echo "<td> </td>";
-                            echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
+                            echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."&dd=1\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
                             echo "</tr>";
 
                             $Compt =  $Compt +1;
                         }
                         echo "</table>";
+
+                        // Fermeture de notre variable "$mysqli"
+                         $mysqli->close();
                     }
 
                     ?>
@@ -90,6 +93,55 @@ $CasesJourHoraire = [
             </div>
         </div>
     
+
+    <h3 style="padding-top:3%;text-decoration:underline;" class="text-center">Mes Rendez-vous avec des Laboratoires :</h3>
+
+    
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+        <br><br>
+
+            <?php
+            $Compt = 1;
+            //`rdvmedecin-client`
+            //`rdvlabo-client`
+            // Connexion au serveur
+            $mysqli = new mysqli("localhost", "root", "", "projet piscine 2022");
+
+            // Check connection
+            if ($mysqli->connect_errno) {
+                echo "Failed to connect to MySQL" . $mysqli->connect_errno;
+                exit();
+            } else {
+                $result = mysqli_query($mysqli, "SELECT med.NomLab , med.Salle, rdv.IDrdv ,rdv.Jour, rdv.horaire , rdv.ServiceSelectionner  FROM `rdvlabo-client` rdv INNER JOIN `laboratoire` med ON rdv.IDlabo = med.IDlabo WHERE rdv.IDclient = '$BuffID'");
+
+                //afficher le resultat
+                echo "<table class='table table-hover' >";
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>".$Compt."</td>";
+                    echo "<td>Avec : &nbsp;&nbsp; Laboratoire " . $data['NomLab'] . "&nbsp;&nbsp; Salle : " . $data['Salle'] . "</td>";
+                    echo "<td>(" . $data['ServiceSelectionner'] . ")</td>";
+                    echo "<td> Jour : " . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
+                    echo "<td> Créneau : " .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
+                    echo "<td> </td>";
+                    echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."&dd=2\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
+                    echo "</tr>";
+
+                    $Compt =  $Compt +1;
+                }
+                echo "</table>";
+                // Fermeture de notre variable "$mysqli"
+                $mysqli->close();
+            }
+
+            ?>
+        </div>
+    </div>
+</div>
+
 
 
     <footer class="page-footer">
