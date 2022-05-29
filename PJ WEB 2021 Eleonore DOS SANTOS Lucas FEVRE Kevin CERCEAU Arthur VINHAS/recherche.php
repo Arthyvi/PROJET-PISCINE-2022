@@ -209,8 +209,8 @@ else
                       $services="";
                       if(count($Buffer)>0) {
                         for($i=0;$i<count($Buffer)-1;$i++) $services.=$Buffer[$i].", ";
+                        $services.=$Buffer[count($Buffer)-1];
                       }
-                      $services.=$Buffer[count($Buffer)-1];
                       if(stripos($services,$recherche)) {
                         echo "<tr>";
                         echo "<td><img src='./images/Labo/" . $data[0] . ".jpg' height='120' width='100' id='lab '>   </td>";
