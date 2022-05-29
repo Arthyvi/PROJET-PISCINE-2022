@@ -1,30 +1,26 @@
 <?php
 // Start the session
 session_start();
+
+$id=$_SESSION['IDconnected'];
 ?>
 
 <!DOCTYPE html>
+<html lang="fr">
 
 <head>
-  <Title>OMNES SANTE</Title>
-  <meta charset="uft-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="script.js"></script>
+  <meta charset="UTF-8">
+
+  <title>DOcMNES</title>
   <link rel="stylesheet" href="boot.css">
+  <link rel="stylesheet" href="carousel.css">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="script.js"></script>
+
 </head>
 
 <?php
-// Set session variables (variables globales)
-$_SESSION["doc"] = "";
-?>
-
-
-<?php
 // Connexion au serveur
-
 $mysqli = new mysqli("localhost:3309", "root", "", "projet piscine 2022");
 
 // Check connection
@@ -35,6 +31,7 @@ if ($mysqli->connect_errno) {
 ?>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <a class="navbar-brand" href="#"><img src="omnes.png" width="150" alt=""></a>
@@ -44,14 +41,11 @@ if ($mysqli->connect_errno) {
     </button>
 
     <form action="recherche.php" method="post">
-
       <div class="input-group input-navbar">
         <div class="input-group-prepend">
           <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
         </div>
-
         <input type="text" class="form-control" placeholder="Recherche.." name="recherche">
-
       </div>
     </form>
 
@@ -75,7 +69,6 @@ if ($mysqli->connect_errno) {
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-
         <?php
 
 if( $_SESSION["IDconnected"] == "" )
@@ -101,30 +94,41 @@ else
 }
 
 ?>
-
       </ul>
     </div> <!-- .navbar-collapse -->
+
   </nav>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="dropdown1" style="margin:10% 0">
-        <button class="btn btn-primary btn-lg btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Choisir la spécialité
-        </button>
-        <div class="dropdown1-content" aria-labelledby="dropdownMenuButton">
-          <a href="Medecin_Ad.php">Addictologue</a>
-          <a href="Medecin_An.php">Andrologue</a>
-          <a href="Medecin_C.php">Cardiologue</a>
-          <a href="Medecin_D.php">Dermatologue</a>
-          <a href="Medecin_Ga.php">Gastro-Hépato-Entérologue</a>
-          <a href="Medecin_Gy.php">Gynécologue</a>
-          <a href="Medecin_IST.php">I.S.T</a>
-          <a href="Medecin_O.php">Ostéopathe</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php
+    echo "<img src='./images/client/".$id.".jpg' width=200 height=300></img>";
+    $sql="SELECT * from client WHERE IDpersonne='".$id."'";
+    $mail="SELECT * FROM identifiant WHERE IDpersonne='".$id."'";
+    $mail=$mysqli->query($mail)->fetch_row()[0];
+    if($result=$mysqli->query($sql))
+    {
+        if($result->num_rows>0) 
+        {
+            $data=$result->fetch_row();
+            echo "<form action='modif_profil_sql.php' method='post'>";
+            echo "<table>";
+            echo "<tr><td>Prenom : </td><td><input type='text' name='prenom' value='".$data[2]."' required></td></tr>";
+            echo "<tr><td>Nom : </td><td> <input type='text' name='nom' value='".$data[1]."' required></td></tr>";
+            echo "<tr><td>Adresse ligne 1 : </td><td><input type='text' name='adresse1' value='".$data[3]."' required></td></tr>";
+            echo "<tr><td>Adresse ligne 2 : </td><td><input type='text' name='adresse2' value='".$data[4]."'></td></tr>";
+            echo "<tr><td>Code Postal : </td><td><input type='number' name='codepostal' value='".$data[6]."' required></td></tr>";
+            echo "<tr><td>Ville : </td><td><input type='text' name='ville' value='".$data[5]."' required></td></tr>";
+            echo "<tr><td>Pays : </td><td><input type='text' name='pays' value='".$data[7]."' required></td></tr>";
+            echo "<tr><td>Numero de telephone : </td><td>+33<input type='number' name='tel' style='width:198px' value='".$data[8]."' required></td></tr>";
+            echo "<tr><td>Adresse mail : </td><td><input type='text' name='mail' value='".$mail."' required></td></tr>";
+            echo "<tr><td>Numero de securite sociale : </td><td><input type='number' name='secu' value='".$data[9]."' required></td></tr>";
+            echo "</table>";
+            echo "<input type='submit' value='Modifier mes informations'></form>";
+        }
+    }
+
+  ?>
+
+  <button onclick="window.location.href='Mon_Profil.php'">Annuler</button>
 
   <footer class="page-footer">
     <div class="container">
@@ -152,9 +156,15 @@ else
         </div>
       </div>
     </div>
-
-
+    </div>
   </footer>
 
+  <script src="../assets/js/jquery-3.5.1.min.js"></script>
 
-  </html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <script src="../carousel.js"></script>
+
+</body>
+
+</html>

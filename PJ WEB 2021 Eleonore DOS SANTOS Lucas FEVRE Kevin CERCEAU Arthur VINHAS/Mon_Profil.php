@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-
+$id=$_SESSION['IDconnected']
 ?>
 
 <!DOCTYPE html>
@@ -68,18 +68,59 @@ if ($mysqli->connect_errno) {
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
-        </li>
+        <?php
+
+if( $_SESSION["IDconnected"] == "" )
+{
+
+ echo '<li class="nav-item">';
+ echo '<a class="btn btn-primary" href="connexion1.php">Connexion</a>';
+
+ echo  '</li>'; 
+
+}
+else
+{
+
+  echo  '<li class="dropdown1">';
+  echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
+        compte</button>';
+  echo   '<div class="dropdown1-content">';
+  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_Spe.php">Deconnexion</a>';
+  echo   '</div>';
+  echo   '</li>';
+
+}
+
+?>
       </ul>
     </div> <!-- .navbar-collapse -->
 
   </nav>
 
   <?php
-    
+    echo "<img src='./images/client/".$id.".jpg' width=200 height=300></img>";
+    $sql="SELECT * from client WHERE IDpersonne='".$id."'";
+    $mail="SELECT * FROM identifiant WHERE IDpersonne='".$id."'";
+    $mail=$mysqli->query($mail)->fetch_row()[0];
+    if($result=$mysqli->query($sql))
+    {
+        if($result->num_rows>0) 
+        {
+            $data=$result->fetch_row();
+            echo "<table>";
+            echo "<tr><td>".$data[2]." ".$data[1]."</td></tr>";
+            echo "<tr><td>Adresse : </td><td>".$data[3].", ".$data[6].", ".$data[5].", ".$data[7]."<br>          ".$data[4]."</td></tr>";
+            echo "<tr><td>Numero de telephone : </td><td>+33".$data[8]."</td></tr>";
+            echo "<tr><td>Adresse mail : </td><td>".$mail."</td></tr>";
+            echo "<tr><td>Numero de securite sociale : </td><td>".$data[9]."</td></tr>";
+            echo "</table>";
+        }
+    }
 
   ?>
+
+  <button onclick="window.location.href='modif_profil.php'">Modifier mes informations</button><br>
 
   <footer class="page-footer">
     <div class="container">

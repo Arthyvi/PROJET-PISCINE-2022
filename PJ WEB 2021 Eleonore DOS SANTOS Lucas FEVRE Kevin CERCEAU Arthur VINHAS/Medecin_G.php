@@ -90,7 +90,7 @@ if ($mysqli->connect_errno) {
           {
 
             echo  '<li class="dropdown1">';
-            echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
+            echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
                   compte</button>';
             echo   '<div class="dropdown1-content">';
             echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_G.php">Deconnexion</a>';
