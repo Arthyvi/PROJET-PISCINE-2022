@@ -6,6 +6,7 @@ session_start();
 
 $TheID = $_GET["md"];
 $Mode = $_GET["dd"];
+$connected = substr($_SESSION["IDconnected"],0,2);
 
 ////Suppression du RDV dans la BDD
     // Connexion au serveur
@@ -40,6 +41,7 @@ $Mode = $_GET["dd"];
     }
 
     // Renvoi à la page de choix du medecin
-    header("Location: MesRendezVous.php");
+    if($connected=='CL') header("Location: MesRendezVous.php");
+    else header("Location: EDT.php");
 
 ?>
