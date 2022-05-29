@@ -91,8 +91,9 @@ if ($mysqli->connect_errno) {
             <a class ="text-blue" href="Labo.php">Laboratoire de biologie médicale</a>
           </div>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
+        <a class="nav-link" ></a>
         </li>
         
         <?php
@@ -113,6 +114,7 @@ if ($mysqli->connect_errno) {
             echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
                   compte</button>';
             echo   '<div class="dropdown1-content">';
+            echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
             echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=home.php">Deconnexion</a>';
             echo   '</div>';
             echo   '</li>';

@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -50,7 +55,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
+        <a class="nav-link" ></a>
         </li>
 
         <?php
@@ -71,6 +76,7 @@
           echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
                 compte</button>';
           echo   '<div class="dropdown1-content">';
+          echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
           echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=infos.php">Deconnexion</a>';
           echo   '</div>';
           echo   '</li>';

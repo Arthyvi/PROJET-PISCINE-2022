@@ -72,7 +72,7 @@ if ($mysqli->connect_errno) {
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
+        <a class="nav-link" ></a>
         </li>
 
         <?php
@@ -93,6 +93,7 @@ if ($mysqli->connect_errno) {
             echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
                   compte</button>';
             echo   '<div class="dropdown1-content">';
+            echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
             echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Labo.php">Deconnexion</a>';
             echo   '</div>';
             echo   '</li>';
@@ -133,7 +134,7 @@ if ($mysqli->connect_errno) {
               echo "<img src='./images/Labo/" . $data['IDlabo'] . ".jpg' style='max-width: fit-content' alt=''>";
 
               echo "<div class='meta'>";
-              echo "<button class='btn-sm btn-primary'>RDV</button>";
+              echo "<button onclick='window.location=\"Reservation_Client_Labo.php?md=" . $data['IDlabo'] . "\"' class='btn-sm btn-primary'>RDV</button>";
               echo"<form action='Infos.php'>";
               echo "<button class ='btn-sm btn-primary'>Infos</button>";
               echo"</form>";
