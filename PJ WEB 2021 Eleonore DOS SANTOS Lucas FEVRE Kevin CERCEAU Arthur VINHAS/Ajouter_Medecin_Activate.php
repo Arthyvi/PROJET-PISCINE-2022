@@ -14,7 +14,7 @@ $Password= isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 
 /// Partie sur la base de donnée
  // Connexion au serveur
-$mysqli = new mysqli("localhost","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)

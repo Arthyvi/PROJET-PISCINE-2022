@@ -5,7 +5,7 @@
 session_start();
 
 // Connexion au serveur
-$mysqli = new mysqli("localhost","root","","projet piscine 2022");
+$mysqli = new mysqli("localhost:3309","root","","projet piscine 2022");
 
 // Check connection
 if($mysqli -> connect_errno)

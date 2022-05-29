@@ -9,7 +9,9 @@ session_start();
 
 /// Recupération des données dans la base de donnée en fonction de l'ID enregistré l'ors de la connexion
 // Connexion au serveur
+
 $mysqli = new mysqli("localhost:3306", "root", "", "projet piscine 2022");
+
 
 // Check connection
 if ($mysqli->connect_errno) {
