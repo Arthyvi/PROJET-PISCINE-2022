@@ -15,7 +15,7 @@ $Password = isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 $ConfirmedPassword = isset($_POST["mdp2"]) ? $_POST["mdp2"] : "";
 
 // Connexion au serveur
-$mysqli = new mysqli("localhost:3309", "root", "", "projet");
+$mysqli = new mysqli("localhost:3306", "root", "", "projet");
 
 // Check connection
 if ($mysqli->connect_errno) {
