@@ -28,7 +28,7 @@ else
 {
 
      // Recupère tout les rendez-vous du docteur selectionner pour avoir les créneaux disponible
-     $sql = "SELECT * FROM  `rdvmedecin-client` WHERE IDmedecin = '$BuffID'";   
+     $sql = "SELECT * FROM  `rdvlabo-client` WHERE IDlabo = '$BuffID'";   
      
      if($result = $mysqli->query($sql))
      {
@@ -45,9 +45,71 @@ else
          $result->free_result();
      }
 
+     // recupère la services proposé pour ce labo
+    $BuffNameTable = "laboratoire";
+    $sql = "SELECT * FROM  $BuffNameTable WHERE IDlabo = '$BuffID'"; 
+    
+    //Initialisation valeur services.
+    $Depistage= "";
+    $BiologieP= "";
+    $BiologieEnceinte= "";
+    $BiologieRoutine= "";
+    $Cancerologie= "";
+    $Gynecologie= "";
+
+    // Execution sql
+    if($result = $mysqli->query($sql))
+    {
+        
+        if($result->num_rows >0)
+        {
+            $row = $result->fetch_row();
+
+            $Services = intval($row[5]);
+
+            if ($Services >= 32)
+            {
+                $Depistage= "checked";
+                $Services = $Services - 32; 
+            }
+
+            if ($Services >= 16)
+            {
+                $BiologieP= "checked";
+                $Services = $Services - 16; 
+            }
+
+            if ($Services >= 8)
+            {
+                $BiologieEnceinte= "checked";
+                $Services = $Services - 8; 
+            }
+
+            if ($Services >= 4)
+            {
+                $BiologieRoutine= "checked";
+                $Services = $Services - 4; 
+            }
+
+            if ($Services >= 2)
+            {
+                $Cancerologie= "checked";
+                $Services = $Services - 2; 
+            }
+
+            if ($Services >= 1)
+            {
+                $Gynecologie= "checked";
+            }
+
+        }
+
+        $result->free_result();
+    }
 
     // Fermeture de notre variable "$mysqli"
     $mysqli->close();
+ 
 }
 
 // Initialisation des tableaux
@@ -149,10 +211,56 @@ else
     </nav>
 
     <div class="container">
+
+        <?php
+
+          echo '<select style="margin-left:37%;margin-top:3%;" name="service" id="service"  required>';
+          echo '<option value="nope" selected disabled hidden>Select service</option>';
+        
+            if($Depistage == "checked")
+            {
+                echo '<option value="Depistage-covid-19">Depistage covid 19</option>';
+            }
+
+            if($BiologieP == "checked")
+            {
+                echo '<option value="Biologie-preventive">Biologie preventive</option>';
+
+            }
+
+            if($BiologieEnceinte == "checked")
+            {
+                echo '<option value="Biologie-de-la-femme-enceinte">Biologie de la femme enceinte</option>';
+            }
+
+            if($BiologieRoutine == "checked")
+            {
+                echo '<option value="Biologie-de-routine">Biologie de routine</option>';
+            }
+
+            if($Cancerologie == "checked")
+            {
+                echo '<option value="Cancerologie">Cancerologie</option>';
+            }
+
+            if($Gynecologie == "checked")
+            {
+                echo '<option value="Gynecologie">Gynecologie</option>';
+            }
+          
+
+          echo '</select>';
+
+
+        ?>
+
+       
+
+
         <div class="col">
             <div class="row justify-content-center align-items-center">
 
-                <table class="table table-primary table-bordered table-hover table-sm" style="margin-top:5%">
+                <table class="table table-primary table-bordered table-hover table-sm" style="margin-top:3%">
 
                 <tr class="font-weight-bold">
                         <td></td>

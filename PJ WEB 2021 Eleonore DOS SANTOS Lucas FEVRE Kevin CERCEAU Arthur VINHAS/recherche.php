@@ -65,11 +65,34 @@ if($mysqli -> connect_errno)
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
+        <a class="nav-link" ></a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="connexion1.php">Votre Compte</a>
-        </li>
+        <?php
+
+if( $_SESSION["IDconnected"] == "" )
+{
+
+ echo '<li class="nav-item">';
+ echo '<a class="btn btn-primary" href="connexion1.php">Connexion</a>';
+
+ echo  '</li>'; 
+
+}
+else
+{
+
+  echo  '<li class="dropdown1">';
+  echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
+        compte</button>';
+  echo   '<div class="dropdown1-content">';
+  echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
+  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=recherche.php">Deconnexion</a>';
+  echo   '</div>';
+  echo   '</li>';
+
+}
+
+?>
       </ul>
     </div> <!-- .navbar-collapse -->
 

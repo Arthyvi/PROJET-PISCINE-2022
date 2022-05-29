@@ -114,7 +114,7 @@ if ($mysqli->connect_errno) {
             echo   '<button onclick="window.location=\'CompteAdmin.php\'" type="button" class="btn btn-primary btn-sm">Mon
                   compte</button>';
             echo   '<div class="dropdown1-content">';
-            echo   '<a class ="text-blue" href="blog.html">Rendez-vous</a>';
+            echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
             echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=home.php">Deconnexion</a>';
             echo   '</div>';
             echo   '</li>';
