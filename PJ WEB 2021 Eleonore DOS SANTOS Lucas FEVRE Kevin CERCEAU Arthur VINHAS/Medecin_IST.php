@@ -157,7 +157,7 @@ else
               echo "<div class='header'>";
               echo "<img src='./images/medecin/" . $data['IDpersonne'] . ".jpg' style='max-width: fit-content' alt=''>";
               echo "<div class='meta'>";
-              echo "<button class='btn-sm btn-primary'>RDV</button>";
+              echo "<button onclick='window.location=\"Reservation_Client.php?md=" . $data['IDpersonne'] . "\"' class='btn-sm btn-primary'>RDV</button>";
 
               echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data['IDpersonne']."&connected=".$connected."'>Communiquer</button>";
               echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc='".$data['IDpersonne']."'>CV</button>";

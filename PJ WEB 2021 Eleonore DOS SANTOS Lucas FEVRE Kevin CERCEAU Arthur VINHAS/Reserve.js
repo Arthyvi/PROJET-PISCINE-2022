@@ -38,15 +38,11 @@ function AccepterRDV($IdClient,$IdDoc)
                 if(Color == "rgb(113, 113, 241)")
                 {
                     
-                    
-
                     $.get("AjouterRDVdansBDD.php",{ClientID: $IdClient ,MedecinID: $IdDoc, Jour : i, Heure : j} ,function(data) {
                     
                     //alert(data);
                     
                     });
-                    
-                    
                     
                 }
 

@@ -92,7 +92,7 @@ if($mysqli -> connect_errno)
                     echo "<td><img src='./images/medecin/" . $data[0] . ".jpg' height='120' width='100' id='doc'>   </td>";
                     echo "<td>Dr " . $data[2] . " " . $data[1] . "  </td>";
                     echo "<td>" . $data[5] . "</td>";
-                    echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
+                    echo "<td><button onclick='window.location=\"Reservation_Client.php?md=" . $data[0] . "\"' class='btn-sm btn-primary'>RDV</button><br><br>";
                     echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
                     echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc=".$data[0]."'>CV</button></td>";
                     echo "</tr>";
