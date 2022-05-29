@@ -136,7 +136,20 @@ else
                     echo "<tr>";
                     echo "<td><img src='./images/Labo/" . $data[0] . ".jpg' height='120' width='100' id='lab '>   </td>";
                     echo "<td>" . $data[1] . "</td>";
-                    echo "<td>" . $data[5] . "</td>";
+                    $bin=decbin($data[5]);
+                    $Buffer = array();
+
+                    if(substr($bin,5,1) == "1") $Buffer[]="Gynecologie";
+                    if(substr($bin,4,1) == "1") $Buffer[]="Cancerologie";
+                    if(substr($bin,3,1) == "1") $Buffer[]="Biologie de routine";
+                    if(substr($bin,2,1) == "1") $Buffer[]="Biologie de la femme enceinte";
+                    if(substr($bin,1,1) == "1") $Buffer[]="Biologie preventive";
+                    if(substr($bin,0,1) == "1") $Buffer[]="Depistage Covid-19";
+
+                    $services="";
+                    for($i=0;$i<count($Buffer)-1;$i++) $services.=$Buffer[$i].", ";
+                    $services.=$Buffer[count($Buffer)-1];
+                    echo "<td>" . $services . "</td>";
                     echo "<td><button class='btn-sm btn-primary'>RDV</button><br><br>";
                     echo "<form action='Infos.php'><br><br>";
                     echo "<button class ='btn-sm btn-primary'>Infos</button></td>";
