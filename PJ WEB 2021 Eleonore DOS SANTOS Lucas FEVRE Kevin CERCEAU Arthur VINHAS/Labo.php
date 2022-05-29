@@ -158,6 +158,9 @@ if ($mysqli->connect_errno) {
               if(substr($bin,0,1) == "1") $Buffer[]="Depistage Covid-19";
 
               $services="";
+              if(count($Buffer)>0) {
+                for($i=0;$i<count($Buffer)-1;$i++) $services.=$Buffer[$i].", ";
+              }
               for($i=0;$i<count($Buffer)-1;$i++) $services.=$Buffer[$i].", ";
               $services.=$Buffer[count($Buffer)-1];
 
