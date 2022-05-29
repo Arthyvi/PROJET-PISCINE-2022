@@ -45,18 +45,11 @@ $(document).ready(function () {
             $indication = "2";
             break;
 
-            case "Modifier mon Profil Client":
-            $indication = "2";
-            numberGood = numberGood + 1;
-            break;
-
             default:
             $indication = "1";
             break;
     
         }
-
-        
 
          // Verifie dans la base de donné si l'email existe deja
          $.get("VerifParamBDD.php",{TheMail:  $("#email").val(),Indication: $indication} ,function(data) {
@@ -74,28 +67,26 @@ $(document).ready(function () {
         
          //// Partie verifiant si le mot de passe et la confirmation de mot de passe sont les même à chaque fois
 
-         if(document.getElementById("Title").innerText != "Modifier mon Profil Client")
-        {
-            if( $("#mdp").val() == $("#mdp2").val())
-            {
-                if($("#mdp").val()  != "")
-                {
-                
-                   document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp;";
-                   numberGood = numberGood + 1;
-                }
-                else
-                {
-                   document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Passwords both empty!";
-               }
-                
+    
+         if( $("#mdp").val() == $("#mdp2").val())
+         {
+             if($("#mdp").val()  != "")
+             {
+             
+                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp;";
+                numberGood = numberGood + 1;
+             }
+             else
+             {
+                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Passwords both empty!";
             }
-            else
-            {
-                document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Different passwords!";
-            }
-      
-        }
+             
+         }
+         else
+         {
+             document.getElementById("messageErrorPassword").innerHTML = "&nbsp;&nbsp;&nbsp; Different passwords!";
+         }
+
 
         // Activation ou desactivation du bouton final
         if(numberGood == 2)

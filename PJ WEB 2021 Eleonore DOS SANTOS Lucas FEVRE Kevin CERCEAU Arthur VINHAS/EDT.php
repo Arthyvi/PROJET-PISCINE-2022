@@ -2,6 +2,9 @@
 // Start the session
 session_start();
 
+// Set session variables (variables globales)
+$_SESSION["patient"] = "";
+
 $BuffID =  $_SESSION["IDconnected"];
 
 $CasesJourHoraire = [
@@ -31,10 +34,10 @@ $CasesJourHoraire = [
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home.php">Accueil</a>
+                    <a class="nav-link" href="Medecin_Personnel.php">Accueil</a>
                 </li>
                 <li class="dropdown1">
-                    <button onclick="window.location='CompteAdmin.php'" type="button" class="btn btn-primary btn-sm">Mon
+                    <button onclick="window.location='Profil_Medecin.php'" type="button" class="btn btn-primary btn-sm">Mon
                         compte</button>
                     <div class="dropdown1-content">
                         <a href="Deconnexion.php">Deconnexion</a>
@@ -45,7 +48,7 @@ $CasesJourHoraire = [
     </nav>
 
 
-    <h3 style="padding-top:3%;text-decoration:underline;" class="text-center">Mes Rendez-vous avec Medecins :</h3>
+    <h2 style="padding-top:3%;" class="text-center">Emploi du temps :</h2>
 
     
         <div class="container">
@@ -66,18 +69,20 @@ $CasesJourHoraire = [
                         echo "Failed to connect to MySQL" . $mysqli->connect_errno;
                         exit();
                     } else {
-                        $result = mysqli_query($mysqli, "SELECT med.Nom , med.Prenom, med.Specialisation , rdv.IDrdv ,rdv.Jour, rdv.horaire  FROM `rdvmedecin-client` rdv INNER JOIN `medecin` med ON rdv.IDmedecin = med.IDpersonne WHERE rdv.IDclient = '$BuffID'");
+                        $result = mysqli_query($mysqli, "SELECT * FROM `rdvmedecin-client` WHERE IDmedecin = '$BuffID'");
+                        
+                        //$result = mysqli_query($mysqli, "SELECT client.IDpersonne med.Nom , med.Prenom, med.Specialisation , rdv.IDrdv ,rdv.Jour, rdv.horaire FROM `rdvmedecin-client` rdv INNER JOIN `medecin` med ON rdv.IDmedecin = med.IDpersonne WHERE rdv.IDmedecin = '$BuffID'");
                         //afficher le resultat
-                        echo "<table class='table table-hover' >";
+                        echo "<table class='table table-hover text-center' >";
                         while ($data = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
+                            $result1 = mysqli_query($mysqli, "SELECT * FROM `client` WHERE IDpersonne = '". $data['IDclient'] . "'");
+                            $data1 = mysqli_fetch_assoc($result1);
+
+                            echo "<tr onclick=\"window.location='fichepatient.php?name=" . $data['IDclient'] . "'\">";
                             echo "<td>".$Compt."</td>";
-                            echo "<td>Avec : &nbsp;&nbsp; Dr " . $data['Prenom'] . " " . $data['Nom'] . " &nbsp;&nbsp;&nbsp; (" . $data['Specialisation'] . ")</td>";
-                            echo "<td>" . $data['Specialisation'] . "</td>";
-                            echo "<td> Jour : " . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
-                            echo "<td> Créneau : " .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
-                            echo "<td> </td>";
-                            echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."&dd=1\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
+                            echo "<td>" . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
+                            echo "<td>" .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
+                            echo "<td>Patient : ".$data1['Nom']." ".$data1['Prenom']."</td>";
                             echo "</tr>";
 
                             $Compt =  $Compt +1;
@@ -94,65 +99,14 @@ $CasesJourHoraire = [
         </div>
     
 
-    <h3 style="padding-top:3%;text-decoration:underline;" class="text-center">Mes Rendez-vous avec des Laboratoires :</h3>
-
-    
-<div class="container">
-    <div class="row">
-        <div class="col">
-
-        <br><br>
-
-            <?php
-            $Compt = 1;
-            //`rdvmedecin-client`
-            //`rdvlabo-client`
-            // Connexion au serveur
-            $mysqli = new mysqli("localhost", "root", "", "projet piscine 2022");
-
-            // Check connection
-            if ($mysqli->connect_errno) {
-                echo "Failed to connect to MySQL" . $mysqli->connect_errno;
-                exit();
-            } else {
-                $result = mysqli_query($mysqli, "SELECT med.NomLab , med.Salle, rdv.IDrdv ,rdv.Jour, rdv.horaire , rdv.ServiceSelectionner  FROM `rdvlabo-client` rdv INNER JOIN `laboratoire` med ON rdv.IDlabo = med.IDlabo WHERE rdv.IDclient = '$BuffID'");
-
-                //afficher le resultat
-                echo "<table class='table table-hover' >";
-                while ($data = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>".$Compt."</td>";
-                    echo "<td>Avec : &nbsp;&nbsp; Laboratoire " . $data['NomLab'] . "&nbsp;&nbsp; Salle : " . $data['Salle'] . "</td>";
-                    echo "<td>(" . $data['ServiceSelectionner'] . ")</td>";
-                    echo "<td> Jour : " . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
-                    echo "<td> Créneau : " .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
-                    echo "<td> </td>";
-                    echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."&dd=2\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
-                    echo "</tr>";
-
-                    $Compt =  $Compt +1;
-                }
-                echo "</table>";
-                // Fermeture de notre variable "$mysqli"
-                $mysqli->close();
-            }
-
-            ?>
-        </div>
-    </div>
-</div>
-
-
-
     <footer class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <h5>Navigation</h5>
                     <ul class="footer-menu">
-                        <li><a href="home.php">Accueil</a></li><br>
-                        <li><a href="rdv.html">Rendez-vous</a></li><br>
-                        <li><a href="compte.html">Votre Compte</a></li><br>
+                        <li><a href="Medecin_Personnel.php">Accueil</a></li><br>
+                        <li><a href="Profil_Medecin.php">Votre Compte</a></li><br>
                     </ul>
                 </div>
                 <div class="col">

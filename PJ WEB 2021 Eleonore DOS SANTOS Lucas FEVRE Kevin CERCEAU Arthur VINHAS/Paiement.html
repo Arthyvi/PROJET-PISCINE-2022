@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page de démonstration de paiement par Craftyx">
+    <meta name="author" content="Craftyx">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <br><br><br>
+
+    <form action="Paiement.php" method="post">
+
+
+
+        <div class="container">
+
+            <div class='row'>
+
+
+
+                <div class='col-md-4 col-md-offset-4'>
+
+
+                    <br>
+                    <form accept-charset="UTF-8" action="/pay" id="payment-form" method="post">
+
+                        <div class='Nom'>
+
+
+
+
+                            <div class='col-xs-12 form-group'>
+                                <h1>Paiement en ligne</h1><br><br>
+
+
+
+                                <fieldset>
+                                    <legend>Type de carte de paiement:</legend>
+
+                                    <div>
+                                        <input type="radio" id="visa" name="paiement" value="visa" checked>
+                                        <label for="Visa">Visa</label>
+                                        <img src="visa.PNG" alt="Visa" width="35" height="20">
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" id="mastercard" name="paiement" value="mastercard">
+                                        <label for="Mastercard">MasterCard</label>
+                                        <img src="mastercard.PNG" alt="MasterCard" width="35" height="20">
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" id="american_express" name="paiement"
+                                            value="American_express">
+                                        <label for="american_express">American Express</label>
+                                        <img src="americanexpress.PNG" alt="American Express" width="35" height="20">
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" id="paypal" name="paiement" value="Paypal">
+                                        <label for="paypal">PayPal</label>
+                                        <img src="paypal.PNG" alt="Paypal" width="35" height="20">
+                                    </div>
+
+
+                                </fieldset><br>
+
+
+                                <label class='control-label'>Nom sur la carte:</label>
+                                <input class='form-control' size='4' type='text' name="name">
+
+                                <label class='control-label'>Email:</label>
+                                <input class='form-control' size='4' type='email' name="email">
+                            </div>
+                        </div>
+                   
+                            <div class='col-xs-12 form-group card'>
+                                <label class='control-label'>Numéro de carte:</label>
+                                <input autocomplete='off' class='form-control card-number' size='20' type='number'
+                                    name="card_no">
+                            </div>
+                     
+              
+
+                            <div class='col-xs-4 form-group expiration'>
+                                <label class='control-label'>Expiration:</label>
+                                <input class='form-control card-expiry-month' placeholder='MM' size='2' type='date'
+                                    name="expiration">
+                            </div>
+
+                           
+              
+
+
+
+                        
+                            <div class='col-xs-4 form-group cvc'>
+                                <label class='control-label'>CCV:</label>
+                                <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                    type='number' name="cvc">
+                            </div>
+
+                     
+
+                        <div class='form-row'>
+                            <div class='col-xs-12 form-group'>
+                                <label class='control-label'>Total a payer (en €) : 25</label>
+
+                            </div>
+                        </div>
+
+                        <div class='form-row'>
+                            <div class='col-md-12 form-group'>
+                                <button class='form-control btn btn-primary submit-button' type='submit'>Payer
+                                    »</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
