@@ -83,6 +83,7 @@ $CasesJourHoraire = [
                             echo "<td>" . $CasesJourHoraire[0][intval($data['Jour'])] . "</td>";
                             echo "<td>" .  $CasesJourHoraire[1][intval($data['horaire'])] . "</td>";
                             echo "<td>Patient : ".$data1['Nom']." ".$data1['Prenom']."</td>";
+                            echo "<td><button onclick='window.location=\"SuppresionRDV.php?md=". $data['IDrdv']."&dd=1\"'  class='btn btn-primary btn-sm'>Annuler RDV</button></td>";
                             echo "</tr>";
 
                             $Compt =  $Compt +1;
