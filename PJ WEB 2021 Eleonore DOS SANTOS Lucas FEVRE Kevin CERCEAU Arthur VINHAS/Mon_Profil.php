@@ -3,6 +3,8 @@
 session_start();
 
 $id=$_SESSION['IDconnected']
+
+
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +70,7 @@ if ($mysqli->connect_errno) {
         <li class="nav-item">
           <a class="nav-link" href="blog.html">Rendez-vous</a>
         </li>
+
         <?php
 
 if( $_SESSION["IDconnected"] == "" )
@@ -97,6 +100,7 @@ else
     </div> <!-- .navbar-collapse -->
 
   </nav>
+
   <br>
   <h1 style='text-align:center'>Mon Profil Client</h1><br><br>
   <?php
@@ -130,6 +134,7 @@ else
         <div class="col">
           <h5>Navigation</h5>
           <ul class="footer-menu">
+
             <li><a href="home.php">Accueil</a></li><br>
             <li><a href="rdv.html">Rendez-vous</a></li><br>
             <li><a href=
@@ -139,7 +144,7 @@ if( $_SESSION["IDconnected"] == "" ) echo "connexion1.php";
 else echo  "Mon_Profil.php";
 
 ?>
-            >Votre Compte</a></li><br>
+
           </ul>
         </div>
         <div class="col">
