@@ -13,7 +13,7 @@
     $pays=$_POST['pays'];
     $tel=$_POST['tel'];
     $secu=$_POST['secu'];
-    $mail=$_POST['mail'];
+    $mail=$_POST['email'];
 
     // Connexion au serveur
     $mysqli = new mysqli("localhost:3306","root","","projet piscine 2022");

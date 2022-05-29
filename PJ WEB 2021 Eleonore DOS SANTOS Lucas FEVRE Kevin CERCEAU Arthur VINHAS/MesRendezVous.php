@@ -34,7 +34,7 @@ $CasesJourHoraire = [
                     <a class="nav-link" href="home.php">Accueil</a>
                 </li>
                 <li class="dropdown1">
-                    <button onclick="window.location='CompteAdmin.php'" type="button" class="btn btn-primary btn-sm">Mon
+                    <button onclick="window.location='Mon_Profil.php'" type="button" class="btn btn-primary btn-sm">Mon
                         compte</button>
                     <div class="dropdown1-content">
                         <a href="Deconnexion.php">Deconnexion</a>

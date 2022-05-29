@@ -34,6 +34,9 @@
         $sql = "DELETE FROM  identifiant WHERE IDpersonne= '$TheID';";
         $result = $mysqli->query($sql);
 
+        // Effacement depuis la table "rdvmedecin-client"
+        $sql = "DELETE FROM  `rdvmedecin-client` WHERE IDmedecin = '$TheID';";
+        $result = $mysqli->query($sql);
 
         // Fermeture de notre variable "$mysqli"
         $mysqli->close();

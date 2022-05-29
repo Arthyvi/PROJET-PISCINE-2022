@@ -31,6 +31,11 @@
         $result = $mysqli->query($sql);
 
 
+        // Effacement depuis la table "laboratoire"
+        $sql = "DELETE FROM `rdvlabo-client` WHERE IDlabo = '$TheID';";
+        $result = $mysqli->query($sql);
+
+
         // Fermeture de notre variable "$mysqli"
         $mysqli->close();
     }

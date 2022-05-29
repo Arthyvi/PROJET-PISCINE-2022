@@ -11,9 +11,22 @@
         echo "Failed to connect to MySQL" . $mysqli -> connect_errno;
         exit();
     }
-        $idclient=$_GET['idclient'];
-        $idmedecin=$_GET['idmedecin'];
-        $connected=$_GET['connected'];
+
+    $idclient=$_GET['idclient'];
+    $idmedecin=$_GET['idmedecin'];
+    $connected=$_GET['connected'];
+
+
+    switch(substr($_SESSION["IDconnected"],0,2))
+    {
+        case "MD":
+            $Medd = true;
+            break;
+
+        default:
+        $Medd = false;
+        break;
+    }    
 
 ?>
 
@@ -47,18 +60,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <?php
 
-    <form action="recherche.php" method="post">
+   
+    if($Medd == false)
+    {
+      echo  '<form action="recherche.php" method="post">';
 
-      <div class="input-group input-navbar">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>
-        </div>
+      echo '<div class="input-group input-navbar">';
+      echo   '<div class="input-group-prepend">';
+      echo   '<span class="input-group-text" id="icon-addon1"><span class="fa fa-search"></span></span>';
+      echo   '</div>';
+  
+      echo   '<input type="text" class="form-control" placeholder="Recherche.." name="recherche">';
+  
+      echo  '</div>';
+      echo '</form>';
 
-        <input type="text" class="form-control" placeholder="Recherche.." name="recherche">
+    }
 
-      </div>
-    </form>
+    ?>
+
+   
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportContent"
       aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,26 +90,53 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="home.php">Accueil</a>
-        </li>
-        <li class="dropdown1">
-          <div class="nav-link">Tout Parcourir <i class="fa fa-caret-down"></i></div>
-          <div class="dropdown1-content">
-            <a href="Medecin_G.php">Médecine générale</a>
-            <a href="Medecin_Spe.php">Médecins spécialistes</a>
-            <a href="Labo.php">Laboratoire de biologie médicale</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
-        </li>
-        <li class="dropdown1">
-            <button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Votre Compte</button>
-            <div class="dropdown1-content">
-                <a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_Ad.php">Deconnexion</a>
-            </div>
-        </li>
+          <?php
+
+           if($Medd == true)
+           {
+               echo  '<li class="nav-item active">';
+               echo     '<a class="nav-link" href="Medecin_Personnel.php">Accueil</a>';
+               echo  '</li>';
+
+               echo '<li class="nav-item">';
+               echo '<a class="nav-link" ></a>';
+               echo '</li>';
+               echo '<li class="dropdown1">';
+               echo     '<button onclick="window.location=\'Profil_Medecin.php\'" type="button" class="btn btn-primary btn-sm">Mon Compte</button>';
+               echo     '<div class="dropdown1-content">';
+               echo         '<a class ="text-blue" href="Deconnexion.php">Deconnexion</a>';
+               echo     '</div>';
+               echo '</li>';
+
+           }
+           else
+           {
+            echo  '<li class="nav-item active">';
+            echo '<a class="nav-link" href="home.php">Accueil</a>';
+            echo  '</li>';
+            echo  '<li class="dropdown1">';
+            echo   '<div class="nav-link">Tout Parcourir <i class="fa fa-caret-down"></i></div>';
+            echo   '<div class="dropdown1-content">';
+            echo     '<a href="Medecin_G.php">Médecine générale</a>';
+            echo     '<a href="Medecin_Spe.php">Médecins spécialistes</a>';
+            echo     '<a href="Labo.php">Laboratoire de biologie médicale</a>';
+            echo   '</div>';
+            echo  '</li>';
+            echo  '<li class="nav-item">';
+            echo  '<a class="nav-link" ></a>';
+            echo '</li>';
+            echo  '<li class="dropdown1">';
+            echo     '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Votre Compte</button>';
+            echo     '<div class="dropdown1-content">';
+            echo         '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
+            echo         '<a class ="text-blue" href="DeconnexionClient.php?ref=connexion1.php">Deconnexion</a>';
+            echo     '</div>';
+            echo  '</li>';
+
+           }
+
+          ?>
+        
       </ul>
     </div> <!-- .navbar-collapse -->
 <?php

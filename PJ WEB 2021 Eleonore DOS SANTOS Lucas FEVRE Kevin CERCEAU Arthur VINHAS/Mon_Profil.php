@@ -62,16 +62,15 @@ if ($mysqli->connect_errno) {
         <li class="dropdown1">
           <div class="nav-link">Tout Parcourir <i class="fa fa-caret-down"></i></div>
           <div class="dropdown1-content">
-            <a href="Medecin_G.php">Médecine générale</a>
-            <a href="Medecin_Spe.php">Médecins spécialistes</a>
-            <a href="Labo.php">Laboratoire de biologie médicale</a>
+            <a class ="text-blue" href="Medecin_G.php">Médecine générale</a>
+            <a class ="text-blue" href="Medecin_Spe.php">Médecins spécialistes</a>
+            <a class ="text-blue" href="Labo.php">Laboratoire de biologie médicale</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Rendez-vous</a>
-        </li>
-
-        <?php
+                <a class="nav-link" ></a>
+                </li>
+                <?php
 
 if( $_SESSION["IDconnected"] == "" )
 {
@@ -86,10 +85,10 @@ else
 {
 
   echo  '<li class="dropdown1">';
-  echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon
-        compte</button>';
+  echo   '<button onclick="window.location=\'Mon_Profil.php\'" type="button" class="btn btn-primary btn-sm">Mon compte</button>';
   echo   '<div class="dropdown1-content">';
-  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=Medecin_Spe.php">Deconnexion</a>';
+  echo   '<a class ="text-blue" href="MesRendezVous.php">Rendez-vous</a>';
+  echo   '<a class ="text-blue" href="DeconnexionClient.php?ref=connexion1.php">Deconnexion</a>';
   echo   '</div>';
   echo   '</li>';
 
