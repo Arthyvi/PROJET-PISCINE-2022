@@ -129,32 +129,6 @@
     <Langue1>Francais</Langue1>
     <experience>10 ans d'eclate en famille.</experience>
   </DocteurCV>
-  <DocteurCV id="MD-000011">
-    <Nom>Stephen</Nom>
-    <Prenom>Strange</Prenom>
-    <Telephone>0123456789</Telephone>
-    <Mail>stephen.strange@magie.com</Mail>
-    <Specialisation>Dermatologue</Specialisation>
-    <presentation>prout</presentation>
-    <formation>Poudlard</formation>
-    <Langue1>anglais</Langue1>
-    <Langue2>mandarin</Langue2>
-    <Langue3>italien</Langue3>
-    <experience>Chirurgien puis magicien</experience>
-  </DocteurCV>
-  <DocteurCV id="MD-000010">
-    <Nom>DOcteur</Nom>
-    <Prenom>Stephen</Prenom>
-    <Telephone>123121</Telephone>
-    <Mail>AAA@AA</Mail>
-    <Specialisation>Osteopathe</Specialisation>
-    <presentation>Le meilleur doc</presentation>
-    <formation>Avenger</formation>
-    <Langue1>Shitori</Langue1>
-    <Langue2>Chinois</Langue2>
-    <Langue3>Javanais</Langue3>
-    <experience>Thanos</experience>
-  </DocteurCV>
   <DocteurCV id="MD-000010">
     <Nom>Pomme</Nom>
     <Prenom>Amour</Prenom>
@@ -165,5 +139,40 @@
     <formation>Pommatique</formation>
     <Langue1>POPO</Langue1>
     <experience>les marché</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-000011">
+    <Nom>Strange</Nom>
+    <Prenom>Stephen</Prenom>
+    <Telephone>123123</Telephone>
+    <Mail>kfjd@1</Mail>
+    <Specialisation>Osteopathe</Specialisation>
+    <presentation>Un super heros!!</presentation>
+    <formation>jsldf</formation>
+    <Langue1>UYJEAHD</Langue1>
+    <experience>qfsd</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-000012">
+    <Nom>Raoult</Nom>
+    <Prenom>DIDIER</Prenom>
+    <Telephone>123123</Telephone>
+    <Mail>dhjh@1</Mail>
+    <Specialisation>Specialiste I.S.T</Specialisation>
+    <presentation>zjedh.</presentation>
+    <formation>zkjeqd</formation>
+    <Langue1>Francais</Langue1>
+    <experience>kejrf</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-000011">
+    <Nom>Strange</Nom>
+    <Prenom>Stephen</Prenom>
+    <Telephone>12312344</Telephone>
+    <Mail>kfjd@1</Mail>
+    <Specialisation>Osteopathe</Specialisation>
+    <presentation>Un super heros!!</presentation>
+    <formation>jsldf</formation>
+    <Langue1>Anglais</Langue1>
+    <Langue2>mandarin</Langue2>
+    <Langue3>italien</Langue3>
+    <experience>qfsd</experience>
   </DocteurCV>
 </MedecinDoc>
