@@ -118,10 +118,10 @@ else
                     echo "<td>" . $data[5] . "</td>";
 
                     echo "<td><button onclick='window.location=\"Reservation_Client.php?md=" . $data[0] . "\"' class='btn-sm btn-primary'>RDV</button><br><br>";
-                    if($connected!="") echo "<button class='btn-sm btn-primary' onclick=window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'>Communiquer</button><br><br>";
+                    if($connected!="") echo "<button class='btn-sm btn-primary' onclick=\"window.location.href='chat.php?name=".$_SESSION['name']."&idclient=".$_SESSION['IDconnected']."&idmedecin=".$data[0]."&connected=".$connected."'\">Communiquer</button><br><br>";
                     else echo "<button class='btn-sm btn-primary'>Communiquer</button><br><br>";
 
-                    echo "<button class='btn-sm btn-primary' onclick=window.location.href='AfficherCV.php?SelectedDoc=".$data[0]."'>CV</button></td>";
+                    echo "<button class='btn-sm btn-primary' onclick=\"window.location.href='AfficherCV.php?SelectedDoc=".$data[0]."'\">CV</button></td>";
                     echo "</tr>";
                 }
                 echo "</table><br><br>";

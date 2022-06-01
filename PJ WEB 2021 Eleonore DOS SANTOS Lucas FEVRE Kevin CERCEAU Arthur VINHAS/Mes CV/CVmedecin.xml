@@ -129,19 +129,6 @@
     <Langue1>Francais</Langue1>
     <experience>10 ans d'eclate en famille.</experience>
   </DocteurCV>
-  <DocteurCV id="MD-000010">
-    <Nom>Inshape</Nom>
-    <Prenom>Tibo</Prenom>
-    <Telephone>0666666666</Telephone>
-    <Mail>tibo.inshape@youtube.com</Mail>
-    <Specialisation>Osteopathe</Specialisation>
-    <presentation>DAMN LES GENS c'est tibo inshape</presentation>
-    <formation>45 ans à Basic Fit</formation>
-    <Langue1>Francais</Langue1>
-    <Langue2>Chinois</Langue2>
-    <Langue3>Javanais</Langue3>
-    <experience>j'en ai pas mais tkt</experience>
-  </DocteurCV>
   <DocteurCV id="MD-000011">
     <Nom>Stephen</Nom>
     <Prenom>Strange</Prenom>
@@ -154,5 +141,18 @@
     <Langue2>mandarin</Langue2>
     <Langue3>italien</Langue3>
     <experience>Chirurgien puis magicien</experience>
+  </DocteurCV>
+  <DocteurCV id="MD-000010">
+    <Nom>DOcteur</Nom>
+    <Prenom>Stephen</Prenom>
+    <Telephone>123121</Telephone>
+    <Mail>AAA@AA</Mail>
+    <Specialisation>Osteopathe</Specialisation>
+    <presentation>Le meilleur doc</presentation>
+    <formation>Avenger</formation>
+    <Langue1>Shitori</Langue1>
+    <Langue2>Chinois</Langue2>
+    <Langue3>Javanais</Langue3>
+    <experience>Thanos</experience>
   </DocteurCV>
 </MedecinDoc>
